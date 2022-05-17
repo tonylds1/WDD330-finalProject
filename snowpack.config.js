@@ -7,7 +7,7 @@ module.exports = {
   },
   buildOptions: {
     out: "build",
-    baseUrl: "/L02_Team_Activity_1/build/",
+    baseUrl: "wdd330-finalproject",
     clean: true,
     htmlFragments: true,
   },
