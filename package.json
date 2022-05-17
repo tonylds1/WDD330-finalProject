@@ -37,6 +37,7 @@
     "last 3 safari versions"
   ],
   "dependencies": {
+    "dotenv": "^16.0.1",
     "module": "^1.2.5"
   }
 }
