@@ -8,7 +8,7 @@
   <!-- style sheets -->
   <link rel="stylesheet" href="./css/normalize.css" />
   <link rel="stylesheet" href="./css/small.css" />
-  <link rel="stylesheet" href="./css/codepenNav.css" />
+  <link rel="stylesheet" href="./css/large.css" />
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,9 +17,10 @@
     rel="stylesheet" />
 </head>
 <header>
+  <div>
   <nav class="navbar">
     <!-- LOGO -->
-    <div class="logo">My Library or Logo</div>
+    <div class="logo"><img src="./images/booklogo.png" rel="images" max width="70px"alt="book"></div>
     <!-- NAVIGATION MENU -->
     <ul class="nav-links">
       <!-- USING CHECKBOX HACK -->
@@ -28,11 +29,10 @@
       <!-- NAVIGATION MENUS -->
       <div class="menu">
         <li> <a href=""> 
-          <img src="./images/WhiteSearchSmall.png" rel="images" alt="search">
+          <img src="./images/searchSmall.png" rel="images" alt="search">
         </a></li>
-        <li><a href="/">About</a></li>
         <li class="library">
-          <a href="/">Library</a>
+          <a href="/">My Library</a>
           <!-- DROPDOWN MENU -->
           <ul class="dropdown">
             <li><a href="/">Books to Read </a></li>
@@ -40,49 +40,52 @@
             <li><a href="/">Finished Books</a></li>
           </ul>
         </li>
-        <li><a href="/">Menu Item</a></li>
-        <li><a href="/">My LogIn</a></li>
+        <li><a href="/">Dark Mode</a></li>
       </div>
     </ul>
   </nav>
+</div>
 </header>
 
 <body>
   <section>
-    <div class="banner">
-      <div class="banner-image">
-        <h2>Search Your Library</h2>
+    <div class="bannerS">
+      <div class="bannerS-image">
+        <h2>Reading Now</h2>
         <p>Worlds await you</p>
         <div class="search-container">
           <form action="/action_page.php">
             <input type="text" placeholder="Search.." name="search" />
             <button type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </form>
         </div>
       </div>
     </div>
-    <div class="banner2">
-      <p>
-        <i class="fa fa-search" aria-hidden="true"></i>Search for books and
-        create your personal library of books you desire to read, books you
-        are reading and completed.
-      </p>
-    </div>
+   
+    <div class="wrapper">
+        <a href="#">
+          <img src="./images/ReadingIconOr.png" max width= "120px" rel="images"  alt="Books I'm Reading" />
+        </a>
+        <a href="#">
+          <img src="./images/wantIconOr.png" rel="images" Max width="120px" alt="books I want to Read" />
+        </a>
+        <a href="#">
+          <img src="./images/ReadBeforeIcon.png" rel="images" Max width="100px" alt="books I want to Read" />
+        </a>
+        <a href="#">
+          <img src="./images/BookMarkIcon.png" rel="images" Max width="100px" alt="books I want to Read" />
+        </a>
+      </div>
   </section>
-  <section class="bookshelf">
-    <a href="#">
-      <img src="./images/reading.png" max width= "200px" rel="images"  alt="Books I'm Reading" />
-    </a>
-    <a href="#">
-      <img src="./images/WantTo.png" max width= "200px" rel="images" alt="books I want to Read" />
-    </a>
-    <a href="#">
-      <img src="./images/read.png"  max width= "200px"rel="images"  alt="books I want to Read" />
-    </a>
-  </section>
-
+  
+  <div class="banner2">
+    <p>
+     Search for books and create your personal library of books you desire to read, books you
+      are reading and completed.
+    </p>
+  </div>
   <div class="footer-banner">
     <footer id="footer">
       <p>
