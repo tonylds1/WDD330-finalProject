@@ -47,14 +47,14 @@ li {
   justify-content: space-between;
   padding: 20px;
   background-color: var(--tertiary-color);
-  color: #fff;
+  color: #000;
 }
 .nav-links a {
-  color: #fff;
+  color: #000;
 }
 /* LOGO */
 .logo {
-  font-size: 32px;
+  font-size: 22px;
 }
 /* NAVBAR MENU */
 .menu {
@@ -153,14 +153,14 @@ input[type="checkbox"] {
 }
 
 .banner h2 {
-  font-size: 5rem;
-  padding: 3rem 3rem 3rem 3rem;
+  font-size: 4rem;
+  padding: 2rem 1rem 1rem 3rem;
   color: var(--dark-grey);
 }
 .banner p {
   color: #fff;
-  font-size: 3rem;
-  padding: 3rem 2rem 0.2rem 3rem;
+  font-size: 2rem;
+  padding: 1rem 2rem 0.2rem 3rem;
 }
 .bookshelf {
   margin-left: 5rem;
@@ -175,7 +175,7 @@ input[type="checkbox"] {
   padding: 0.2rem 1rem 2rem 3rem;
 }
 .banner2 p {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   padding: 3.5rem 3.5rem 3.5rem 3.5rem;
   color: var(--dark-grey);
 }
