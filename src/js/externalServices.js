@@ -5,57 +5,56 @@
 // e.g. 
 // https://www.googleapis.com/books/v1/volumes?q=search"the+hungry+caterpillar"
 
-const baseURL = "// https://www.googleapis.com/books/v1/volumes?q=search"
+const key = "AIzaSyCiVmg-pTPRBc_azcAvbcCBWQ6MPLSQHcM"
+const baseURL = "https://www.googleapis.com/books/v1/volumes/"
 
-  async function jsonPigeonTranslator(SearchRes) {
-    let count = 0;
-    const jsonPigeonResponse = await fetch("../json/books.json")
-    .then(jsonPigeonResponse.json())
-    .catch(error => {
-        //get error information if it happens
-        throw { name: "errorType", message: jsonPigeonResponse }
-    })
-    if (!jsonPigeonResponse) return; 
-    else if (jsonPigeonResponse == SearchRes) {
-      jsonPigeonResponse.forEach(book => {
-        count++
-        if (count == 40){
-            return jsonPigeonResponse
-        }        
-      })
-    }  
-  };
+ 
+   
 
+function jsonTranslationPigeon(res) {
+    const jsonPigeonResponse = res.json();
+    if (res.ok) {
+      return jsonPigeonResponse;
+    } else {
+        console.log("There is an error!")
+        throw { name: "servicesError", message: jsonPigeonResponse };
+    }
+  } 
 
-export default class ElectronicPigeon {
+export default class ExternalServices {
 constructor() {}
 // get book data
-getBookList(category, searchRes) {
-    let books = fetch(baseURL + `${category}`)
-    .then(jsonPigeonTranslator(searchRes))
-    .then((data) => {
-        books = data.Result;
-        books.forEach((book) => {
-        book.PreferredGenre = false;
-        book.Rating = "Unrated";
-        });
-        return books;
-    });
-    // console.log(books);
-    return books;
-}
 
-async findBookById(id) {
-    let book = fetch(baseURL + `book/${id}`)
-      .then(jsonPigeonTranslator(id))
-      .then((data) => {
-        book = data.Result;
-        book.PreferredGenre = false;
-        book.Rating = "Unrated";
-        return book;
-      });
-    // console.log(book);
-    return book;
-  }
+async jsonPigeonTranslator(enteredSearch) {  
+    const jsonPigeonResponse = await fetch(baseURL + `?q=search ${enteredSearch}
+    &printType=books&maxResults=40&startIndex=39&key=` + key)
+    const jsonPigeonTranslation = await jsonTranslationPigeon(jsonPigeonResponse)
+    .catch(error => {
+        //get error information if it happens
+        console.log("There is an error!")
+        throw { name: "errorType", message: jsonPigeonResponse }
+    })
+    if (!jsonPigeonResponse) {
+        return; 
+    }
+    else {
+        let books = jsonPigeonTranslation;
+        books.items.forEach(book => {
+            book.PreferredGenre = false;
+            book.Rating = "Unrated";
+        })
+        console.log(jsonPigeonTranslation);
+        return jsonPigeonTranslation
+        }   
+    }
+
+    async pigeonBookDeliveryById(id) {
+        let book = await fetch(baseURL + id)
+        let jsonBook = await jsonTranslationPigeon(book)
+        jsonBook.volumeInfo.PreferredGenre = false;
+        jsonBook.volumeInfo.Rating = "Unrated";   
+        console.log(jsonBook);
+        return jsonBook;
+        }
 
 }
