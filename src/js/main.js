@@ -1,4 +1,3 @@
-import ExternalServices from "./externalServices.js"
 import ElectronicPigeon from "./ePigeonCourierServices.js"
 
 //This is with the new folder name
@@ -16,9 +15,5 @@ console.log(pigeonResult)
 let book = pigeon.pigeonBookDeliveryById(bookId);
 console.log(book);
 
-//This is with the old folder name
-let services = new ExternalServices();
 
-let result = services.jsonPigeonTranslator(enteredSearch);
-console.log(result);
 
