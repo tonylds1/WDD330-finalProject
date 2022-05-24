@@ -1,9 +1,9 @@
 //this module is used for most of the work done on the library.html page
 import { grabLocalStorage, feedLocalStorage } from "./flyInNutsAndBolts.js";
-import ElectronicPigeon from "./ePigeonCourierServices.js";
+import ExternalServices from "./externalServices.js";
 
 //create variable for ElectonicPigeon Module
-let wire = new ElectronicPigeon();
+let wire = new ExternalServices();
 
 //class for external use as a module
 export default class LibraryDeliveryBeak {
@@ -31,7 +31,7 @@ export default class LibraryDeliveryBeak {
         console.log("Nothing is here, try adding a book!");
       }
       let displayList = readList.forEach((bookId) => {
-        let myBook = wire.pigeonBookDeliveryById(bookId, false);
+        let myBook = wire.findBookById(bookId, false);
         //code to post book onto template will go here
         console.log(myBook);
       });
