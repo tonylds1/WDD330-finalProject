@@ -1,74 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search My Library WDD330</title>
+    <!-- style sheets -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/small.css" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Montserrat+Alternates:ital,wght@1,200&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Added to fix flavacon error -->
+    <link rel="shortcut icon" href="#" />
+    <script src="./js/library.js" type="module" defer></script>
+  </head>
+  <header>
+    <!-- Insert Header Template Hear -->
+  </header>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search My Library WDD330</title>
-  <!-- style sheets -->
-  <link rel="stylesheet" href="./css/normalize.css" />
-  <link rel="stylesheet" href="./css/small.css" />
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Montserrat+Alternates:ital,wght@1,200&family=Roboto&display=swap"
-    rel="stylesheet" />
-  <!-- Added to fix flavacon error -->
-  <link rel="shortcut icon" href="#" />
-  <script src="./js/library.js" type="module" defer></script>
-</head>
-<header>
- <!-- Insert Header Template Hear -->
-</header>
-
-<body>
-  <section>
-    <div class="bannerS">
-      <div class="bannerS-image">
-        <h2>Build My Library</h2>
-        <p>Search for books</p>
-        <div class="search-container">
-          <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search" />
-            <button type="submit">
+  <body>
+    <section>
+      <div class="bannerS">
+        <div class="bannerS-image">
+          <h2>Build My Library</h2>
+          <p>Search for books</p>
+          <div class="search-container">
+            <form action="/action_page.php">
+              <input type="text" placeholder="Search.." name="search" />
+              <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </form>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-   
-    <div class="wrapper">
+
+      <div class="wrapper">
         <a href="#">
-          <img src="./images/ReadingIconOr.png" max width= "120px" 
-          rel="images"  alt="Books I'm Reading" id="reading_bttn"/>
+          <img
+            src="./images/ReadingIconOr.png"
+            max
+            width="120px"
+            rel="images"
+            alt="Books I'm Reading"
+            id="reading_bttn"
+          />
         </a>
         <a href="#">
-          <img src="./images/wantIcon.png" max width="100px" 
-          rel="images" alt="books I want to Read" id ="want_bttn"/>
+          <img
+            src="./images/wantIcon.png"
+            max
+            width="100px"
+            rel="images"
+            alt="books I want to Read"
+            id="want_bttn"
+          />
         </a>
         <a href="#">
-          <img src="./images/ReadBeforeIcon.png" max width="100px"  
-          rel="images"alt="books I want to Read" id="read_bttn"/>
+          <img
+            src="./images/ReadBeforeIcon.png"
+            max
+            width="100px"
+            rel="images"
+            alt="books I want to Read"
+            id="read_bttn"
+          />
         </a>
       </div>
-  </section>
-  
-  <div class="banner2">
-    <p>
-     Search for books and create your personal library of books you desire to read, books you
-      are reading and completed.
-    </p>    
-  </div>
-  <section id="my_book_lists">
-    <!-- List for each book shelf of "Read"/"Reading"/"Want to Read" -->
-  </section>
-  <div class="footer-banner">
-    <footer>
-      <!-- Insert Footer Template Here -->
-    </footer>
-  </div>
-</body>
+    </section>
 
+    <div class="banner2">
+      <p>
+        Search for books and create your personal library of books you desire to
+        read, books you are reading and completed.
+      </p>
+    </div>
+    <section id="my_book_lists">
+      <!-- List for each book shelf of "Read"/"Reading"/"Want to Read" -->
+    </section>
+    <div class="footer-banner">
+      <footer>
+        <!-- Insert Footer Template Here -->
+      </footer>
+    </div>
+  </body>
 </html>

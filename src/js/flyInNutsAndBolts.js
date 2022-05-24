@@ -35,7 +35,7 @@ export async function flyInHeaderFooter() {
   //create variable for header and footer
   let headerTemplate;
   let footerTemplate;
-  //load template into variables 
+  //load template into variables
   headerTemplate = await flyInTemplate("./partials/home-header.html");
   // console.log(headerTemplate);
   footerTemplate = await flyInTemplate("./partials/footer.html");
@@ -43,17 +43,17 @@ export async function flyInHeaderFooter() {
   //attach element to a variable
   const header = document.querySelector("header");
   // console.log(header);
-  const footer = document.querySelector("footer"); 
-  // console.log(footer);  
+  const footer = document.querySelector("footer");
+  // console.log(footer);
   flyInRenderedTemplate(headerTemplate, header);
-  flyInRenderedTemplate(footerTemplate, footer);  
-  }
+  flyInRenderedTemplate(footerTemplate, footer);
+}
 
 // retrieve data from localstorage
 export function grabLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
-  }
+}
 // save data to local storage
 export function feedLocalStorage(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
-  }
+  localStorage.setItem(key, JSON.stringify(data));
+}
