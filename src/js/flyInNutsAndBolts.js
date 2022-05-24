@@ -48,3 +48,12 @@ export async function flyInHeaderFooter() {
   flyInRenderedTemplate(headerTemplate, header);
   flyInRenderedTemplate(footerTemplate, footer);  
   }
+
+// retrieve data from localstorage
+export function grabLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+  }
+// save data to local storage
+export function feedLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+  }

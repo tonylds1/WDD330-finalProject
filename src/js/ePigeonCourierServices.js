@@ -84,11 +84,13 @@ async bookListDeliveryPigeon40(enteredSearch, searchBatch) {
         return booksPigeonTranslated   
 }
 // get book by id
-async pigeonBookDeliveryById(id) {
+async pigeonBookDeliveryById(id, set = true) {
     let book = await fetch(baseURL + id)
     let jsonBook = await jsonTranslationPigeon(book)
+    if (set == true) {
     jsonBook.volumeInfo.PreferredGenre = false;
-    jsonBook.volumeInfo.Rating = "Unrated";   
+    jsonBook.volumeInfo.Rating = "Unrated";
+    }   
     console.log(jsonBook);
     return jsonBook;
     }

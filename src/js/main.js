@@ -1,6 +1,6 @@
 import ElectronicPigeon from "./ePigeonCourierServices.js"
+import { flyInHeaderFooter, feedLocalStorage } from "./flyInNutsAndBolts.js";
 
-import { flyInHeaderFooter } from "./flyInNutsAndBolts.js";
 //put in the header & footer
 flyInHeaderFooter();
 
@@ -14,11 +14,11 @@ let bookId = "Zkp1AwAAQBAJ";
 let searchBatch = 0;
 
 
-let pigeonResult = pigeon.bookListDeliveryPigeon40(enteredSearch, searchBatch);
-console.log(pigeonResult)
+// let pigeonResult = pigeon.bookListDeliveryPigeon40(enteredSearch, searchBatch);
+// console.log(pigeonResult)
 
-let book = pigeon.pigeonBookDeliveryById(bookId);
-console.log(book);
-
+// let book = pigeon.pigeonBookDeliveryById(bookId);
+// console.log(book);
+// feedLocalStorage("read-shelf", book);
 
 
