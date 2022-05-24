@@ -20,7 +20,7 @@ export async function loadTemplate(templatePath) {
   return template;
 }
 
-export function flyInRenderedTemplate(template, parentElement, data, callback) {
+export function renderListWithTemplate(template, parentElement, data, callback) {
   // clone the template
   let node = template.content.cloneNode(true);
   // if there is a callback, call it on the node and the data
@@ -31,7 +31,7 @@ export function flyInRenderedTemplate(template, parentElement, data, callback) {
   parentElement.appendChild(node);
 }
 
-export async function flyInHeaderFooter() {
+export async function loadHeaderFooter() {
   //create variable for header and footer
   let headerTemplate;
   let footerTemplate;
@@ -45,15 +45,15 @@ export async function flyInHeaderFooter() {
   // console.log(header);
   const footer = document.querySelector("footer");
   // console.log(footer);
-  flyInRenderedTemplate(headerTemplate, header);
-  flyInRenderedTemplate(footerTemplate, footer);
+  renderListWithTemplate(headerTemplate, header);
+  renderListWithTemplate(footerTemplate, footer);
 }
 
 // retrieve data from localstorage
-export function grabLocalStorage(key) {
+export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 // save data to local storage
-export function feedLocalStorage(key, data) {
+export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }

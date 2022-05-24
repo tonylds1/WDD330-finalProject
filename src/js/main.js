@@ -1,20 +1,20 @@
 import ExternalServices from "./externalServices.js";
-import { flyInHeaderFooter, feedLocalStorage } from "./utils.js";
+import { loadHeaderFooter, setLocalStorage } from "./utils.js";
 
 //put in the header & footer
-flyInHeaderFooter();
+loadHeaderFooter();
 
 //This is with the new folder name
-let pigeon = new ExternalServices();
+let connection = new ExternalServices();
 let enteredSearch = "cars";
 let bookId = "Zkp1AwAAQBAJ";
 //can use this to increment to the next 40 if
 //desired result is not found in the first 40
 let searchBatch = 0;
 
-let pigeonResult = pigeon.getBookData(enteredSearch, searchBatch);
-console.log(pigeonResult)
+let searchResult = connection.getBookData(enteredSearch, searchBatch);
+console.log(searchResult)
 
-let book = pigeon.findBookById(bookId);
+let book = connection.findBookById(bookId);
 console.log(book);
-feedLocalStorage("read-shelf", book);
+setLocalStorage("read-shelf", book);
