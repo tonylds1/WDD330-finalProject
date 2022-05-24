@@ -23,3 +23,17 @@ let wantButton = document.querySelector("#want_bttn");
 //this will add the list of books their reading to the page
 shelf.bookShelfFeeder(wantButton, "want_shelf");
 // console.log(wantButton);
+
+
+//active listener for book shelve buttons MyLIB
+// This script adds active class to the current button (highlight it)
+//  var header = document.getElementById("myLIB");
+//  var btns = header.getElementsById("read_bttn","want_bttn","reading_bttn");
+// var btns = header.getElementsByClassName("btn");
+// for (var i = 0; i < btns.length; i++) {
+//   btns[i].addEventListener("click", function() {
+//   var current = document.getElementsByClassName("active");
+//   current[0].className = current[0].className.replace(" active", "");
+//   this.className += " active";
+//   });
+// }
