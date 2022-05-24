@@ -1,7 +1,7 @@
 /* 69em = 1104px with 16px base */
 @media only screen and (min-width: 69em) {
-/* LOGO */
-.logo {
+  /* LOGO */
+  .logo {
     font-size: 25px;
   }
 }

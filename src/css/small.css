@@ -203,30 +203,30 @@ input[type="checkbox"] {
 
 /* library toogle wrapper... extra code, needs to be cleaned up */
 
-.wrapper {  
-  display: grid; 
-  grid-template-columns: repeat(auto-fill, 20rem); 
-   }
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 20rem);
+}
 
-   .wrapper{
-     padding-left: 5em;
-    display: flex; 
-   flex-direction: row; 
-     }
+.wrapper {
+  padding-left: 5em;
+  display: flex;
+  flex-direction: row;
+}
 
 /* Footer Code to be cleaned up */
-     .main-footer {
-      font-size: 0.4;
-      background-color: #303030;
-    }
+.main-footer {
+  font-size: 0.4;
+  background-color: #303030;
+}
 
-    .footer-banner p {
-      color: var(--primary-color);
-      size: 10rem;
-      padding: 3em 3em 3em 3em;
-    }
+.footer-banner p {
+  color: var(--primary-color);
+  size: 10rem;
+  padding: 3em 3em 3em 3em;
+}
 
-    /* Create three equal columns that floats next to each other */
+/* Create three equal columns that floats next to each other */
 .column {
   background-color: #303030;
   float: left;
