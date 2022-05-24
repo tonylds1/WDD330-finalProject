@@ -1,5 +1,10 @@
 import ElectronicPigeon from "./ePigeonCourierServices.js"
 
+import { flyInHeaderFooter } from "./flyInNutsAndBolts.js";
+//put in the header & footer
+flyInHeaderFooter();
+
+
 //This is with the new folder name
 let pigeon = new ElectronicPigeon();
 let enteredSearch = "cars";

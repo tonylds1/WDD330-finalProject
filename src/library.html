@@ -8,43 +8,18 @@
   <!-- style sheets -->
   <link rel="stylesheet" href="./css/normalize.css" />
   <link rel="stylesheet" href="./css/small.css" />
-  <link rel="stylesheet" href="./css/large.css" />
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Montserrat+Alternates:ital,wght@1,200&family=Roboto&display=swap"
     rel="stylesheet" />
+  <!-- Added to fix flavacon error -->
+  <link rel="shortcut icon" href="#" />
+  <script src="./js/library.js" type="module" defer></script>
 </head>
 <header>
-  <div>
-  <nav class="navbar">
-    <!-- LOGO -->
-    <div class="logo"><img src="./images/booklogo.png" rel="images" max width="70px"alt="book"></div>
-    <!-- NAVIGATION MENU -->
-    <ul class="nav-links">
-      <!-- USING CHECKBOX HACK -->
-      <input type="checkbox" id="checkbox_toggle" />
-      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-      <!-- NAVIGATION MENUS -->
-      <div class="menu">
-        <li> <a href=""> 
-          <img src="./images/searchSmall.png" rel="images" alt="search">
-        </a></li>
-        <li class="library">
-          <a href="/">My Library</a>
-          <!-- DROPDOWN MENU -->
-          <ul class="dropdown">
-            <li><a href="/">Books to Read </a></li>
-            <li><a href="/">Reading Now</a></li>
-            <li><a href="/">Finished Books</a></li>
-          </ul>
-        </li>
-        <li><a href="/">Dark Mode</a></li>
-      </div>
-    </ul>
-  </nav>
-</div>
+ <!-- Insert Header Template Hear -->
 </header>
 
 <body>
@@ -74,9 +49,6 @@
         <a href="#">
           <img src="./images/ReadBeforeIcon.png" rel="images" Max width="100px" alt="books I want to Read" />
         </a>
-        <a href="#">
-          <img src="./images/BookMarkIcon.png" rel="images" Max width="100px" alt="books I want to Read" />
-        </a>
       </div>
   </section>
   
@@ -87,21 +59,8 @@
     </p>
   </div>
   <div class="footer-banner">
-    <footer id="footer">
-      <p>
-        Footer<br />
-        Lorem ipsum dolor sit amet, <br />
-        consectetur adipiscing elit,<br />
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br />
-        Ut enim ad minim veniam, <br />
-        quis nostrud exercitation ullamco<br />
-        laboris nisi ut aliquip ex ea commodo consequat.<br />
-        Duis aute irure dolor in reprehenderit in voluptate <br />
-        velit esse cillum dolore eu fugiat nulla pariatur. <br />
-        Excepteur sint occaecat cupidatat non proident,<br />
-        sunt in culpa qui officia deserunt<br />
-        mollit anim id est laborum."
-      </p>
+    <footer>
+      <!-- Insert Footer Template Here -->
     </footer>
   </div>
 </body>
