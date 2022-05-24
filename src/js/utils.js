@@ -1,6 +1,6 @@
 //JavaScript module with functions general enough for multiple pages
 
-function htmlToTextPigeonTranform(res) {
+function convertToText(res) {
   try {
     if (res.ok) {
       return res.text();
@@ -12,8 +12,8 @@ function htmlToTextPigeonTranform(res) {
   }
 }
 
-export async function flyInTemplate(templatePath) {
-  const html = await fetch(templatePath).then(htmlToTextPigeonTranform);
+export async function loadTemplate(templatePath) {
+  const html = await fetch(templatePath).then(convertToText);
   // console.log(html)
   const template = document.createElement("template");
   template.innerHTML = html;
@@ -36,9 +36,9 @@ export async function flyInHeaderFooter() {
   let headerTemplate;
   let footerTemplate;
   //load template into variables
-  headerTemplate = await flyInTemplate("./partials/home-header.html");
+  headerTemplate = await loadTemplate("./partials/header.html");
   // console.log(headerTemplate);
-  footerTemplate = await flyInTemplate("./partials/footer.html");
+  footerTemplate = await loadTemplate("./partials/footer.html");
   // console.log(footerTemplate);
   //attach element to a variable
   const header = document.querySelector("header");
