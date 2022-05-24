@@ -55,6 +55,12 @@ li {
 /* LOGO */
 .logo {
   font-size: 22px;
+  display: flex;
+  align-items: center;
+  /* padding: .5em; */
+  /* text-align: center; */
+  /* margin: auto 0; */
+  /* grid-template-columns: 1fr 1fr; */
 }
 /* NAVBAR MENU */
 .menu {
