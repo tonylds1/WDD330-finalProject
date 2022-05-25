@@ -33,7 +33,7 @@ export default class SearchResults {
   }
 
   prepareTemplate(templateClone, book) {
-    console.log(book)
+    // console.log(book)
 
     // Add in the image
     try {
@@ -63,10 +63,36 @@ export default class SearchResults {
     let publishDate = new Date(book.volumeInfo.publishedDate)
     templateClone.querySelector(".publishDate").innerHTML += publishDate.toLocaleDateString("en-US", options)
 
-    
     // give functionality to each button
-    templateClone.querySelector(".addToShelfButtons")
-    
+    templateClone.querySelector(".addToShelfButtons").innerHTML = bookListButtons(book.id)
+
+    // templateClone.querySelector(".addToReading")
+    let addToReadingBtn = templateClone.querySelector(".addToReading")
+    addToReadingBtn.addEventListener("click", async () => {
+        let id = addToReadingBtn.getAttribute("data-id");
+        // add the id to the reading list
+        console.log(id);
+    });
+    let addToReadBtn = templateClone.querySelector(".addToRead")
+    addToReadBtn.addEventListener("click", async () => {
+        let id = addToReadBtn.getAttribute("data-id");
+        // add the id to the read list
+        console.log(id);
+    });
+    let addToWantToReadBtn = templateClone.querySelector(".addToWantToRead")
+    addToWantToReadBtn.addEventListener("click", async () => {
+        let id = addToWantToReadBtn.getAttribute("data-id");
+        // add the id to the want to read list
+        console.log(id);
+    });
+
     return templateClone;
   }
+}
+
+
+function bookListButtons(id) {
+    return `<button class="addToReading" data-id="${id}">Reading</button>
+    <button class="addToRead" data-id="${id}">Read</button>
+    <button class="addToWantToRead" data-id="${id}">Want to Read</button>`
 }
