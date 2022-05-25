@@ -47,47 +47,46 @@
 // https://www.googleapis.com/books/v1/volumes/volumeId
 // Replace the volumeId path parameter with the ID of the volume to retrieve.
 
-const key = "AIzaSyCiVmg-pTPRBc_azcAvbcCBWQ6MPLSQHcM";
+// const key = "AIzaSyCiVmg-pTPRBc_azcAvbcCBWQ6MPLSQHcM";
 const baseURL = "https://www.googleapis.com/books/v1/volumes/";
 
 // convert response to a json object
-async function jsonTranslationPigeon(res) {
-  const jsonPigeonResponse = res.json();
+async function convertToJson(res) {
+  const jsonResponse = res.json();
   if (res.ok) {
-    return jsonPigeonResponse;
+    return jsonResponse;
   } else {
     console.log("There is an error!");
-    throw { name: "servicesError", message: jsonPigeonResponse };
+    throw { name: "servicesError", message: jsonResponse };
   }
 }
 
 // class for external use as a module
-export default class ElectronicPigeon {
+export default class ExternalServices {
   constructor() {}
 
   // get book list in increments of 40
-  async bookListDeliveryPigeon40(enteredSearch, searchBatch) {
-    const booksPigeonDelivered = await fetch(
+  async getBookData(enteredSearch, searchBatch) {
+    const requestResults = await fetch(
       baseURL +
         `?q=search ${enteredSearch}
-    &printType=books&maxResults=40&startIndex=${searchBatch}&key=` +
-        key
+    &printType=books&maxResults=40&startIndex=${searchBatch}`
     );
-    const booksPigeonTranslated = await jsonTranslationPigeon(
-      booksPigeonDelivered
+    const jsonBookResults = await convertToJson(
+      requestResults
     );
-    let books = booksPigeonTranslated;
+    let books = jsonBookResults;
     books.items.forEach((book) => {
       book.PreferredGenre = false;
       book.Rating = "Unrated";
     });
-    console.log(booksPigeonTranslated);
-    return booksPigeonTranslated;
+    console.log(jsonBookResults);
+    return jsonBookResults;
   }
   // get book by id
-  async pigeonBookDeliveryById(id, set = true) {
+  async findBookById(id, set = true) {
     let book = await fetch(baseURL + id);
-    let jsonBook = await jsonTranslationPigeon(book);
+    let jsonBook = await convertToJson(book);
     if (set == true) {
       jsonBook.volumeInfo.PreferredGenre = false;
       jsonBook.volumeInfo.Rating = "Unrated";
