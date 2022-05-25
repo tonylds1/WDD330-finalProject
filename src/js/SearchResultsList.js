@@ -58,7 +58,7 @@ export default class SearchResults {
     authors.innerHTML = authors.innerHTML.slice(0, -2);
 
     // Add in the publisher and the publish date
-    templateClone.querySelector(".publisher").innerHTML = book.volumeInfo.publisher
+    templateClone.querySelector(".publisher").innerHTML += book.volumeInfo.publisher
     const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
     let publishDate = new Date(book.volumeInfo.publishedDate)
     templateClone.querySelector(".publishDate").innerHTML += publishDate.toLocaleDateString("en-US", options)
