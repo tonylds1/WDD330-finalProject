@@ -20,7 +20,22 @@ export async function loadTemplate(templatePath) {
   return template;
 }
 
-export function renderListWithTemplate(template, parentElement, data, callback) {
+export function renderListWithTemplate(
+  template,
+  parentElement,
+  list,
+  callback
+) {
+  // clone it once for each product in our list
+  list.forEach((item) => {
+    const node = template.content.cloneNode(true);
+    const filledTemplate = callback(node, item);
+    // add it to the DOM
+    parentElement.appendChild(filledTemplate);
+  });
+}
+
+export function renderWithTemplate(template, parentElement, data, callback) {
   // clone the template
   let node = template.content.cloneNode(true);
   // if there is a callback, call it on the node and the data
@@ -45,8 +60,8 @@ export async function loadHeaderFooter() {
   // console.log(header);
   const footer = document.querySelector("footer");
   // console.log(footer);
-  renderListWithTemplate(headerTemplate, header);
-  renderListWithTemplate(footerTemplate, footer);
+  renderWithTemplate(headerTemplate, header);
+  renderWithTemplate(footerTemplate, footer);
 }
 
 // retrieve data from localstorage

@@ -293,3 +293,55 @@ a:active {
   background-color: var(--tertiary-color);
   color: white;
 }
+
+/* Design for results page search results */
+
+.searchResults {
+  max-width: 700px;
+  margin: auto;
+}
+
+.result-div {
+  margin: 1em 1em;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  /* align-items: center; */
+  border: 1px solid var(--black);
+  border-radius: 5px;
+}
+
+.book-details {
+  float: right;
+  padding: 0.5em;
+}
+
+.result-div img{
+  /* margin-right: 0.5em; */
+  padding: 0.5em;
+  width: 100%;
+}
+
+.addToShelfButtons button {
+  /* float: center; */
+  margin: 0.1em;
+  background-color: var(--quaternary-color);
+  border: none;
+  /* color: var(--dark-grey); */
+  color: black;
+  padding: 0.4em;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 16px;
+  border-radius: 7px;
+}
+
+.addToShelfButtons button:hover {
+  background-color: var(--tertiary-color);
+  color: rgb(100, 100, 100);
+}
+
+.addToShelfButtons button:active {
+  background-color: var(--tertiary-color);
+  color: rgb(255, 255, 255);
+}
