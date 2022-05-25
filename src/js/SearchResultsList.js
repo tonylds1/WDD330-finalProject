@@ -20,7 +20,7 @@ export default class SearchResults {
   }
 
   async renderList(list) {
-    this.listElement.innerHTML = "";
+    // this.listElement.innerHTML = "";
     const cardTemplate = await loadTemplate(
       "./partials/searchResults.html"
     );
