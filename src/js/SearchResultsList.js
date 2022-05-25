@@ -33,8 +33,6 @@ export default class SearchResults {
   }
 
   prepareTemplate(templateClone, book) {
-    // console.log(book)
-
     // Add in the image
     try {
       templateClone.querySelector("img").src = book.volumeInfo.imageLinks.smallThumbnail;
