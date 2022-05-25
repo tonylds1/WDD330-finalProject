@@ -1,8 +1,9 @@
 // import ElectronicPigeon from "./ePigeonCourierServices.js";
-import { flyInHeaderFooter, feedLocalStorage } from "./flyInNutsAndBolts.js";
+import ExternalServices from "./externalServices.js";
+import { loadHeaderFooter } from "./utils.js";
 
 //put in the header & footer
-flyInHeaderFooter();
+loadHeaderFooter();
 
 //This is with the new folder name
 // let pigeon = new ElectronicPigeon();
