@@ -66,7 +66,7 @@ export default class ExternalServices {
   constructor() {}
 
   // get book list in increments of 40
-  async getBookData(enteredSearch, searchBatch) {
+  async getBookData(enteredSearch, searchBatch = 0) {
     const requestResults = await fetch(
       baseURL +
         `?q=search ${enteredSearch}
