@@ -1,8 +1,10 @@
 // import ElectronicPigeon from "./ePigeonCourierServices.js";
-import { flyInHeaderFooter, feedLocalStorage } from "./flyInNutsAndBolts.js";
+import ExternalServices from "./externalServices.js";
+import { loadHeaderFooter, getParam } from "./utils.js";
 
+const externalServices = new ExternalServices
 //put in the header & footer
-flyInHeaderFooter();
+loadHeaderFooter();
 
 //This is with the new folder name
 // let pigeon = new ElectronicPigeon();
@@ -18,3 +20,9 @@ flyInHeaderFooter();
 // // let book = pigeon.pigeonBookDeliveryById(bookId);
 // // console.log(book);
 // // feedLocalStorage("read-shelf", book);
+
+const search = getParam("searchInput");
+// console.log(search)
+
+let results = externalServices.getBookData(search)
+console.log(results)

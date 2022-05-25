@@ -19,25 +19,20 @@
       <label for="checkbox_toggle" class="hamburger">&#9776;</label>
       <!-- NAVIGATION MENUS -->
       <div class="menu">
-        <!-- <li>
-          <a href="">
-            <img src="./images/searchSmall.png" rel="images" alt="search" />
-          </a>
-        </li> -->
         <li class="library">
           <a href="/">My Library</a>
           <!-- DROPDOWN MENU -->
           <ul class="dropdown">
-            <li><a href="/">Books to Read </a></li>
-            <li><a href="/">Reading Now</a></li>
-            <li><a href="/">Finished Books</a></li>
+            <li><a href="./library.html?shelf=wantToRead">Books to Read </a></li>
+            <li><a href="./library.html?shelf=readingNow">Reading Now</a></li>
+            <li><a href="./library.html?shelf=finishedReading">Finished Books</a></li>
             <li><a href="library.html">My Library</a></li>
           </ul>
         </li>
         <li>
           <div class="search-container">
             <form action="/results.html">
-              <input type="text" placeholder="Find a book" name="search" />
+              <input class="header-search-bar" type="search" placeholder="Find a book" name="searchInput" />
               <button type="submit">
                 <i class="fa-magnifying-glass"></i>
               </button>
