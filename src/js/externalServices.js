@@ -80,7 +80,7 @@ export default class ExternalServices {
       book.PreferredGenre = false;
       book.Rating = "Unrated";
     });
-    console.log(jsonBookResults);
+    // console.log(jsonBookResults);
     return jsonBookResults;
   }
   // get book by id
@@ -91,7 +91,7 @@ export default class ExternalServices {
       jsonBook.volumeInfo.PreferredGenre = false;
       jsonBook.volumeInfo.Rating = "Unrated";
     }
-    console.log(jsonBook);
+    // console.log(jsonBook);
     return jsonBook;
   }
 }
