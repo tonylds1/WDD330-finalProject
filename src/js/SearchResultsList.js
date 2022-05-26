@@ -15,7 +15,7 @@ export default class SearchResults {
 
   async init() {
     const list = await this.dataSource.getBookData(this.searchTerm);
-    // console.log(list)
+    console.log(list)
 
     //render the list
     this.renderList(list.items)
@@ -52,7 +52,7 @@ export default class SearchResults {
         authors.innerHTML += `${author}, `
       });
     } catch (e) {
-      authors.innerHTML += "No Author Listed"
+      authors.innerHTML += "No Author Listed, "
     }
     // remove the trailing space and comma on the last entry
     authors.innerHTML = authors.innerHTML.slice(0, -2);

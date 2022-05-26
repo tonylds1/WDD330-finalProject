@@ -241,15 +241,16 @@ a:active {
 
 /* library toogle wrapper... extra code, needs to be cleaned up */
 
-.wrapper {
+/* .wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, 20rem);
-}
+} */
 
 .wrapper {
-  padding-left: 5em;
+  /* padding-left: 5em; */
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
+  justify-content: space-evenly;
 }
 
 /* Footer Code to be cleaned up */
@@ -345,3 +346,36 @@ a:active {
   background-color: var(--tertiary-color);
   color: rgb(255, 255, 255);
 }
+/**************************** START OF SHELF BUTTONS & Title STYLING ************************************/
+div#MyLIB {
+  padding-bottom: 3rem;
+}
+
+.shelf_title {
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--tertiary-color);
+  border: 1px solid orange;
+  width:fit-content;
+}
+/***************************** END OF SHELF BUTTONS STYLING *************************************/
+
+/**************************** START OF ALERT STYLING ********************************************/
+p.alert {
+  font-family: var(--font-family);
+  font-size: var( --font-base);
+  font-weight: 900;
+  background-color: var(--tertiary-color);
+  border: 1px solid orange;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 40px;
+  text-align: left;
+  max-width: 500px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+/**************************** END OF ALERT STYLING ********************************************/

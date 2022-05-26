@@ -10,18 +10,18 @@ let shelf = new LibraryActions();
 //create a variable to pass in as the button for the "Read" shelf
 let readButton = document.querySelector("#read_bttn");
 //this will add the list of books they've read to the page
-shelf.getShelvedBooks(readButton, "read_shelf");
+shelf.getShelvedBooks(readButton, "read-shelf");
 // console.log(readButton);
 
 //create a variable to pass in as the button for the "Read" shelf
 let readingButton = document.querySelector("#reading_bttn");
 //this will add the list of books their reading to the page
-shelf.getShelvedBooks(readingButton, "reading_shelf");
+shelf.getShelvedBooks(readingButton, "reading-shelf");
 // console.log(readingButton);
 
 let wantButton = document.querySelector("#want_bttn");
 //this will add the list of books their reading to the page
-shelf.getShelvedBooks(wantButton, "want_shelf");
+shelf.getShelvedBooks(wantButton, "want-read-shelf");
 // console.log(wantButton);
 
 
