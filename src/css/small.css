@@ -236,20 +236,20 @@ a:active {
   font-size: 1.75rem;
   padding: 3.5rem 3.5rem 3.5rem 3.5rem;
   color: var(--dark-grey);
+  text-align: center;
 }
 
 /* library toogle wrapper... extra code, needs to be cleaned up */
 
-/* .wrapper {
+.wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, 20rem);
-} */
+}
 
 .wrapper {
   /* padding-left: 5em; */
   display: flex;
-  /* flex-direction: row; */
-  justify-content: space-evenly;
+  flex-direction: row; 
 }
 
 /* Footer Code to be cleaned up */
@@ -348,7 +348,10 @@ a:active {
 }
 /**************************** START OF SHELF BUTTONS & Title STYLING ************************************/
 div#MyLIB {
-  padding-bottom: 3rem;
+  padding-bottom: 3rem;  
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .shelf_title {

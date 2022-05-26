@@ -35,9 +35,7 @@ export default class LibraryActions {
         this.header = "Read Before";
       } else if (storageKey == "want-read-shelf") {
         this.header = "Want To Read";
-      }
-      //clear the insert area of data
-      listInsertionPoint.innerHTML = `<h1 class="shelf_title">Welcome to Your ${this.header} Shelf!</h1>`;
+      }         
       //put local storage in the list
       this.bookShelf = await getLocalStorage(storageKey);
       //reset bookShelf to an empty list if localStorage is empty
@@ -52,7 +50,15 @@ export default class LibraryActions {
         let message = "Nothing is here, try adding a book!";
         console.log(message);
         alertMessage(message, "my_book_lists");
+        //add in the title at the top
+        let h1Title = document.createElement("h1");
+        h1Title.className = "shelf_title"
+        h1Title.innerHTML = `Welcome to Your ${this.header} Shelf!`
+        //put this at the top
+        listInsertionPoint.prepend(h1Title); 
       } else {
+        //clear the insert area of data
+        listInsertionPoint.innerHTML = `<h1 class="shelf_title">Welcome to Your ${this.header} Shelf!</h1>`;
         //if there are books on the shelf display them
         // let displayList = /*this.bookShelf.forEach((bookId) =>*/
         for (const bookId of this.bookShelf) {
