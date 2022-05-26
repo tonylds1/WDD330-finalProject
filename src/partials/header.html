@@ -4,14 +4,15 @@
     <div class="logo">
       <a href="./index.html">
         <img
-        src="./images/booklogo.png"
-        rel="images"
-        max
-        width="70px"
-        alt="book"
-      />
+          src="./images/booklogo.png"
+          rel="images"
+          max
+          width="70px"
+          alt="book"
+        />
       </a>
-      <h1> Cloud Shelf</h1>
+    </div>
+    <h1>Cloud Shelf</h1>
     <!-- NAVIGATION MENU -->
     <ul class="nav-links">
       <!-- USING CHECKBOX HACK -->
@@ -23,16 +24,25 @@
           <a href="/">My Library</a>
           <!-- DROPDOWN MENU -->
           <ul class="dropdown">
-            <li><a href="./library.html?shelf=wantToRead">Books to Read </a></li>
+            <li>
+              <a href="./library.html?shelf=wantToRead">Books to Read </a>
+            </li>
             <li><a href="./library.html?shelf=readingNow">Reading Now</a></li>
-            <li><a href="./library.html?shelf=finishedReading">Finished Books</a></li>
+            <li>
+              <a href="./library.html?shelf=finishedReading">Finished Books</a>
+            </li>
             <li><a href="library.html">My Library</a></li>
           </ul>
         </li>
         <li>
           <div class="search-container">
             <form action="/results.html">
-              <input class="header-search-bar" type="search" placeholder="Find a book" name="searchInput" />
+              <input
+                class="header-search-bar"
+                type="search"
+                placeholder="Find a book"
+                name="searchInput"
+              />
               <button type="submit">
                 <i class="fa-magnifying-glass"></i>
               </button>

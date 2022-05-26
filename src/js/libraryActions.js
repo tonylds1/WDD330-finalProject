@@ -1,6 +1,11 @@
 //this module is used for most of the work done on the library.html page
-import { getLocalStorage, setLocalStorage, alertMessage, loadTemplate,
-  renderListWithTemplate } from "./utils.js";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  alertMessage,
+  loadTemplate,
+  renderListWithTemplate,
+} from "./utils.js";
 import ExternalServices from "./externalServices.js";
 
 //create variable for ElectonicPigeon Module
@@ -15,24 +20,24 @@ export default class LibraryActions {
     this.author = "No Author Listed";
     this.publisher = "No Publisher Listed";
     this.publishDate = "No Publish Date Listed";
-    this.header = ""
+    this.header = "";
   }
 
-  getShelvedBooks(button, storageKey) {   
+  getShelvedBooks(button, storageKey) {
     //create variable for the element to insert list into
-    const listInsertionPoint = document.getElementById("my_book_lists");    
+    const listInsertionPoint = document.getElementById("my_book_lists");
     //create a listener even for a button click
-    button.addEventListener("click", async () => { 
-       //create title to show what shelf is being listed
+    button.addEventListener("click", async () => {
+      //create title to show what shelf is being listed
       if (storageKey == "reading-shelf") {
-        this.header = "Reading Now"
+        this.header = "Reading Now";
       } else if (storageKey == "read-shelf") {
-        this.header = "Read Before"
+        this.header = "Read Before";
       } else if (storageKey == "want-read-shelf") {
-        this.header = "Want To Read" 
-      }    
+        this.header = "Want To Read";
+      }
       //clear the insert area of data
-      listInsertionPoint.innerHTML = `<h1 class="shelf_title">Welcome to Your ${this.header} Shelf!</h1>`     
+      listInsertionPoint.innerHTML = `<h1 class="shelf_title">Welcome to Your ${this.header} Shelf!</h1>`;
       //put local storage in the list
       this.bookShelf = await getLocalStorage(storageKey);
       //reset bookShelf to an empty list if localStorage is empty
@@ -43,10 +48,10 @@ export default class LibraryActions {
       }
       //if the bookshelf is empty in localStorage post a message
       if (this.bookShelf.length < 1) {
-        //code to post this message onto the page 
-        let message = "Nothing is here, try adding a book!"       
+        //code to post this message onto the page
+        let message = "Nothing is here, try adding a book!";
         console.log(message);
-        alertMessage(message, "my_book_lists")
+        alertMessage(message, "my_book_lists");
       } else {
         //if there are books on the shelf display them
         // let displayList = /*this.bookShelf.forEach((bookId) =>*/
@@ -56,29 +61,36 @@ export default class LibraryActions {
           //check if the data has an image to dispay and if not insert one
           try {
             this.bookCover = this.book.volumeInfo.imageLinks.smallThumbnail;
-          } catch(error) {
+          } catch (error) {
             this.bookCover = "./images/bookCoverPlaceholder.gif";
           }
           if (this.book.volumeInfo.authors) {
             this.author = this.book.volumeInfo.authors.join(", ");
           } else {
-            this.author = "No Author Listed"
+            this.author = "No Author Listed";
           }
           if (this.book.volumeInfo.publisher) {
             this.publisher = this.book.volumeInfo.publisher;
           } else {
-            this.publisher = "No Publisher Listed"
+            this.publisher = "No Publisher Listed";
           }
           if (this.book.volumeInfo.publishedDate) {
-            this.publishDate = new Date(this.book.volumeInfo.publishedDate).toDateString("en-US");
+            this.publishDate = new Date(
+              this.book.volumeInfo.publishedDate
+            ).toDateString("en-US");
           } else {
-            this.publishDate = "No Publish Date Listed"
+            this.publishDate = "No Publish Date Listed";
           }
-          console.log(this.bookCover, this.author, this.publisher, this.publishDate);
-          listInsertionPoint.innerHTML += this.renderProductDetails();      
-        };         
+          console.log(
+            this.bookCover,
+            this.author,
+            this.publisher,
+            this.publishDate
+          );
+          listInsertionPoint.innerHTML += this.renderProductDetails();
         }
-    });  
+      }
+    });
   }
 
   renderProductDetails() {
@@ -91,7 +103,7 @@ export default class LibraryActions {
       <h3 class="bookTitle">${this.book.volumeInfo.title}</h3>
       <hr>
       <p class="authors">By: ${this.author}</p>
-  </br>
+  <br>
       <p class="publishDate">Published on ${this.publishDate}</p>
       <p class="publisher">by ${this.publisher}</p>
       <div class="addToShelfButtons">      

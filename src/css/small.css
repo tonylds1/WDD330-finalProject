@@ -20,11 +20,11 @@
   --white: #ffffff;
   --dark-grey: #303030;
 
-/* colors-hyperlinks */
+  /* colors-hyperlinks */
   --link-main: blue;
   --link-visited: purple;
   --link-hover: red;
-  --link-active: rgba(255,0,0,0.5);
+  --link-active: rgba(255, 0, 0, 0.5);
 
   /* sizes */
   --font-base: 18px;
@@ -144,7 +144,6 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 } */
-
 
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 768px) {
@@ -290,7 +289,8 @@ a:active {
 }
 
 /* Style the active class, and buttons on mouse-over */
-.active, .btn:hover {
+.active,
+.btn:hover {
   background-color: var(--tertiary-color);
   color: white;
 }
@@ -316,7 +316,7 @@ a:active {
   padding: 0.5em;
 }
 
-.result-div img{
+.result-div img {
   /* margin-right: 0.5em; */
   padding: 0.5em;
   width: 100%;
@@ -357,14 +357,14 @@ div#MyLIB {
   padding: 0.5rem 1rem;
   background-color: var(--tertiary-color);
   border: 1px solid orange;
-  width:fit-content;
+  width: fit-content;
 }
 /***************************** END OF SHELF BUTTONS STYLING *************************************/
 
 /**************************** START OF ALERT STYLING ********************************************/
 p.alert {
   font-family: var(--font-family);
-  font-size: var( --font-base);
+  font-size: var(--font-base);
   font-weight: 900;
   background-color: var(--tertiary-color);
   border: 1px solid orange;

@@ -24,7 +24,6 @@ let wantButton = document.querySelector("#want_bttn");
 shelf.getShelvedBooks(wantButton, "want-read-shelf");
 // console.log(wantButton);
 
-
 //active listener for book shelve buttons MyLIB
 // This script adds active class to the current button (highlight it)
 // var header = document.getElementById("myLIB");
