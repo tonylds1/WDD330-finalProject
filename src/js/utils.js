@@ -103,3 +103,26 @@ export function alertMessage(message, id, scroll = true) {
     window.scrollTo(0, 0);
   }
 }
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
+
+export function insertTitle(insertionPoint, title) {
+  //remove any preexisting titles   
+  const insertedTitle = document.querySelectorAll(".shelf_title");
+  insertedTitle.className = "delete_me";
+  // console.log(insertedTitle);
+  if(insertedTitle.className === "delete_me"){
+    insertedTitle.forEach((oldTitle) => insertionPoint.removeChild(oldTitle));
+  }
+  //create an element for the title
+  let h1Title = document.createElement("h1");
+  //add a class to the title
+  h1Title.className = "shelf_title"   
+  //put the text of the title in
+  h1Title.innerHTML = `Welcome to Your ${title}!`
+  //put the title at the top    
+  insertionPoint.prepend(h1Title);   
+}
