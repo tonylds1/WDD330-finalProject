@@ -27,7 +27,7 @@ export default class LibraryActions {
     this.bttnNameWant = "";
   }
 
-  async getShelvedBooks() {
+  async getShelvedBooks() {  
     //create variable for the element to insert titles into
     const insertionPoint1 = document.getElementById("my_book_lists");
     //create variable for the element to insert list into 
@@ -35,26 +35,29 @@ export default class LibraryActions {
     //create title to show what shelf is being listed       
     this.selectShelfName(this.storageKey);        
     //put local storage in the list
-    this.bookShelf = await getLocalStorage(this.storageKey);
+    this.bookShelf = await getLocalStorage(this.storageKey);   
     //reset bookShelf to an empty list if localStorage is empty
-    this.changeNullShelfToList(this.storageKey);      
-    //if the bookshelf is empty in localStorage post a message
-    console.log(this.bookShelf);
+    this.changeNullShelfToList(this.storageKey);     
+    //if the bookshelf is empty in localStorage post a message 
     if (this.bookShelf.length < 1) {
-      insertionPoint2.innerHTML = "";  
+      insertionPoint2.innerHTML = ""; 
+      insertionPoint1.innerHTML = this.renderBanner();
       this.addShelfTitleAndEmptyShelfMessage(insertionPoint1);         
-    } else {
-      // clear the insert area of data 
-      if (document.getElementsByClassName("banner2")) {    
-        insertionPoint1.removeChild(insertionPoint1.firstElementChild); 
-      }       
+    } else {   
+      //clear previous data from area holding the list      
       insertionPoint2.innerHTML = "";
       //add in the title at the top by creating a title
       let title = this.header + " Shelf!"
       //put the title at the top
       insertTitle(insertionPoint1, title);
-      //if there are books on the shelf display them
-      // let displayList = /*this.bookShelf.forEach((bookId) =>*/
+      //remove any previous alerts from empty shelves
+      removeAllAlerts();
+      //remove any previous banners form empty shelves     
+     if (this.bookShelf.length > 1) {  
+      const banners = document.querySelectorAll(".banner2");
+      banners.forEach((banner) => document.querySelector("main").removeChild(banner));
+     }
+      //display the books that are in the shelf     
       this.displayBooksFromShelf(insertionPoint2);     
     }    
   }
@@ -136,6 +139,20 @@ export default class LibraryActions {
       //add the button functionality so they add the the other shelves
       this.addBttnFunctionality()
     }
+  }
+
+  renderBanner() {
+    return `
+    <div class="banner2">
+      <p>
+        Search for books and create your personal library of books you desire
+        to read, books you are reading and completed.
+      </p>
+    </div>
+    <section id="card-container">
+    <!-- List for each book shelf of "Read"/"Reading"/"Want to Read" -->
+    </section>
+      `
   }
 
   renderProductDetails() {
@@ -243,15 +260,7 @@ export default class LibraryActions {
           //add all the books that don't match
           //the book to be deleted to a list      
           removedList.push(book) 
-         } else if (shelf.length == 1) {
-        //   //remove the child element from the page
-        //   //so it doesn't show anyting after last removal   
-        if (document.getElementsByClassName("banner2")) {           
-          let undo = document.getElementById("card-container");
-          undo.removeChild(undo.lastElementChild);
-          // this.addShelfTitleAndEmptyShelfMessage(document.getElementById("my_book_lists"));
-          }                 
-        }      
+         } 
       })
       console.log (removedList)
       //make that list the new value of the local storage
