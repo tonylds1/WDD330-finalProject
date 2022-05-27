@@ -20,11 +20,11 @@
   --white: #ffffff;
   --dark-grey: #303030;
 
-/* colors-hyperlinks */
+  /* colors-hyperlinks */
   --link-main: blue;
   --link-visited: purple;
   --link-hover: red;
-  --link-active: rgba(255,0,0,0.5);
+  --link-active: rgba(255, 0, 0, 0.5);
 
   /* sizes */
   --font-base: 18px;
@@ -145,7 +145,6 @@ a:active {
   text-decoration: underline;
 } */
 
-
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 768px) {
   .menu {
@@ -222,7 +221,10 @@ a:active {
   padding: 1rem 2rem 0.2rem 3rem;
 }
 .bookshelf {
-  margin-left: 5rem;
+  /* margin-left: 5rem; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .bookshelf img {
   flex-wrap: wrap;
@@ -237,6 +239,7 @@ a:active {
   font-size: 1.75rem;
   padding: 3.5rem 3.5rem 3.5rem 3.5rem;
   color: var(--dark-grey);
+  text-align: center;
 }
 
 /* library toogle wrapper... extra code, needs to be cleaned up */
@@ -247,9 +250,9 @@ a:active {
 }
 
 .wrapper {
-  padding-left: 5em;
+  /* padding-left: 5em; */
   display: flex;
-  flex-direction: row;
+  flex-direction: row; 
 }
 
 /* Footer Code to be cleaned up */
@@ -289,7 +292,8 @@ a:active {
 }
 
 /* Style the active class, and buttons on mouse-over */
-.active, .btn:hover {
+.active,
+.btn:hover {
   background-color: var(--tertiary-color);
   color: white;
 }
@@ -315,7 +319,7 @@ a:active {
   padding: 0.5em;
 }
 
-.result-div img{
+.result-div img {
   /* margin-right: 0.5em; */
   padding: 0.5em;
   width: 100%;
@@ -345,3 +349,39 @@ a:active {
   background-color: var(--tertiary-color);
   color: rgb(255, 255, 255);
 }
+/**************************** START OF SHELF BUTTONS & Title STYLING ************************************/
+div#MyLIB {
+  padding-bottom: 3rem;  
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.shelf_title {
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--tertiary-color);
+  border: 1px solid orange;
+  width: fit-content;
+}
+/***************************** END OF SHELF BUTTONS STYLING *************************************/
+
+/**************************** START OF ALERT STYLING ********************************************/
+p.alert {
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+  font-weight: 900;
+  background-color: var(--tertiary-color);
+  border: 1px solid orange;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 40px;
+  text-align: left;
+  max-width: 500px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+/**************************** END OF ALERT STYLING ********************************************/

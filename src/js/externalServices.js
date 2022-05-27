@@ -72,9 +72,7 @@ export default class ExternalServices {
         `?q=search ${enteredSearch}
     &printType=books&maxResults=40&startIndex=${searchBatch}`
     );
-    const jsonBookResults = await convertToJson(
-      requestResults
-    );
+    const jsonBookResults = await convertToJson(requestResults);
     let books = jsonBookResults;
     books.items.forEach((book) => {
       book.PreferredGenre = false;

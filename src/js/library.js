@@ -4,26 +4,33 @@ import LibraryActions from "./libraryActions.js";
 //put in the header & footer
 loadHeaderFooter();
 
-//create variable for the LibraryActions module
+//create variable for the LibraryActions class object
+//to make it possible to access its "getShelvedBooks" method
 let shelf = new LibraryActions();
 
-//create a variable to pass in as the button for the "Read" shelf
+//create a variable for the "Read Before" shelf button element
 let readButton = document.querySelector("#read_bttn");
-//this will add the list of books they've read to the page
-shelf.getShelvedBooks(readButton, "read_shelf");
-// console.log(readButton);
+//add an event listener to that button that calls the "getShelvedBooks" method
+readButton.addEventListener("click", () => {
+    //this will add the list of books they've read to the page
+    shelf.getShelvedBooks("read-shelf")
+})
 
-//create a variable to pass in as the button for the "Read" shelf
+//create a variable for the "Reading Now" shelf button element
 let readingButton = document.querySelector("#reading_bttn");
-//this will add the list of books their reading to the page
-shelf.getShelvedBooks(readingButton, "reading_shelf");
-// console.log(readingButton);
+//add an event listener to that button that calls the "getShelvedBooks" method
+readingButton.addEventListener("click", () => {
+    //this will add the list of books their reading to the page
+    shelf.getShelvedBooks("reading-shelf")
+})
 
+//create a variable for the "Want to Read" shelf button element
 let wantButton = document.querySelector("#want_bttn");
-//this will add the list of books their reading to the page
-shelf.getShelvedBooks(wantButton, "want_shelf");
-// console.log(wantButton);
-
+//add an event listener to that button that calls the "getShelvedBooks" method
+wantButton.addEventListener("click", () => {
+    //this will add the list of books their reading to the page
+    shelf.getShelvedBooks("want-read-shelf")
+})
 
 //active listener for book shelve buttons MyLIB
 // This script adds active class to the current button (highlight it)

@@ -1,0 +1,52 @@
+{
+  "workbench.colorCustomizations": {
+    // header inner line ****************************************************HEADER
+    "titleBar.border": "#f5c777",
+    // header background
+    "titleBar.activeBackground": "#9f4a35",
+    // header text
+    "titleBar.activeForeground": "#5fdad6",
+    // header tabs inner line
+    "editorGroupHeader.border": "#f5c777",
+    // header tab stuff
+    "tab.border": "#f5c777",
+    "tab.activeBackground": "#8b8d58",
+    "tab.activeForeground": "#fae204",
+    "tab.inactiveBackground": "#6c5939",
+    "tab.inactiveForeground": "#24bace",
+    // scrollbar inner line *************************************************RIGHT-SIDE
+    "editorOverviewRuler.border": "#75b071",
+    // scrollbar
+    "scrollbar.shadow": "#e5792c",
+    "scrollbarSlider.background": "#e5792c",
+    "scrollbarSlider.hoverBackground": "#d1c876",
+    // footer background ****************************************************FOOTER
+    "statusBar.background": "#58472b",
+    // footer text
+    "statusBar.foreground": "#10d9eb",
+    // footer inner line
+    "statusBar.border": "#10d9eb",
+    // left outside border background ****************************************LEFT-SIDE
+    "activityBar.background": "#6c5939",
+    // left outside border text
+    // "activityBar.foreground": "#f51d1d94",
+    // left menu title bars
+    "sideBarSectionHeader.background": "#8d7a58",
+    // left menu items background
+    "sideBar.background": "#1d2728",
+    // left menu items text
+    "sideBar.foreground": "#f5c777",
+    // left inner line
+    "sideBar.border": "#f5c777",
+    // numbers for the line
+    "editorLineNumber.foreground": "#2465ce",
+    // number for line you are on
+    "editorLineNumber.activeForeground": "#f5c777",
+    // cursor selected highlights *********************************************SELECTION HIGHLIGHTS
+    "editor.selectionBackground": "#6fede894",
+    "editor.selectionHighlightBackground": "#b8c74494",
+    // the background of a search match
+    "editor.findMatchBackground": "#3e60a0"
+  },
+  "editor.semanticTokenColorCustomizations": {}
+}
