@@ -182,7 +182,7 @@ a:active {
 }
 /* Banner */
 .banner-image {
-  background-image: url("../images/booksHero.png");
+  /* background-image: url("../images/booksHero.png"); */
   background-color: #6c7489; /* Used if the image is unavailable */
   height: 500px; /* You must set a specified height */
   background-position: center; /* Center the image */
@@ -203,7 +203,7 @@ a:active {
 
 /* Banner  Smaller for library results page */
 .bannerS-image {
-  background-image: url("../images/Booksstack.png");
+  /* background-image: url("../images/Booksstack.png"); */
   background-color: #6c7489; /* Used if the image is unavailable */
   height: 250px; /* You must set a specified height */
   background-position: center; /* Center the image */
