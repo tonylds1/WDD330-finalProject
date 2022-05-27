@@ -200,8 +200,6 @@ input[type="checkbox"] {
   user-select: none;
 }
 
-
-
 /* HYPERLINK STYLING */
 /* a:link {
   color: var(--link-main);
@@ -229,7 +227,7 @@ a:active {
 
 
 /* APPLYING MEDIA QUERIES */
-/* @media (max-width: 768px) { */
+@media (max-width: 768px) {
   .menu {
     display: none;
     position: absolute;
@@ -261,7 +259,7 @@ a:active {
   .dropdown li:hover {
     background-color: var(--primary-color);
   }
-/* } */
+}
 /* Banner */
 .banner-image {
   background-image: url("../images/booksHero.png");
