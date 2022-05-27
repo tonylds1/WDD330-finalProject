@@ -333,7 +333,13 @@ a:active {
   padding: 0.5em;
   width: 100%;
 }
-
+.current_shelf {
+  background-color: var(--quaternary-color);
+  border: none;
+  font-size: 16px;
+  border-radius: 7px;
+  padding: 0.4em;
+}
 .addToShelfButtons button {
   /* float: center; */
   margin: 0.1em;
@@ -358,6 +364,11 @@ a:active {
 .addToShelfButtons button:active {
   background-color: var(--tertiary-color);
   color: rgb(255, 255, 255);
+}
+
+#my_book_lists{
+  max-width: 700px;
+  margin: auto;
 }
 /**************************** START OF SHELF BUTTONS & Title STYLING ************************************/
 div#MyLIB {
@@ -395,3 +406,5 @@ p.alert {
   justify-content: space-between;
 }
 /**************************** END OF ALERT STYLING ********************************************/
+
+
