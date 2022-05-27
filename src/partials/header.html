@@ -17,25 +17,36 @@
     <ul class="nav-links">
       <!-- USING CHECKBOX HACK -->
       <input type="checkbox" id="checkbox_toggle" />
-      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-      <!-- NAVIGATION MENUS -->
-      <div class="menu">
-        <li class="library">
-          <a href="/">My Library</a>
-          <!-- DROPDOWN MENU -->
-          <ul class="dropdown">
-            <li>
-              <a href="./library.html?shelf=wantToRead">Books to Read </a>
-            </li>
-            <li><a href="./library.html?shelf=readingNow">Reading Now</a></li>
-            <li>
-              <a href="./library.html?shelf=finishedReading">Finished Books</a>
-            </li>
-            <li><a href="library.html">My Library</a></li>
-          </ul>
-        </li>
-        <li><a href="/">Dark Mode</a></li>
-      </div>
+      <!-- <label for="checkbox_toggle" class="hamburger">&#9776;</label> -->
+      <nav id="navbar" class="navigation hamburger" role="navigation">
+        <input id="toggle1" type="checkbox" />
+        <label class="hamburger1" for="toggle1">
+          <div class="top"></div>
+          <div class="meat"></div>
+          <div class="bottom"></div>
+        </label>
+        <!-- NAVIGATION MENUS -->
+        <div class="menu">
+          <li><a href="library.html">My Library</a></li>
+          <!-- <li class="library">
+            <a href="/">My Library</a>
+            
+            <ul class="dropdown">
+              <li>
+                <a href="./library.html?shelf=wantToRead">Books to Read </a>
+              </li>
+              <li><a href="./library.html?shelf=readingNow">Reading Now</a></li>
+              <li>
+                <a href="./library.html?shelf=finishedReading"
+                  >Finished Books</a
+                >
+              </li>
+              <li><a href="library.html">My Library</a></li>
+            </ul>
+          </li> -->
+          <li><a href="">Toggle Dark Mode</a></li>
+        </div>
+      </nav>
     </ul>
     <div class="search-container">
       <form action="/results.html">
@@ -46,7 +57,6 @@
           name="searchInput"
         />
       </form>
-      
     </div>
   </nav>
 </div>
