@@ -39,11 +39,16 @@ export default class LibraryActions {
     //reset bookShelf to an empty list if localStorage is empty
     this.changeNullShelfToList(this.storageKey);      
     //if the bookshelf is empty in localStorage post a message
+    console.log(this.bookShelf);
     if (this.bookShelf.length < 1) {
-      this.addShelfTitleAndEmptyShelfMessage(insertionPoint1);
+      insertionPoint2.innerHTML = "";  
+      this.addShelfTitleAndEmptyShelfMessage(insertionPoint1);         
     } else {
-      //clear the insert area of data     
-      insertionPoint1.removeChild(insertionPoint1.firstElementChild);    
+      // clear the insert area of data 
+      if (document.getElementsByClassName("banner2")) {    
+        insertionPoint1.removeChild(insertionPoint1.firstElementChild); 
+      }       
+      insertionPoint2.innerHTML = "";
       //add in the title at the top by creating a title
       let title = this.header + " Shelf!"
       //put the title at the top
@@ -193,7 +198,7 @@ export default class LibraryActions {
       //set the id variable to the book.id stored in data-id 
       let id = node.getAttribute("data-id");
       //subtract the book with this id if the button is in "want-read-shelf"
-      //or add the book to the appropriate list if it is not already in that list
+      //or add the book to the appropriate list if it is not already in that list     
       this.alterShelf(id, "want-read-shelf");
       });
     }); 
@@ -238,14 +243,24 @@ export default class LibraryActions {
           //add all the books that don't match
           //the book to be deleted to a list      
           removedList.push(book) 
-        }       
+         } else if (shelf.length == 1) {
+        //   //remove the child element from the page
+        //   //so it doesn't show anyting after last removal   
+        if (document.getElementsByClassName("banner2")) {           
+          let undo = document.getElementById("card-container");
+          undo.removeChild(undo.lastElementChild);
+          // this.addShelfTitleAndEmptyShelfMessage(document.getElementById("my_book_lists"));
+          }                 
+        }      
       })
+      console.log (removedList)
       //make that list the new value of the local storage
-      setLocalStorage(shelfId, removedList);
+      setLocalStorage(shelfId, removedList);    
       //reload the page with that book removed
       this.getShelvedBooks();
+      console.log("You got this far.")
     } else {
-      // console.log(id + " / storageKey = " + this.storageKey + " / Shelf = " + shelfId);  
+      console.log(id + " / storageKey = " + this.storageKey + " / Shelf = " + shelfId);  
       // only add the book if it is unique
       if (duplicate == false) {
         newBook.duplicate = false;
@@ -253,6 +268,7 @@ export default class LibraryActions {
       }
       //set the local storage equal to the list with the newly added book
       setLocalStorage(shelfId, shelf);
+      console.log("You're running this code!")    
     }    
   }
 }
