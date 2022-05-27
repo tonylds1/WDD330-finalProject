@@ -1,17 +1,17 @@
 /* 55.625rem = 890px with 16px base */
-@media only screen and (min-width: 55.625rem) {
-  /* LOGO */
+/* @media only screen and (min-width: 55.625rem) {
+  
   .logo {
     font-size: 25px;
-  }
-/**************************** START OF SHELF BUTTONS, CARD SIZE & Title STYLING *******************/
-.card_size {
-  width: 400px;
-}
+  } */
+/**************************** START OF SHELF BUTTONS, CARD SIZE & Title STYLING ****************** */
+
   
 /* 69em = 1104px with 16px base */
 @media only screen and (min-width: 768px) {
-  
+  .card_size {
+    width: 400px;
+  }
   /* NAVBAR STYLING STARTS */
   .navbar {
     display: grid;
