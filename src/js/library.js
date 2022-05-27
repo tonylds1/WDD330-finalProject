@@ -24,6 +24,7 @@ readingButton.addEventListener("click", () => {
     //create a LibraryActions class object with "reading-shelf" argument
     //to make it possible to access its "getShelvedBooks" method
     let shelf = new LibraryActions("reading-shelf");
+    readingButton.setAttribute("class", ".active")
     //this will add the list of books their reading to the page
     shelf.getShelvedBooks();
 })

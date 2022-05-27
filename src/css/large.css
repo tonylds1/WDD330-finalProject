@@ -1,7 +1,32 @@
 /* 69em = 1104px with 16px base */
-@media only screen and (min-width: 69em) {
-  /* LOGO */
-  .logo {
-    font-size: 25px;
+@media only screen and (min-width: 768px) {
+  
+  /* NAVBAR STYLING STARTS */
+  .navbar {
+    display: grid;
+    /* gap: 1em; */
+    grid-template-columns: 15% auto 35%;
+    border: none;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    /* padding: 20px; */
+    /* background-color: var(--tertiary-color); */
+    /* color: #000; */
+    /* padding: 1em; */
   }
+  .menu {
+    border: none;
+  }
+
+  .navbar img {
+    /* width: 100%; */
+  }
+
+  .search-container {
+    grid-column: 3/4;
+  }
+  .search-container form {
+    text-align: initial;
+  }
+
 }
