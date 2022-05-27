@@ -20,11 +20,11 @@
   --white: #ffffff;
   --dark-grey: #303030;
 
-/* colors-hyperlinks */
+  /* colors-hyperlinks */
   --link-main: blue;
   --link-visited: purple;
   --link-hover: red;
-  --link-active: rgba(255,0,0,0.5);
+  --link-active: rgba(255, 0, 0, 0.5);
 
   /* sizes */
   --font-base: 18px;
@@ -185,6 +185,25 @@ input[type=search]:focus {
 .services {
   position: relative;
 }
+.dropdown {
+  background-color: var(--quaternary-color);
+  padding: 1em 0;
+  position: absolute; /*WITH RESPECT TO PARENT*/
+  display: none;
+  border-radius: 8px;
+  top: 35px;
+}
+.dropdown li + li {
+  margin-top: 10px;
+}
+.dropdown li {
+  padding: 0.5em 1em;
+  width: 8em;
+  text-align: center;
+}
+.dropdown li:hover {
+  background-color: var(--tertiary-color);
+}
 .library:hover .dropdown {
   display: block;
 }
@@ -225,7 +244,6 @@ a:active {
   text-decoration: underline;
 } */
 
-
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 768px) {
   .menu {
@@ -240,7 +258,8 @@ a:active {
   .menu li:hover {
     display: inline-block;
     background-color: var(--quaternary-color);
-    transition: 0.3s ease;
+    transition: 0.3s ease; 
+
   }
   .menu li + li {
     margin-top: 12px;
@@ -302,7 +321,10 @@ a:active {
   padding: 1rem 2rem 0.2rem 3rem;
 }
 .bookshelf {
-  margin-left: 5rem;
+  /* margin-left: 5rem; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .bookshelf img {
   flex-wrap: wrap;
@@ -317,6 +339,7 @@ a:active {
   font-size: 1.75rem;
   padding: 3.5rem 3.5rem 3.5rem 3.5rem;
   color: var(--dark-grey);
+  text-align: center;
 }
 
 /* library toogle wrapper... extra code, needs to be cleaned up */
@@ -327,9 +350,9 @@ a:active {
 }
 
 .wrapper {
-  padding-left: 5em;
+  /* padding-left: 5em; */
   display: flex;
-  flex-direction: row;
+  flex-direction: row; 
 }
 
 /* Footer Code to be cleaned up */
@@ -366,13 +389,22 @@ a:active {
   background-color: white;
   cursor: pointer;
   font-size: 18px;
+  border-radius: 8px;
 }
 
 /* Style the active class, and buttons on mouse-over */
-.active, .btn:hover {
+.active {
+  background-color: var(--quaternary-color);
+  color: white;
+  border-radius: 8px;
+  transform:scale(110%); 
+}
+ .btn:hover {
   background-color: var(--tertiary-color);
   color: white;
-}
+  border-radius: 8px;
+  transform:scale(125%);
+ }
 
 /* Design for results page search results */
 
@@ -396,12 +428,18 @@ a:active {
   padding: 0.5em;
 }
 
-.result-div img{
+.result-div img {
   /* margin-right: 0.5em; */
   padding: 0.5em;
   width: 100%;
 }
-
+.current_shelf {
+  background-color: var(--quaternary-color);
+  border: none;
+  font-size: 16px;
+  border-radius: 7px;
+  padding: 0.4em;
+}
 .addToShelfButtons button {
   /* float: center; */
   margin: 0.1em;
@@ -420,9 +458,53 @@ a:active {
 .addToShelfButtons button:hover {
   background-color: var(--tertiary-color);
   color: rgb(100, 100, 100);
+  transition:0.3s ease;
 }
 
 .addToShelfButtons button:active {
   background-color: var(--tertiary-color);
   color: rgb(255, 255, 255);
 }
+
+#my_book_lists{
+  max-width: 700px;
+  margin: auto;
+}
+/**************************** START OF SHELF BUTTONS & Title STYLING ************************************/
+div#MyLIB {
+  padding-bottom: 3rem;  
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.shelf_title {
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--tertiary-color);
+  border: 1px solid orange;
+  width: fit-content;
+}
+/***************************** END OF SHELF BUTTONS STYLING *************************************/
+
+/**************************** START OF ALERT STYLING ********************************************/
+p.alert {
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+  font-weight: 900;
+  background-color: var(--tertiary-color);
+  border: 1px solid orange;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 40px;
+  text-align: left;
+  max-width: 500px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+/**************************** END OF ALERT STYLING ********************************************/
+
+

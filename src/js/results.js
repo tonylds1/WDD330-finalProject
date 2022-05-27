@@ -8,8 +8,8 @@ loadHeaderFooter();
 
 // Get the search input and display the results
 const search = getParam("searchInput");
-const externalServices = new ExternalServices
+const externalServices = new ExternalServices();
 const listElement = document.querySelector(".searchResults");
 
-const searchResults = new SearchResults(search, externalServices, listElement)
+const searchResults = new SearchResults(search, externalServices, listElement);
 searchResults.init();
