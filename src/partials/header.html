@@ -4,7 +4,7 @@
     <div class="logo">
       <a href="./index.html">
         <img
-          src="./images/bookLogo.png"
+          src="./images/booklogo.png"
           rel="images"
           max
           width="70px"
@@ -17,40 +17,35 @@
     <ul class="nav-links">
       <!-- USING CHECKBOX HACK -->
       <input type="checkbox" id="checkbox_toggle" />
-      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-      <!-- NAVIGATION MENUS -->
+      <!-- <label for="checkbox_toggle" class="hamburger">&#9776;</label> -->
+      <nav id="navbar" class="navigation hamburger" role="navigation">
+        <input id="toggle1" type="checkbox" />
+        <label class="hamburger1" for="toggle1">
+          <div class="top"></div>
+          <div class="meat"></div>
+          <div class="bottom"></div>
+        </label>
+        <!-- NAVIGATION MENUS -->
+        <div class="menu">
+          <li><a href="library.html">My Library</a></li>
+          <li><a href="">Toggle Dark Mode</a></li>
+        </div>
+      </nav>
+      <!-- Duplicate to work around hamburger menu constraints -->
       <div class="menu">
-        <li class="library">
-          <a href="/">My Library</a>
-          <!-- DROPDOWN MENU -->
-          <ul class="dropdown">
-            <li>
-              <a href="./library.html?shelf=wantToRead">Books to Read </a>
-            </li>
-            <li><a href="./library.html?shelf=readingNow">Reading Now</a></li>
-            <li>
-              <a href="./library.html?shelf=finishedReading">Finished Books</a>
-            </li>
-            <li><a href="library.html">My Library</a></li>
-          </ul>
-        </li>
-        <li>
-          <div class="search-container">
-            <form action="/results.html">
-              <input
-                class="header-search-bar"
-                type="search"
-                placeholder="Find a book"
-                name="searchInput"
-              />
-              <button type="submit">
-                <i class="fa-magnifying-glass"></i>
-              </button>
-            </form>
-          </div>
-        </li>
-        <li><a href="/">Dark Mode</a></li>
+        <li><a href="library.html">My Library</a></li>
+        <li><a href="">Toggle Dark Mode</a></li>
       </div>
     </ul>
+    <div class="search-container">
+      <form action="/results.html">
+        <input
+          class="header-search-bar"
+          type="search"
+          placeholder="Find a book..."
+          name="searchInput"
+        />
+      </form>
+    </div>
   </nav>
 </div>
