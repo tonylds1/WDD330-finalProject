@@ -293,6 +293,20 @@ a:active {
   border-radius: 8px;
 }
 
+/* trying to style the info button to be smaller */
+/* .btn #small{
+  inheritance:only-child;
+  border: 10px;
+  outline: none;
+  padding: 4px 6px !important;
+  background-color: white;
+  cursor: pointer;
+  font-size: 1px;
+  border-radius: 8px;
+} */
+
+
+
 /* Style the active class, and buttons on mouse-over */
 .active {
   background-color: var(--quaternary-color);
@@ -300,6 +314,14 @@ a:active {
   border-radius: 8px;
   transform:scale(110%); 
 }
+
+ .btn:hover {
+  background-color: var(--tertiary-color);
+  color: white;
+  border-radius: 8px;
+  transform:scale(125%);
+ }
+ 
  .btn:hover {
   background-color: var(--tertiary-color);
   color: white;
