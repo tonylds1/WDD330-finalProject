@@ -103,7 +103,7 @@ li {
   text-align: center;
 }
 .dropdown li:hover {
-  background-color: var(--primary-color);
+  background-color: var(--tertiary-color);
 }
 .library:hover .dropdown {
   display: block;
@@ -159,7 +159,8 @@ a:active {
   .menu li:hover {
     display: inline-block;
     background-color: var(--quaternary-color);
-    transition: 0.3s ease;
+    transition: 0.3s ease; 
+
   }
   .menu li + li {
     margin-top: 12px;
@@ -289,14 +290,22 @@ a:active {
   background-color: white;
   cursor: pointer;
   font-size: 18px;
+  border-radius: 8px;
 }
 
 /* Style the active class, and buttons on mouse-over */
-.active,
-.btn:hover {
+.active {
+  background-color: var(--quaternary-color);
+  color: white;
+  border-radius: 8px;
+  transform:scale(110%); 
+}
+ .btn:hover {
   background-color: var(--tertiary-color);
   color: white;
-}
+  border-radius: 8px;
+  transform:scale(125%);
+ }
 
 /* Design for results page search results */
 
@@ -349,6 +358,7 @@ a:active {
 .addToShelfButtons button:hover {
   background-color: var(--tertiary-color);
   color: rgb(100, 100, 100);
+  transition:0.3s ease;
 }
 
 .addToShelfButtons button:active {
