@@ -21,6 +21,9 @@ export default class LibraryActions {
     this.publisher = "No Publisher Listed";
     this.publishDate = "No Publish Date Listed";
     this.header = "";
+    this.bttnNameNow = "";
+    this.bttnNameBefore = "";
+    this.bttnNameWant = "";
   }
 
   async getShelvedBooks(storageKey) {
@@ -44,7 +47,7 @@ export default class LibraryActions {
       insertTitle(insertionPoint, title);
       //if there are books on the shelf display them
       // let displayList = /*this.bookShelf.forEach((bookId) =>*/
-      this.displayBooksFromShelf(insertionPoint);
+      this.displayBooksFromShelf(insertionPoint);     
     }    
   }
 
@@ -52,10 +55,19 @@ export default class LibraryActions {
     //create title to show what shelf is being listed
     if (storageKey == "reading-shelf") {
       this.header = "Reading Now";
+      this.bttnNameNow = "Remove";
+      this.bttnNameBefore = "Read Before";
+      this.bttnNameWant = "Want to Read";      
       } else if (storageKey == "read-shelf") {
       this.header = "Read Before";
+      this.bttnNameNow = "Reading Now";
+      this.bttnNameBefore = "Remove";
+      this.bttnNameWant = "Want to Read";
       } else if (storageKey == "want-read-shelf") {
       this.header = "Want To Read";
+      this.bttnNameNow = "Reading Now";
+      this.bttnNameBefore = "Read Before";
+      this.bttnNameWant = "Remove";
       }     
   }
 
@@ -91,16 +103,19 @@ export default class LibraryActions {
       } catch (error) {
         this.bookCover = "./images/bookCoverPlaceholder.gif";
       }
+      //insert authors divided by commas or state the author isn't listed
       if (this.book.volumeInfo.authors) {
         this.author = this.book.volumeInfo.authors.join(", ");
       } else {
         this.author = "No Author Listed";
       }
+      //insert the publisher if listed or state the publisher isn't listed
       if (this.book.volumeInfo.publisher) {
         this.publisher = this.book.volumeInfo.publisher;
       } else {
         this.publisher = "No Publisher Listed";
       }
+      //insert the publishing date or state it isn't listed
       if (this.book.volumeInfo.publishedDate) {
         this.publishDate = new Date(
           this.book.volumeInfo.publishedDate
@@ -114,7 +129,11 @@ export default class LibraryActions {
         this.publisher,
         this.publishDate
       );
+      //display the filled out HTML
       insertionPoint.innerHTML += this.renderProductDetails();
+      //
+      //add the button functionality so they add the the other shelves
+      this.addBttnFunctionality()
     }
   }
 
@@ -131,9 +150,69 @@ export default class LibraryActions {
         <br>
         <p class="publishDate">Published on ${this.publishDate}</p>
         <p class="publisher">by ${this.publisher}</p>
+        <br><br>
         <div class="addToShelfButtons">
+          <button class="addToReading" data-id="${this.book.id}">${this.bttnNameNow}</button>          
+          <button class="addToWantToRead" data-id="${this.book.id}">${this.bttnNameWant}</button>
+          <button class="addToRead" data-id="${this.book.id}">${this.bttnNameBefore}</button>
         </div>
+        <br>
+        <p><b><u>Current Shelf</u>: &nbsp;<span class="current_shelf">  ${this.header}</span></b></p>
       </div>
     </div>`;
   }
+
+  addBttnFunctionality() {    
+    // document.querySelector(".addToReading")
+    let addToReadingBtn = document.querySelector(".addToReading");
+    addToReadingBtn.addEventListener("click", async () => {
+      let id = addToReadingBtn.getAttribute("data-id");
+      //add the id to the reading list
+      this.addToShelf(id, "reading-shelf");
+      console.log(id);
+      //if this button is for the shelf the user is on then change 
+      //it to a delete button to offer the option of removing the book
+    });
+    let addToReadBtn = document.querySelector(".addToRead");
+    addToReadBtn.addEventListener("click", async () => {
+      let id = addToReadBtn.getAttribute("data-id");
+      // add the id to the read list
+      this.addToShelf(id, "read-shelf");
+      console.log(id);
+    });
+    let addToWantToReadBtn = document.querySelector(".addToWantToRead");
+    addToWantToReadBtn.addEventListener("click", async () => {
+      let id = addToWantToReadBtn.getAttribute("data-id");
+      // add the id to the want to read list
+      this.addToShelf(id, "want-read-shelf");
+      console.log(id);
+    }); 
+  }
+
+  addToShelf(id, shelfId) {
+    let shelf = getLocalStorage(shelfId);
+    if (shelf == null) {
+      shelf = [];
+    }
+    let now = new Date();
+    let newBook = { id, now };
+    let duplicate = false;
+  
+    // remove any duplicates
+    shelf.forEach((book) => {
+      // if the book is a duplicate, just update the when it was added
+      if (id == book["id"]) {
+        book["now"] = now;
+        duplicate = true;
+      }
+    });
+  
+    // only add the book if it is unique
+    if (duplicate == false) {
+      shelf.push(newBook);
+    }
+  
+    setLocalStorage(shelfId, shelf);
+  }
+
 }

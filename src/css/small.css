@@ -324,7 +324,13 @@ a:active {
   padding: 0.5em;
   width: 100%;
 }
-
+.current_shelf {
+  background-color: var(--quaternary-color);
+  border: none;
+  font-size: 16px;
+  border-radius: 7px;
+  padding: 0.4em;
+}
 .addToShelfButtons button {
   /* float: center; */
   margin: 0.1em;
