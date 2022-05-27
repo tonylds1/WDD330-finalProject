@@ -467,10 +467,12 @@ a:active {
 }
 
 #my_book_lists{
-  max-width: 700px;
+  /* max-width: 700px; */
+  max-width: 98%;
   margin: auto;
 }
-/**************************** START OF SHELF BUTTONS & Title STYLING ************************************/
+
+/**************************** START OF SHELF BUTTONS, CARD SIZE & Title STYLING *******************/
 div#MyLIB {
   padding-bottom: 3rem;  
   width: 100%;
@@ -478,7 +480,19 @@ div#MyLIB {
   justify-content: center;
 }
 
+#card-container {  
+  display: flex;  
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card_size {
+  max-width: 400px;
+}
+
 .shelf_title {
+  text-align: center;
   margin: 0 auto;
   margin-bottom: 3rem;
   padding: 0.5rem 1rem;
@@ -486,9 +500,9 @@ div#MyLIB {
   border: 1px solid orange;
   width: fit-content;
 }
-/***************************** END OF SHELF BUTTONS STYLING *************************************/
+/***************************** END OF SHELF BUTTONS, CARD SIZE & Title STYLING ********************/
 
-/**************************** START OF ALERT STYLING ********************************************/
+/**************************** START OF ALERT STYLING **********************************************/
 p.alert {
   font-family: var(--font-family);
   font-size: var(--font-base);
@@ -505,6 +519,6 @@ p.alert {
   display: flex;
   justify-content: space-between;
 }
-/**************************** END OF ALERT STYLING ********************************************/
+/**************************** END OF ALERT STYLING ************************************************/
 
 

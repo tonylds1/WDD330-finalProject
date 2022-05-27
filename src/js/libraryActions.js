@@ -27,28 +27,38 @@ export default class LibraryActions {
     this.bttnNameWant = "";
   }
 
-  async getShelvedBooks() {
-    //create variable for the element to insert list into
-    const insertionPoint = document.getElementById("my_book_lists");  
+  async getShelvedBooks() {  
+    //create variable for the element to insert titles into
+    const insertionPoint1 = document.getElementById("my_book_lists");
+    //create variable for the element to insert list into 
+    const insertionPoint2 = document.getElementById("card-container"); 
     //create title to show what shelf is being listed       
     this.selectShelfName(this.storageKey);        
     //put local storage in the list
-    this.bookShelf = await getLocalStorage(this.storageKey);
+    this.bookShelf = await getLocalStorage(this.storageKey);   
     //reset bookShelf to an empty list if localStorage is empty
-    this.changeNullShelfToList(this.storageKey);      
-    //if the bookshelf is empty in localStorage post a message
+    this.changeNullShelfToList(this.storageKey);     
+    //if the bookshelf is empty in localStorage post a message 
     if (this.bookShelf.length < 1) {
-      this.addShelfTitleAndEmptyShelfMessage(insertionPoint);
-    } else {
-      //clear the insert area of data
-      insertionPoint.innerHTML = "";
+      insertionPoint2.innerHTML = ""; 
+      insertionPoint1.innerHTML = this.renderBanner();
+      this.addShelfTitleAndEmptyShelfMessage(insertionPoint1);         
+    } else {   
+      //clear previous data from area holding the list      
+      insertionPoint2.innerHTML = "";
       //add in the title at the top by creating a title
       let title = this.header + " Shelf!"
       //put the title at the top
-      insertTitle(insertionPoint, title);
-      //if there are books on the shelf display them
-      // let displayList = /*this.bookShelf.forEach((bookId) =>*/
-      this.displayBooksFromShelf(insertionPoint);     
+      insertTitle(insertionPoint1, title);
+      //remove any previous alerts from empty shelves
+      removeAllAlerts();
+      //remove any previous banners form empty shelves     
+     if (this.bookShelf.length > 1) {  
+      const banners = document.querySelectorAll(".banner2");
+      banners.forEach((banner) => document.querySelector("main").removeChild(banner));
+     }
+      //display the books that are in the shelf     
+      this.displayBooksFromShelf(insertionPoint2);     
     }    
   }
 
@@ -81,7 +91,7 @@ export default class LibraryActions {
     }
   }
 
-  addShelfTitleAndEmptyShelfMessage(insertionPoint) {
+  addShelfTitleAndEmptyShelfMessage(insertionPoint1) {
     //remove any preexisting messages from other empty shelves
     removeAllAlerts();  
     //code to post this message onto the page
@@ -91,10 +101,10 @@ export default class LibraryActions {
     //add in the title at the top by creating a title
     let title = this.header + " Shelf!"
     //put the title at the top
-    insertTitle(insertionPoint, title);    
+    insertTitle(insertionPoint1, title);    
   }
 
-  async displayBooksFromShelf(insertionPoint) {
+  async displayBooksFromShelf(insertionPoint2) {
     for (const bookId of this.bookShelf) {
       this.book = await connection.findBookById(bookId.id, false);
       // console.log(this.book);
@@ -124,36 +134,52 @@ export default class LibraryActions {
       } else {
         this.publishDate = "No Publish Date Listed";
       }     
-      //display the filled out HTML
-      insertionPoint.innerHTML += this.renderProductDetails();     
+      //display the filled out HTML    
+      insertionPoint2.innerHTML += this.renderProductDetails();     
       //add the button functionality so they add the the other shelves
       this.addBttnFunctionality()
     }
   }
 
+  renderBanner() {
+    return `
+    <div class="banner2">
+      <p>
+        Search for books and create your personal library of books you desire
+        to read, books you are reading and completed.
+      </p>
+    </div>
+    <section id="card-container">
+    <!-- List for each book shelf of "Read"/"Reading"/"Want to Read" -->
+    </section>
+      `
+  }
+
   renderProductDetails() {
-    return `<div class="result-div">
-      <img
-        src="${this.bookCover}"
-        alt="Cover for ${this.book.volumeInfo.title}"
-      />
-      <div class="book-details">
-        <h3 class="bookTitle">${this.book.volumeInfo.title}</h3>
-        <hr>
-        <p class="authors">By: ${this.author}</p>
-        <br>
-        <p class="publishDate">Published on ${this.publishDate}</p>
-        <p class="publisher">by ${this.publisher}</p>
-        <br><br>
-        <div class="addToShelfButtons">
-          <button class="addToReading" data-id="${this.book.id}">${this.bttnNameNow}</button>          
-          <button class="addToWantToRead" data-id="${this.book.id}">${this.bttnNameWant}</button>
-          <button class="addToRead" data-id="${this.book.id}">${this.bttnNameBefore}</button>
+    return `
+      <div class="result-div card_size">
+        <img
+          src="${this.bookCover}"
+          alt="Cover for ${this.book.volumeInfo.title}"
+        />
+        <div class="book-details">
+          <h3 class="bookTitle">${this.book.volumeInfo.title}</h3>
+          <hr>
+          <p class="authors">By: ${this.author}</p>
+          <br>
+          <p class="publishDate">Published on ${this.publishDate}</p>
+          <p class="publisher">by ${this.publisher}</p>
+          <br><br>
+          <div class="addToShelfButtons">
+            <button class="addToReading" data-id="${this.book.id}">${this.bttnNameNow}</button>          
+            <button class="addToWantToRead" data-id="${this.book.id}">${this.bttnNameWant}</button>
+            <button class="addToRead" data-id="${this.book.id}">${this.bttnNameBefore}</button>
+          </div>
+          <br>
+          <p><b><u>Current Shelf</u>: &nbsp;<span class="current_shelf">  ${this.header}</span></b></p>
         </div>
-        <br>
-        <p><b><u>Current Shelf</u>: &nbsp;<span class="current_shelf">  ${this.header}</span></b></p>
       </div>
-    </div>`;
+    `;
   }
 
   addBttnFunctionality() {    
@@ -189,7 +215,7 @@ export default class LibraryActions {
       //set the id variable to the book.id stored in data-id 
       let id = node.getAttribute("data-id");
       //subtract the book with this id if the button is in "want-read-shelf"
-      //or add the book to the appropriate list if it is not already in that list
+      //or add the book to the appropriate list if it is not already in that list     
       this.alterShelf(id, "want-read-shelf");
       });
     }); 
@@ -234,14 +260,16 @@ export default class LibraryActions {
           //add all the books that don't match
           //the book to be deleted to a list      
           removedList.push(book) 
-        }       
+         } 
       })
+      console.log (removedList)
       //make that list the new value of the local storage
-      setLocalStorage(shelfId, removedList);
+      setLocalStorage(shelfId, removedList);    
       //reload the page with that book removed
       this.getShelvedBooks();
+      console.log("You got this far.")
     } else {
-      // console.log(id + " / storageKey = " + this.storageKey + " / Shelf = " + shelfId);  
+      console.log(id + " / storageKey = " + this.storageKey + " / Shelf = " + shelfId);  
       // only add the book if it is unique
       if (duplicate == false) {
         newBook.duplicate = false;
@@ -249,6 +277,7 @@ export default class LibraryActions {
       }
       //set the local storage equal to the list with the newly added book
       setLocalStorage(shelfId, shelf);
+      console.log("You're running this code!")    
     }    
   }
 }

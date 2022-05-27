@@ -116,7 +116,7 @@ export function insertTitle(insertionPoint, title) {
   // console.log(insertedTitle);
   if(insertedTitle.className === "delete_me"){
     insertedTitle.forEach((oldTitle) => insertionPoint.removeChild(oldTitle));
-  }
+  }  
   //create an element for the title
   let h1Title = document.createElement("h1");
   //add a class to the title
