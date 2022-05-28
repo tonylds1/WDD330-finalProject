@@ -3,3 +3,5 @@
 web_modules
 node_modules
 .env
+src/images/notUsedImages
+build/images/notUsedImages
