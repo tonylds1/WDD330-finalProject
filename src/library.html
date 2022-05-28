@@ -21,7 +21,7 @@
       rel="stylesheet"
     />
     <!-- Added to fix flavacon error -->
-    <link rel="shortcut icon" href="#" />
+    <link rel="shortcut icon" href="./images/favicon.ico">
     <script src="./js/library.js" type="module" defer></script>
   </head>
   <header>
@@ -31,7 +31,10 @@
   <body>
     <section>
       <div class="bannerS">
-        <div class="bannerS-image" style="background-image:url(./images/Booksstack.png)">
+        <div
+          class="bannerS-image"
+          style="background-image: url(./images/Booksstack.png)"
+        >
           <h2>Build My Library</h2>
           <!-- <p>Search for books</p>
           <div class="search-container">
@@ -47,19 +50,30 @@
 
       <div class="wrapper">
         <div id="MyLIB">
-          <button class="btn active">
+         </button>
+          <!-- <button class="btn active">
+            <img
+              src="./images/learnlogo.png"
+              max
+              width="100px"
+              rel="images"
+              alt="Information"
+              id="info_bttn"              
+            />
+          </button> -->
+          <button class="btn">
             <img
               src="./images/ReadingIcon.png"
               max
               width="100px"
               rel="images"
               alt="Books I'm Reading"
-              id="reading_bttn"              
+              id="reading_bttn"
             />
           </button>
           <button class="btn">
             <img
-              src="./images/wantIcon.png"
+              src="./images/wantto2.png"
               max
               width="100px"
               rel="images"
@@ -77,6 +91,16 @@
               id="read_bttn"
             />
           </button>
+          <button class="btn active" >
+            <img
+              src="./images/infoT.png"
+              max
+              width="100px"
+              rel="images"
+              alt="Information"
+              id="info_bttn"              
+            />
+          </button>
         </div>
       </div>
     </section>
@@ -88,7 +112,7 @@
         </p>
       </div>
       <section id="card-container">
-      <!-- List for each book shelf of "Read"/"Reading"/"Want to Read" -->
+        <!-- List for each book shelf of "Read"/"Reading"/"Want to Read" -->
       </section>
     </main>
     <div class="footer-banner">
