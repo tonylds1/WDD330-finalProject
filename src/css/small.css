@@ -327,10 +327,12 @@ a:active {
   clear: both;
 }
 .btn {
-  border: none;
+  border: 1px solid black;
   outline: none;
-  padding: 10px 16px;
+  padding: 5px 5px;
+  margin: 0.5em;
   background-color: white;
+  background-color: rgba(255, 150, 0, 0.3);
   cursor: pointer;
   font-size: 18px;
   border-radius: 8px;
@@ -357,11 +359,13 @@ button.btnI {
 /* Style the active class, and buttons on mouse-over */
 .active {
   background-color: var(--quaternary-color);
+  border: none;
   color: white;
   border-radius: 8px;
   transform: scale(110%);
 }
 .btn:hover {
+  border: none;
   background-color: var(--tertiary-color);
   color: white;
   border-radius: 8px;
