@@ -27,39 +27,41 @@ export default class LibraryActions {
     this.bttnNameWant = "";
   }
 
-  async getShelvedBooks() {  
+  async getShelvedBooks() {
     //create variable for the element to insert titles into
     const insertionPoint1 = document.getElementById("my_book_lists");
-    //create variable for the element to insert list into 
-    const insertionPoint2 = document.getElementById("card-container"); 
-    //create title to show what shelf is being listed       
-    this.selectShelfName(this.storageKey);        
+    //create variable for the element to insert list into
+    const insertionPoint2 = document.getElementById("card-container");
+    //create title to show what shelf is being listed
+    this.selectShelfName(this.storageKey);
     //put local storage in the list
-    this.bookShelf = await getLocalStorage(this.storageKey);   
+    this.bookShelf = await getLocalStorage(this.storageKey);
     //reset bookShelf to an empty list if localStorage is empty
-    this.changeNullShelfToList(this.storageKey);     
-    //if the bookshelf is empty in localStorage post a message 
+    this.changeNullShelfToList(this.storageKey);
+    //if the bookshelf is empty in localStorage post a message
     if (this.bookShelf.length < 1) {
-      insertionPoint2.innerHTML = ""; 
+      insertionPoint2.innerHTML = "";
       insertionPoint1.innerHTML = this.renderBanner();
-      this.addShelfTitleAndEmptyShelfMessage(insertionPoint1);         
-    } else {   
-      //clear previous data from area holding the list      
+      this.addShelfTitleAndEmptyShelfMessage(insertionPoint1);
+    } else {
+      //clear previous data from area holding the list
       insertionPoint2.innerHTML = "";
       //add in the title at the top by creating a title
-      let title = this.header + " Shelf!"
+      let title = this.header + " Shelf!";
       //put the title at the top
       insertTitle(insertionPoint1, title);
       //remove any previous alerts from empty shelves
       removeAllAlerts();
-      //remove any previous banners form empty shelves     
-     if (this.bookShelf.length > 1) {  
-      const banners = document.querySelectorAll(".banner2");
-      banners.forEach((banner) => document.querySelector("main").removeChild(banner));
-     }
-      //display the books that are in the shelf     
-      this.displayBooksFromShelf(insertionPoint2);     
-    }    
+      //remove any previous banners form empty shelves
+      if (this.bookShelf.length > 1) {
+        const banners = document.querySelectorAll(".banner2");
+        banners.forEach((banner) =>
+          document.querySelector("main").removeChild(banner)
+        );
+      }
+      //display the books that are in the shelf
+      this.displayBooksFromShelf(insertionPoint2);
+    }
   }
 
   selectShelfName() {
@@ -68,23 +70,23 @@ export default class LibraryActions {
       this.header = "Reading Now";
       this.bttnNameNow = "Remove";
       this.bttnNameBefore = "Read Before";
-      this.bttnNameWant = "Want to Read";      
-      } else if (this.storageKey == "read-shelf") {
+      this.bttnNameWant = "Want to Read";
+    } else if (this.storageKey == "read-shelf") {
       this.header = "Read Before";
       this.bttnNameNow = "Reading Now";
       this.bttnNameBefore = "Remove";
       this.bttnNameWant = "Want to Read";
-      } else if (this.storageKey == "want-read-shelf") {
+    } else if (this.storageKey == "want-read-shelf") {
       this.header = "Want To Read";
       this.bttnNameNow = "Reading Now";
       this.bttnNameBefore = "Read Before";
       this.bttnNameWant = "Remove";
-      }     
+    }
   }
 
   changeNullShelfToList() {
-     //reset bookShelf to an empty list if localStorage is empty
-     if (this.bookShelf == null) {
+    //reset bookShelf to an empty list if localStorage is empty
+    if (this.bookShelf == null) {
       this.bookShelf = [];
       //set that local storage shelf to an empty list
       setLocalStorage(this.storageKey, this.bookShelf);
@@ -93,15 +95,15 @@ export default class LibraryActions {
 
   addShelfTitleAndEmptyShelfMessage(insertionPoint1) {
     //remove any preexisting messages from other empty shelves
-    removeAllAlerts();  
+    removeAllAlerts();
     //code to post this message onto the page
     let message = "Nothing is here, try adding a book!";
     // console.log(message);
     alertMessage(message, "my_book_lists");
     //add in the title at the top by creating a title
-    let title = this.header + " Shelf!"
+    let title = this.header + " Shelf!";
     //put the title at the top
-    insertTitle(insertionPoint1, title);    
+    insertTitle(insertionPoint1, title);
   }
 
   async displayBooksFromShelf(insertionPoint2) {
@@ -133,11 +135,11 @@ export default class LibraryActions {
         ).toDateString("en-US");
       } else {
         this.publishDate = "No Publish Date Listed";
-      }     
-      //display the filled out HTML    
-      insertionPoint2.innerHTML += this.renderProductDetails();     
+      }
+      //display the filled out HTML
+      insertionPoint2.innerHTML += this.renderProductDetails();
       //add the button functionality so they add the the other shelves
-      this.addBttnFunctionality()
+      this.addBttnFunctionality();
     }
   }
 
@@ -152,7 +154,7 @@ export default class LibraryActions {
     <section id="card-container">
     <!-- List for each book shelf of "Read"/"Reading"/"Want to Read" -->
     </section>
-      `
+      `;
   }
 
   renderProductDetails() {
@@ -182,43 +184,43 @@ export default class LibraryActions {
     `;
   }
 
-  addBttnFunctionality() {    
+  addBttnFunctionality() {
     //get a list of all the button nodes for the "reading shelf"
     let addToReadingBtn = document.querySelectorAll(".addToReading");
-    //add an event listener for "clicking" the button for each book 
-    addToReadingBtn.forEach(node => {
+    //add an event listener for "clicking" the button for each book
+    addToReadingBtn.forEach((node) => {
       node.addEventListener("click", async () => {
-      //set the id variable to the book.id stored in data-id
-      let id = node.getAttribute("data-id");   
-      //subtract the book with this id if the button is in "reading-shelf"
-      //or add the book to the appropriate list if it is not already in that list
-      this.alterShelf(id, "reading-shelf");    
+        //set the id variable to the book.id stored in data-id
+        let id = node.getAttribute("data-id");
+        //subtract the book with this id if the button is in "reading-shelf"
+        //or add the book to the appropriate list if it is not already in that list
+        this.alterShelf(id, "reading-shelf");
       });
-    })
+    });
     //get a list of all the button nodes for the "read shelf"
     let addToReadBtn = document.querySelectorAll(".addToRead");
-    //add an event listener for "clicking" the button for each book 
-    addToReadBtn.forEach(node => {
+    //add an event listener for "clicking" the button for each book
+    addToReadBtn.forEach((node) => {
       node.addEventListener("click", async () => {
-      //set the id variable to the book.id stored in data-id
-      let id = node.getAttribute("data-id");
-      //subtract the book with this id if the button is in "read-shelf"
-      //or add the book to the appropriate list if it is not already in that list
-      this.alterShelf(id, "read-shelf");
+        //set the id variable to the book.id stored in data-id
+        let id = node.getAttribute("data-id");
+        //subtract the book with this id if the button is in "read-shelf"
+        //or add the book to the appropriate list if it is not already in that list
+        this.alterShelf(id, "read-shelf");
       });
     });
     //get a list of all the button nodes for the "want to read shelf"
     let addToWantToReadBtn = document.querySelectorAll(".addToWantToRead");
     //add an event listener for "clicking" the button for each book
-    addToWantToReadBtn.forEach(node => {      
+    addToWantToReadBtn.forEach((node) => {
       node.addEventListener("click", async () => {
-      //set the id variable to the book.id stored in data-id 
-      let id = node.getAttribute("data-id");
-      //subtract the book with this id if the button is in "want-read-shelf"
-      //or add the book to the appropriate list if it is not already in that list     
-      this.alterShelf(id, "want-read-shelf");
+        //set the id variable to the book.id stored in data-id
+        let id = node.getAttribute("data-id");
+        //subtract the book with this id if the button is in "want-read-shelf"
+        //or add the book to the appropriate list if it is not already in that list
+        this.alterShelf(id, "want-read-shelf");
       });
-    }); 
+    });
   }
 
   alterShelf(id, shelfId) {
@@ -226,13 +228,13 @@ export default class LibraryActions {
     let shelf = getLocalStorage(shelfId);
     if (shelf == null) {
       shelf = [];
-    } 
+    }
     let now = new Date();
     let newBook = { id, now };
     let duplicate = false;
-  
+
     // remove any duplicates
-    shelf.forEach((book) => {    
+    shelf.forEach((book) => {
       // if the book is a duplicate, just update the when it was added
       if (id == book.id) {
         //update the when it was added
@@ -240,36 +242,38 @@ export default class LibraryActions {
         //turn the variable duplicate to true
         duplicate = true;
         //add true to the object's duplicate value
-        book.duplicate = true;      
+        book.duplicate = true;
       }
       //if the book is not a duplicate
       else {
         //change or set the book object's duplicate value to false
-        book.duplicate = false;     
+        book.duplicate = false;
       }
     });
-    //if this button is for the shelf the user is on then change 
+    //if this button is for the shelf the user is on then change
     //it to a delete button to offer the option of removing the book
     // console.log("The storageKey is " + this.storageKey + " and we are testing " + shelfId);
     if (this.storageKey == shelfId) {
       let removedList = [];
-      // console.log("This is the " + this.storageKey + " delete button.")    
-      shelf.forEach(book => { 
+      // console.log("This is the " + this.storageKey + " delete button.")
+      shelf.forEach((book) => {
         console.log(book.duplicate);
-        if (book.duplicate == false) { 
+        if (book.duplicate == false) {
           //add all the books that don't match
-          //the book to be deleted to a list      
-          removedList.push(book) 
-         } 
-      })
-      console.log (removedList)
+          //the book to be deleted to a list
+          removedList.push(book);
+        }
+      });
+      console.log(removedList);
       //make that list the new value of the local storage
-      setLocalStorage(shelfId, removedList);    
+      setLocalStorage(shelfId, removedList);
       //reload the page with that book removed
       this.getShelvedBooks();
-      console.log("You got this far.")
+      console.log("You got this far.");
     } else {
-      console.log(id + " / storageKey = " + this.storageKey + " / Shelf = " + shelfId);  
+      console.log(
+        id + " / storageKey = " + this.storageKey + " / Shelf = " + shelfId
+      );
       // only add the book if it is unique
       if (duplicate == false) {
         newBook.duplicate = false;
@@ -277,7 +281,7 @@ export default class LibraryActions {
       }
       //set the local storage equal to the list with the newly added book
       setLocalStorage(shelfId, shelf);
-      console.log("You're running this code!")    
-    }    
+      console.log("You're running this code!");
+    }
   }
 }
