@@ -21,9 +21,9 @@
   --dark-grey: #303030;
 
   /* colors-hyperlinks */
-  --link-main: blue;
-  --link-visited: purple;
-  --link-hover: red;
+  --link-main: rgb(0, 162, 255);
+  --link-visited: rgb(221, 2, 221);
+  --link-hover: rgb(229, 126, 24);
   --link-active: rgba(255, 0, 0, 0.5);
 
   /* sizes */
@@ -173,29 +173,29 @@ input[type="checkbox"] {
 
 
 /* HYPERLINK STYLING */
-/* a:link {
+footer a:link {
   color: var(--link-main);
   background-color: transparent;
   text-decoration: none;
 }
 
-a:visited {
+footer a:visited {
   color: var(--link-visited);
   background-color: transparent;
   text-decoration: none;
 }
 
-a:hover {
+footer a:hover {
   color: var(--link-hover);
   background-color: transparent;
   text-decoration: underline;
 }
 
-a:active {
+footer a:active {
   color: var(--link-active);
   background-color: transparent;
   text-decoration: underline;
-} */
+}
 
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 880px) {
