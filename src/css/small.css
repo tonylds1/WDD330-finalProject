@@ -155,7 +155,7 @@ input[type="search"]:focus {
 }
 
 #toggle1:checked ~ .menu {
-  height: 100px;
+  height: 150px;
 }
 
 /* end css hamburger */
