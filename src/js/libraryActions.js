@@ -70,19 +70,19 @@ export default class LibraryActions {
   selectShelfName() {
     //create title to show what shelf is being listed
     if (this.storageKey == "reading-shelf") {
-      this.header = "Reading Now";
+      this.header = "Reading";
       this.bttnNameNow = "Remove";
-      this.bttnNameBefore = "Read Before";
+      this.bttnNameBefore = "Read";
       this.bttnNameWant = "Want to Read";
     } else if (this.storageKey == "read-shelf") {
-      this.header = "Read Before";
-      this.bttnNameNow = "Reading Now";
+      this.header = "Read";
+      this.bttnNameNow = "Reading";
       this.bttnNameBefore = "Remove";
       this.bttnNameWant = "Want to Read";
     } else if (this.storageKey == "want-read-shelf") {
       this.header = "Want To Read";
-      this.bttnNameNow = "Reading Now";
-      this.bttnNameBefore = "Read Before";
+      this.bttnNameNow = "Reading";
+      this.bttnNameBefore = "Read";
       this.bttnNameWant = "Remove";
     }
   }
@@ -200,8 +200,9 @@ export default class LibraryActions {
             <button class="addToReading" data-id="${this.book.id}">${this.bttnNameNow}</button>          
             <button class="addToWantToRead" data-id="${this.book.id}">${this.bttnNameWant}</button>
             <button class="addToRead" data-id="${this.book.id}">${this.bttnNameBefore}</button>
-          </div>         
-        </div>
+          </div>                   
+        </div>        
+        <button class="details_bttn" >Details</button>
       </div>
     `;
   }
