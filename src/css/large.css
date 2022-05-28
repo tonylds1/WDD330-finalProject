@@ -16,13 +16,27 @@
     /* color: #000; */
     /* padding: 1em; */
   }
-  .menu {
-    border: none;
-  }
-
   .navbar img {
+    width:8rem;
+    margin-right: 10%;
     /* width: 100%; */
   }
+  .navbar H1{
+    font-family: var(--font-headline);
+    font-size: 5.6rem;
+    padding-left: .3rem;
+  }
+  .navbar ul{
+    font-family: var(--font-body);
+    font: size 1.5em;
+  }
+  
+  .menu {
+    border: none;
+    font-family: var(--font-body);
+    font-size:1.6rem;
+  }
+
 
   .search-container {
     grid-column: 3/4;
