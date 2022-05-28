@@ -17,7 +17,7 @@ export default class LibraryActions {
     this.storageKey = storageKey;
     this.bookShelf = [];
     this.book = {};
-    this.bookCover = "./images/bookCoverPlaceholder.gif";
+    this.bookCover = "./images/bookCoverPlaceholder.png";
     this.author = "No Author Listed";
     this.publisher = "No Publisher Listed";
     this.publishDate = "No Publish Date Listed";
