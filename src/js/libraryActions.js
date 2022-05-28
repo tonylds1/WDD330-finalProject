@@ -3,8 +3,9 @@ import {
   getLocalStorage,
   setLocalStorage,
   alertMessage,
-  removeAllAlerts,
+  removeAllInserts,
   insertTitle,
+  insertBookCount
 } from "./utils.js";
 import ExternalServices from "./externalServices.js";
 
@@ -25,6 +26,7 @@ export default class LibraryActions {
     this.bttnNameNow = "";
     this.bttnNameBefore = "";
     this.bttnNameWant = "";
+    this.bookCount = 0;
   }
 
   async getShelvedBooks() {
@@ -51,17 +53,18 @@ export default class LibraryActions {
       //put the title at the top
       insertTitle(insertionPoint1, title);
       //remove any previous alerts from empty shelves
-      removeAllAlerts();
-      //remove any previous banners form empty shelves
-      if (this.bookShelf.length > 1) {
-        const banners = document.querySelectorAll(".banner2");
-        banners.forEach((banner) =>
-          document.querySelector("main").removeChild(banner)
-        );
-      }
-      //display the books that are in the shelf
-      this.displayBooksFromShelf(insertionPoint2);
-    }
+      removeAllInserts("alert", "opening");
+      //insert the total count of the books on the shelf      
+      insertBookCount(this.bookCount);
+      //remove any previous banners form empty shelves     
+     if (this.bookShelf.length >= 1) { 
+       removeAllInserts("banner2" , "opening") 
+      // const banners = document.querySelectorAll(".banner2");
+      // banners.forEach((banner) => document.querySelector("main").removeChild(banner));
+     }    
+      //display the books that are in the shelf     
+      this.displayBooksFromShelf(insertionPoint2);     
+    }    
   }
 
   selectShelfName() {
@@ -95,11 +98,12 @@ export default class LibraryActions {
 
   addShelfTitleAndEmptyShelfMessage(insertionPoint1) {
     //remove any preexisting messages from other empty shelves
-    removeAllAlerts();
+    removeAllInserts("alert", "opening");   
+
     //code to post this message onto the page
     let message = "Nothing is here, try adding a book!";
     // console.log(message);
-    alertMessage(message, "my_book_lists");
+    alertMessage(message, "my_book_lists", false);
     //add in the title at the top by creating a title
     let title = this.header + " Shelf!";
     //put the title at the top
@@ -107,6 +111,9 @@ export default class LibraryActions {
   }
 
   async displayBooksFromShelf(insertionPoint2) {
+    //set up variables for the elements holding the count   
+    let countHolder = document.querySelector(".count");
+    //loop through list of the books from the shelf   
     for (const bookId of this.bookShelf) {
       this.book = await connection.findBookById(bookId.id, false);
       // console.log(this.book);
@@ -135,12 +142,22 @@ export default class LibraryActions {
         ).toDateString("en-US");
       } else {
         this.publishDate = "No Publish Date Listed";
-      }
-      //display the filled out HTML
-      insertionPoint2.innerHTML += this.renderProductDetails();
+      }  
+      //increase count by one for each book 
+      this.bookCount++;     
+      //display the filled out HTML    
+      insertionPoint2.innerHTML += this.renderProductDetails();     
       //add the button functionality so they add the the other shelves
-      this.addBttnFunctionality();
+      this.addBttnFunctionality()  
+
     }
+    countHolder.innerHTML = this.bookCount;
+    //reset the count to zero
+    this.bookCount = 0;    
+  }
+  
+  bookCount() {
+
   }
 
   renderBanner() {
@@ -160,10 +177,17 @@ export default class LibraryActions {
   renderProductDetails() {
     return `
       <div class="result-div card_size">
-        <img
-          src="${this.bookCover}"
-          alt="Cover for ${this.book.volumeInfo.title}"
-        />
+        <div class="book_count">
+          <span class="specialCount">${this.bookCount}</span>       
+          <img
+            src="${this.bookCover}"
+            alt="Cover for ${this.book.volumeInfo.title}"
+          />
+          <div>
+            <p class="shelf_label"><b><u>Current Shelf</u>:</b></p>
+            <p class="current_shelf"><b>  ${this.header}</b></p>
+          </div>
+        </div>
         <div class="book-details">
           <h3 class="bookTitle">${this.book.volumeInfo.title}</h3>
           <hr>
@@ -176,9 +200,7 @@ export default class LibraryActions {
             <button class="addToReading" data-id="${this.book.id}">${this.bttnNameNow}</button>          
             <button class="addToWantToRead" data-id="${this.book.id}">${this.bttnNameWant}</button>
             <button class="addToRead" data-id="${this.book.id}">${this.bttnNameBefore}</button>
-          </div>
-          <br>
-          <p><b><u>Current Shelf</u>: &nbsp;<span class="current_shelf">  ${this.header}</span></b></p>
+          </div>         
         </div>
       </div>
     `;
@@ -187,8 +209,16 @@ export default class LibraryActions {
   addBttnFunctionality() {
     //get a list of all the button nodes for the "reading shelf"
     let addToReadingBtn = document.querySelectorAll(".addToReading");
-    //add an event listener for "clicking" the button for each book
-    addToReadingBtn.forEach((node) => {
+    //add an event listener for "clicking" the button for each book 
+    addToReadingBtn.forEach(node => { 
+      //change class name if it is the delete button
+      //use this class name to chang the color to red     
+      if (node.textContent == "Remove") {
+        node.className += " book_delete";       
+      } else {
+        node.className += " book_add";
+      }
+
       node.addEventListener("click", async () => {
         //set the id variable to the book.id stored in data-id
         let id = node.getAttribute("data-id");
@@ -199,8 +229,16 @@ export default class LibraryActions {
     });
     //get a list of all the button nodes for the "read shelf"
     let addToReadBtn = document.querySelectorAll(".addToRead");
-    //add an event listener for "clicking" the button for each book
-    addToReadBtn.forEach((node) => {
+    //add an event listener for "clicking" the button for each book 
+    addToReadBtn.forEach(node => {
+      //change class name if it is the delete button
+      //use this class name to chang the color to red     
+      if (node.textContent == "Remove") {
+        node.className += " book_delete";       
+      } else {
+        node.className += " book_add";
+      }
+
       node.addEventListener("click", async () => {
         //set the id variable to the book.id stored in data-id
         let id = node.getAttribute("data-id");
@@ -212,7 +250,15 @@ export default class LibraryActions {
     //get a list of all the button nodes for the "want to read shelf"
     let addToWantToReadBtn = document.querySelectorAll(".addToWantToRead");
     //add an event listener for "clicking" the button for each book
-    addToWantToReadBtn.forEach((node) => {
+    addToWantToReadBtn.forEach(node => {
+      //change class name if it is the delete button
+      //use this class name to chang the color to red     
+      if (node.textContent == "Remove") {
+        node.className += " book_delete";       
+      } else {
+        node.className += " book_add";
+      }      
+
       node.addEventListener("click", async () => {
         //set the id variable to the book.id stored in data-id
         let id = node.getAttribute("data-id");
@@ -266,7 +312,7 @@ export default class LibraryActions {
       });
       console.log(removedList);
       //make that list the new value of the local storage
-      setLocalStorage(shelfId, removedList);
+      setLocalStorage(shelfId, removedList);     
       //reload the page with that book removed
       this.getShelvedBooks();
       console.log("You got this far.");
