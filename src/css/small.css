@@ -389,6 +389,10 @@ a:active {
   border-radius: 8px;
 }
 
+button.btnI {
+  display: none;
+}
+
 /* trying to style the info button to be smaller */
 /* .btn #small{
   inheritance:only-child;
