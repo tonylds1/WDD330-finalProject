@@ -85,11 +85,11 @@ li {
   text-align: center;
 }
 
-input[type=search] {
+input[type="search"] {
   transition: width 0.5s ease-in-out;
 }
 
-input[type=search]:focus {
+input[type="search"]:focus {
   width: 100%;
   text-align: left;
 }
@@ -110,7 +110,7 @@ input[type=search]:focus {
 }
 /* NAVBAR MENU */
 
- /* CSS hamburger */
+/* CSS hamburger */
 
 /* Hamburger */
 .hamburger1 {
@@ -139,19 +139,19 @@ input[type=search]:focus {
 
 #toggle1:checked + .hamburger1 .top {
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   margin-top: 22.5px;
 }
 
 #toggle1:checked + .hamburger1 .meat {
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   margin-top: -5px;
 }
 
 #toggle1:checked + .hamburger1 .bottom {
   -webkit-transform: scale(0);
-          transform: scale(0);
+  transform: scale(0);
 }
 
 #toggle1:checked ~ .menu {
@@ -159,8 +159,6 @@ input[type=search]:focus {
 }
 
 /* end css hamburger */
-
-
 
 .menu {
   margin-top: 1em;
@@ -258,8 +256,7 @@ a:active {
   .menu li:hover {
     display: inline-block;
     background-color: var(--quaternary-color);
-    transition: 0.3s ease; 
-
+    transition: 0.3s ease;
   }
   .menu li + li {
     margin-top: 12px;
@@ -352,7 +349,7 @@ a:active {
 .wrapper {
   /* padding-left: 5em; */
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
 }
 
 /* Footer Code to be cleaned up */
@@ -397,14 +394,14 @@ a:active {
   background-color: var(--quaternary-color);
   color: white;
   border-radius: 8px;
-  transform:scale(110%); 
+  transform: scale(110%);
 }
- .btn:hover {
+.btn:hover {
   background-color: var(--tertiary-color);
   color: white;
   border-radius: 8px;
-  transform:scale(125%);
- }
+  transform: scale(125%);
+}
 
 /* Design for results page search results */
 
@@ -441,7 +438,6 @@ a:active {
 
 /* Responsive both image and details on each phone and tablet */
 @media only screen and (max-width: 470px) {
-
   .result-div img {
     margin: 0 auto;
     width: 50%;
@@ -481,7 +477,7 @@ a:active {
 .addToShelfButtons button:hover {
   background-color: var(--tertiary-color);
   color: rgb(100, 100, 100);
-  transition:0.3s ease;
+  transition: 0.3s ease;
 }
 
 .addToShelfButtons button:active {
@@ -489,7 +485,7 @@ a:active {
   color: rgb(255, 255, 255);
 }
 
-#my_book_lists{
+#my_book_lists {
   /* max-width: 700px; */
   max-width: 98%;
   margin: auto;
@@ -497,15 +493,15 @@ a:active {
 
 /**************************** START OF SHELF BUTTONS, CARD SIZE & Title STYLING *******************/
 div#MyLIB {
-  padding-bottom: 3rem;  
+  padding-bottom: 3rem;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-#card-container {  
-  display: flex;  
-  flex-direction:row;
+#card-container {
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
@@ -543,5 +539,3 @@ p.alert {
   justify-content: space-between;
 }
 /**************************** END OF ALERT STYLING ************************************************/
-
-
