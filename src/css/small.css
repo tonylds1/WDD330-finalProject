@@ -477,6 +477,7 @@ a:active {
 .shelf_label {
   font-size: 12px;
   text-align: center;
+}
 
 /* Responsive both image and details on each phone and tablet */
 @media only screen and (max-width: 470px) {
