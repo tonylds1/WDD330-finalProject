@@ -369,7 +369,7 @@ button.btnI {
   background-color: var(--tertiary-color);
   color: white;
   border-radius: 8px;
-  transform: scale(125%);
+  transform: scale(115%);
 }
 
 /* Design for results page search results */
