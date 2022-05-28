@@ -1,14 +1,14 @@
 /* Fixed on between 773px to 900px */
 /* The search bar exeeding outside the margin of the website */
 /* Try to comment this code and pick iPad Air dimensions */
-@media only screen and (max-width: 900px) {
+/* @media only screen and (max-width: 900px) {
   .search-container input {
     width: 100%;
   }
   .search-container form {
     width: 100%;
   }
-}
+} */
 
 /* 69em = 1104px with 16px base */
 @media only screen and (min-width: 768px) {
