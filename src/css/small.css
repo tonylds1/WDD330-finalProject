@@ -428,15 +428,47 @@ a:active {
   padding: 0.5em;
 }
 
+.book_count {
+  display:flex;
+  flex-direction: column; 
+  justify-content: space-between; 
+}
+
+.specialCount {
+  display: block;
+  margin: .5rem 0 .75rem .5rem;
+  color: #fcd000;
+  font-size: 1.5rem;
+  font-weight: bold; 
+  --size: 32px;  
+  line-height: var(--size);
+  width: var(--size);
+  height: var(--size);  
+  transform: rotate(-5deg);
+  background: rgb(138, 137, 137);
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 1px 1px 0 #999;
+}
+
 .result-div img {
   /* margin-right: 0.5em; */
+  grid-column: 1;
   padding: 0.5em;
   width: 100%;
 }
+
+.shelf_label {
+  font-size: 12px;
+  text-align: center;
+}
+
 .current_shelf {
+  width:fit-content;
+  margin: .5rem auto;
   background-color: var(--quaternary-color);
   border: none;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 7px;
   padding: 0.4em;
 }
@@ -453,6 +485,37 @@ a:active {
   /* display: inline-block; */
   font-size: 16px;
   border-radius: 7px;
+}
+
+button.book_delete {
+  background-color: rgb(248, 63, 63);
+  color: var(--white);
+  border: 3px outset white;
+  cursor: pointer;
+}
+
+.addToShelfButtons button.book_delete:hover {
+  background-color: rgb(176, 0, 0);
+  color: white;
+}
+
+button.book_add {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: 3px groove white;
+  cursor: pointer;
+}
+
+.addToShelfButtons button.book_add:hover {
+  background-color: green;
+  color: white;
+}
+
+.addToShelfButtons button.book_add:active {
+  background-color: green;
+  color: white;
+  transition: 0.05s;
+  transform: scale(1.05);
 }
 
 .addToShelfButtons button:hover {
@@ -503,7 +566,7 @@ div#MyLIB {
 /***************************** END OF SHELF BUTTONS, CARD SIZE & Title STYLING ********************/
 
 /**************************** START OF ALERT STYLING **********************************************/
-p.alert {
+p.alert, p.count_message {
   font-family: var(--font-family);
   font-size: var(--font-base);
   font-weight: 900;
@@ -518,6 +581,17 @@ p.alert {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+}
+
+p.count_message {
+  margin-bottom: 2rem;
+  margin-top: -2rem;
+  max-width: 425px;
+}
+
+span.count {
+  font-size: 2rem;
+  font-weight: 900;
 }
 /**************************** END OF ALERT STYLING ************************************************/
 
