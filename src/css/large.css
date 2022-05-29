@@ -44,4 +44,9 @@
   .search-container form {
     text-align: initial;
   }
+
+  .modal_top_display {
+    display: grid;
+    grid-template-columns: 30% 70%;
+  }
 }

@@ -19,9 +19,15 @@ export default class LibraryActions {
     this.bookShelf = [];
     this.book = {};
     this.bookCover = "./images/bookCoverPlaceholder.png";
+    this.subtitle = "None";
     this.author = "No Author Listed";
     this.publisher = "No Publisher Listed";
     this.publishDate = "No Publish Date Listed";
+    this.starRating = "Not Given"
+    this.pages = "Not Listed"
+    this.genre = "Not Listed"
+    this.reviews = "None Given"
+    this.summary = "None Given"
     this.header = "";
     this.bttnNameNow = "";
     this.bttnNameBefore = "";
@@ -123,6 +129,12 @@ export default class LibraryActions {
       } catch (error) {
         this.bookCover = "./images/bookCoverPlaceholder.gif";
       }
+      //insert the subtitle
+      if(this.book.volumeInfo.subtitle) {
+        this.subtitle = ": " + this.book.volumeInfo.subtitle;
+      } else {
+        this.subtitle = "";
+      }
       //insert authors divided by commas or state the author isn't listed
       if (this.book.volumeInfo.authors) {
         this.author = this.book.volumeInfo.authors.join(", ");
@@ -142,23 +154,52 @@ export default class LibraryActions {
         ).toDateString("en-US");
       } else {
         this.publishDate = "No Publish Date Listed";
-      }  
+      }
+      //insert the page count or state it isn't listed
+      if(this.book.volumeInfo.printedPageCount) {       
+        this.pages = this.book.volumeInfo.printedPageCount + " Pages";
+      } else {
+        this.pages = "Book Length Not Given";
+      }
+      //insert the genre or state it isn't listed
+      if(this.book.volumeInfo.categories) {
+        this.genre = "Category: " + this.book.volumeInfo.categories;
+      } else {
+        this.genre = "Genre Not Listed"
+      }
+      //insert the number of reviews or state no reviews have been given
+      if (this.book.volumeInfo.ratingsCount) {
+        let review;
+        if (this.book.volumeInfo.ratingsCount == 1) {
+          review = " Review";
+        } else {
+          review = " Reviews";
+        }
+        this.reviews = this.book.volumeInfo.ratingsCount + review;
+      } else {
+        this.reviews = "No Reviews";
+      }
+      //insert the book summary or state that it has no summary
+      if (this.book.volumeInfo.previewLink) {
+        this.summary = this.book.volumeInfo.description;
+      } else {
+        this.summary = "There is no summary given for this book.";
+      }
+      //create a star rating to insert
+      this.starRating = this.getStars(this.book.volumeInfo.averageRating);      
       //increase count by one for each book 
       this.bookCount++;     
       //display the filled out HTML    
-      insertionPoint2.innerHTML += this.renderProductDetails();     
+      insertionPoint2.innerHTML += this.renderBookDetails();     
       //add the button functionality so they add the the other shelves
-      this.addBttnFunctionality()  
-
+      this.addBttnFunctionality(); 
+      //set up the modal pop-up
+      this.runModal(); 
     }
     countHolder.innerHTML = this.bookCount;
     //reset the count to zero
-    this.bookCount = 0;    
-  }
-  
-  bookCount() {
-
-  }
+    this.bookCount = 0;      
+  }  
 
   renderBanner() {
     return `
@@ -174,14 +215,14 @@ export default class LibraryActions {
       `;
   }
 
-  renderProductDetails() {
+  renderBookDetails() {
     return `
       <div class="result-div card_size">
         <div class="book_count">
           <span class="specialCount">${this.bookCount}</span>       
           <img
             src="${this.bookCover}"
-            alt="Cover for ${this.book.volumeInfo.title}"
+            alt="Cover for ${this.book.volumeInfo.title}"           
           />
           <div>
             <p class="shelf_label"><b><u>Current Shelf</u>:</b></p>
@@ -197,14 +238,137 @@ export default class LibraryActions {
           <p class="publisher">by ${this.publisher}</p>
           <br><br>
           <div class="addToShelfButtons">
-            <button class="addToReading" data-id="${this.book.id}">${this.bttnNameNow}</button>          
-            <button class="addToWantToRead" data-id="${this.book.id}">${this.bttnNameWant}</button>
-            <button class="addToRead" data-id="${this.book.id}">${this.bttnNameBefore}</button>
-          </div>                   
+            <button type="button" class="addToReading" data-id="${this.book.id}">${this.bttnNameNow}</button>          
+            <button type="button" class="addToWantToRead" data-id="${this.book.id}">${this.bttnNameWant}</button>
+            <button type="button" class="addToRead" data-id="${this.book.id}">${this.bttnNameBefore}</button>
+          </div>
+          <br><br>
+          <div class="details_bttn_box"> 
+            <!-- Trigger/Open The Modal -->       
+            <button type="button" class="details_bttn" >Details</button>  
+          </div>                     
+        </div>          
+        <!--_______________________________________ *** The Modal *** _________________________ -->
+        <!--                                   |||                     |||                      -->
+        <!--__________________________________ YYY Modal content Below YYY _____________________-->      
+        <div id="myModal" class="modal">
+          <div class="modal-content">        
+            <span class="close">&times;</span>
+            <section class="books-details">             
+              <div class="modal_top_display">
+                <div class="book_count">
+                  <span class="specialCount">${this.bookCount}</span> 
+                  <img  
+                  src="${this.bookCover}"
+                  alt="Cover for ${this.book.volumeInfo.title}"
+                  class="book_modal_img"
+                  class="pop-up"
+                  />               
+                </div>               
+                <div class="books_modal_details">  
+                  <h1 class="books_modal_title">${this.book.volumeInfo.title} ${this.subtitle}</h1>       
+                  <hr>
+                  <h2 class="divider books_author">By: ${this.author}</h2>
+                  <br>
+                  <p class="publishDate">Published on ${this.publishDate}</p>
+                  <p class="publisher">by ${this.publisher}</p>
+                  <br>
+                  <h3>${this.pages}</h3>
+                  <br><br><br>
+                  <h3 class="books_genre">${this.genre}</h3>              
+                  <br>
+                  <h2 class="books_ratings">${this.reviews} &nbsp; ${this.starRating}</h2>
+                  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+                  <br><br><br>
+                  <h3><u>Book Links</u></h3>                 
+                  <h3><a href=${this.book.volumeInfo.industryIdentifiers.infoLink}>Book Info From Google Play</a></h3>              
+                  <h3><a href=${this.book.volumeInfo.previewLink}>Book Preview from Google Books</a></h3>     
+                </div> 
+              </div>
+              <br>             
+              <h2 class="books_summary">Book Summary:</h2>
+              ${this.summary}       
+            </section>
+          </div>
         </div>        
-        <button class="details_bttn" >Details</button>
+        <!-- ***************************** End of modal pop up HTML **************************** -->      
       </div>
     `;
+  }
+
+  runModal() {
+    //create variable for the div holding the modal HTML content
+    let modal;
+    //creat a variblae to hold the list of all modals on the page
+    let modals = document.querySelectorAll(".modal");    
+    //set counter to label the data-id for matching the div to the button
+    let modalCnt = 0;
+    //cycle through each div & set the data-id so it can be used for matching
+    modals.forEach((div) => {
+      div.setAttribute("data-id", "match" + modalCnt);
+      //advand the count for unique labeling
+      modalCnt++;
+    });
+    //create a list of all the detail buttons on the page
+    let btns = document.querySelectorAll(".details_bttn");
+    // // When the user clicks on the button, open the modal
+    //set counter to label the id & data-id for matching the div to the button
+    let btnCnt = 0;
+    //cycle through each button & set the id & data-id so it can be matched up
+    btns.forEach((btn) => {
+      //set a unique id for each button
+      btn.id = "details_bttn" + btnCnt;
+      //set a data-id matching the data-id of the modal div
+      btn.setAttribute("data-id", "match" + btnCnt);
+      //set a variable for the button that was pushed
+      let clickedBtn = document.getElementById("details_bttn" + btnCnt);
+      //open the modal div when the user clicks on the button
+      clickedBtn.onclick = function () {
+        modals.forEach((card) => {
+          //match the clicked button to the modal that goes with it
+          if (
+            card.getAttribute("data-id") == clickedBtn.getAttribute("data-id")
+          ) {
+            //store the modal div that matches the button in a variable
+            modal = card;
+          }
+        });
+        //display the div modal that matches the clicked button
+        modal.style.display = "block";
+      };
+      //advance the count for unique labeling
+      btnCnt++;
+    });
+    //create a list of all the spans around the "X" used to close the page
+    let spans = document.querySelectorAll(".close");
+    //cycle through all the <span> (x)'s on the page
+    spans.forEach((span) => {
+      //close the modal when the user clicks on <span> (x)
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+    });
+    //close the modal when the user clicks anywhere outside of the modal
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  }
+
+  getStars(fiveRating) {
+    // Round to nearest half
+    let rating = Math.round(fiveRating * 2) / 2;
+    let output = [];  
+    // Append all the filled whole stars
+    for (var i = rating; i >= 1; i--)
+      output.push("<i class='fa fa-star' aria-hidden='true' style='color: gold;'></i>&nbsp;");  
+    // If there is a half a star, append it
+    if (i == .5) output.push("<i class='fa fa-star-half-o' aria-hidden='true' style='color: gold;'></i>&nbsp;");  
+    // Fill the empty stars
+    for (let n = (5 - rating); n >= 1; n--)
+      output.push("<i class='fa fa-star-o' aria-hidden='true' style='color: gold;'></i>&nbsp;");  
+    return output.join("");  
   }
 
   addBttnFunctionality() {
@@ -304,23 +468,21 @@ export default class LibraryActions {
       let removedList = [];
       // console.log("This is the " + this.storageKey + " delete button.")
       shelf.forEach((book) => {
-        console.log(book.duplicate);
+        // console.log(book.duplicate);
         if (book.duplicate == false) {
           //add all the books that don't match
           //the book to be deleted to a list
           removedList.push(book);
         }
       });
-      console.log(removedList);
+      // console.log(removedList);
       //make that list the new value of the local storage
       setLocalStorage(shelfId, removedList);     
       //reload the page with that book removed
       this.getShelvedBooks();
-      console.log("You got this far.");
+      // console.log("You got this far.");
     } else {
-      console.log(
-        id + " / storageKey = " + this.storageKey + " / Shelf = " + shelfId
-      );
+      // console.log(id + " / storageKey = " + this.storageKey + " / Shelf = " + shelfId);
       // only add the book if it is unique
       if (duplicate == false) {
         newBook.duplicate = false;
@@ -328,7 +490,7 @@ export default class LibraryActions {
       }
       //set the local storage equal to the list with the newly added book
       setLocalStorage(shelfId, shelf);
-      console.log("You're running this code!");
+      // console.log("You're running this code!");
     }
   }
 }
