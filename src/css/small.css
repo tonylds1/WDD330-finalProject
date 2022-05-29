@@ -21,9 +21,9 @@
   --dark-grey: #303030;
 
   /* colors-hyperlinks */
-  --link-main: blue;
-  --link-visited: purple;
-  --link-hover: red;
+  --link-main: rgb(0, 162, 255);
+  --link-visited: rgb(221, 2, 221);
+  --link-hover: rgb(229, 126, 24);
   --link-active: rgba(255, 0, 0, 0.5);
 
   /* sizes */
@@ -173,29 +173,29 @@ input[type="checkbox"] {
 
 
 /* HYPERLINK STYLING */
-/* a:link {
+footer a:link {
   color: var(--link-main);
   background-color: transparent;
   text-decoration: none;
 }
 
-a:visited {
+footer a:visited {
   color: var(--link-visited);
   background-color: transparent;
   text-decoration: none;
 }
 
-a:hover {
+footer a:hover {
   color: var(--link-hover);
   background-color: transparent;
   text-decoration: underline;
 }
 
-a:active {
+footer a:active {
   color: var(--link-active);
   background-color: transparent;
   text-decoration: underline;
-} */
+}
 
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 880px) {
@@ -369,7 +369,7 @@ button.btnI {
   background-color: var(--tertiary-color);
   color: white;
   border-radius: 8px;
-  transform: scale(125%);
+  transform: scale(115%);
 }
 
 /* Design for results page search results */
@@ -452,10 +452,10 @@ button.btnI {
 }
 
 /************ START OF Responsive both image and details on each phone and tablet ************/
-@media only screen and (max-width: 470px) {
+@media only screen and (max-width: 32em) {
   .result-div img {
-    margin: 0 auto;
-    width: 50%;
+    margin: auto;
+    width: 70%;
     grid-column: 1/3;
     grid-row: 1/2;
   }
