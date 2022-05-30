@@ -5,12 +5,12 @@
   --font-family: "Montserrat Alternates", sans-serif;
 
   /* colors- Dark Mode */
-  --primary-color: #1ad4ba;
+  /* --primary-color: #1ad4ba;
   --secondary-color: #ec1bbc;
   --tertiary-color: #ffbf69;
   --quaternary-color: #b86eeb;
   --black: #000000;
-  --light-grey: #c6c6c6;
+  --light-grey: #c6c6c6; */
 
   /* colors-Regular */
   --primary-color: #2ec4b6;
@@ -45,6 +45,8 @@ a {
 li {
   list-style: none;
 }
+
+
 
 /* ||NAVBAR STYLING */
 .navbar {
@@ -391,7 +393,9 @@ button.btnI {
   text-decoration: none;
   display: inline-block;
   padding: 8px 16px;
-  background-color: #04AA6D;
+  /* background-color: #04AA6D; */
+  background-color: var(--primary-color);
+
   color: white;
   border-radius: 5px;
 }
@@ -675,3 +679,21 @@ span.count {
   font-weight: 900;
 }
 /**************************** END OF ALERT STYLING ********************************************/
+/* THEMES */
+/* Dark-mode */
+/* .dark-mode {
+  color: #1ad4ba;
+  background-color: #b86eeb !important;
+  text-shadow: #b86eeb;
+}
+
+body.dark-theme nav.navbar{
+  background-color: #000000 !important;
+  color: #04AA6D;
+}
+.dark-theme div h2, h3, h4{
+  color: white !important;
+}
+.dark-theme div {
+  color: white !important;
+} */
