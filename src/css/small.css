@@ -644,7 +644,18 @@ div#MyLIB {
   border: 1px solid orange;
   width: fit-content;
 }
-/***************************** END OF SHELF CARD SIZE & Title STYLING *************************/
+
+/***************************** END OF SHELF BUTTONS, CARD SIZE & Title STYLING ********************/
+
+
+/***************************** START OF PROGRESS READING BAR *************************/
+
+.progress {
+  margin: 10px;
+  width: 100%;
+}
+
+/***************************** END OF PROGRESS READING BAR *************************/
 
 /**************************** START OF ALERT STYLING ******************************************/
 p.alert, p.count_message {

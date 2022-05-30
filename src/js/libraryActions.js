@@ -5,7 +5,8 @@ import {
   alertMessage,
   removeAllInserts,
   insertTitle,
-  insertBookCount
+  insertBookCount,
+  isNullOrUndefined
 } from "./utils.js";
 import ExternalServices from "./externalServices.js";
 
@@ -18,6 +19,7 @@ export default class LibraryActions {
     this.storageKey = storageKey;
     this.bookShelf = [];
     this.book = {};
+    this.readingProgress = new Map();
     this.bookCover = "./images/bookCoverPlaceholder.png";
     this.subtitle = "None";
     this.author = "No Author Listed";
@@ -68,6 +70,7 @@ export default class LibraryActions {
       // const banners = document.querySelectorAll(".banner2");
       // banners.forEach((banner) => document.querySelector("main").removeChild(banner));
      }    
+     this.setReadingProgress();
       //display the books that are in the shelf     
       this.displayBooksFromShelf(insertionPoint2);     
     }    
@@ -119,9 +122,12 @@ export default class LibraryActions {
   async displayBooksFromShelf(insertionPoint2) {
     //set up variables for the elements holding the count   
     let countHolder = document.querySelector(".count");
+    
     //loop through list of the books from the shelf   
     for (const bookId of this.bookShelf) {
       this.book = await connection.findBookById(bookId.id, false);
+      this.book.progress = this.readingProgress.get(bookId);
+
       // console.log(this.book);
       //check if the data has an image to dispay and if not insert one
       try {
@@ -192,9 +198,13 @@ export default class LibraryActions {
       //display the filled out HTML    
       insertionPoint2.innerHTML += this.renderBookDetails();     
       //add the button functionality so they add the the other shelves
+
       this.addBttnFunctionality(); 
       //set up the modal pop-up
       this.runModal(); 
+
+      this.addReadingProgressEvent();
+
     }
     countHolder.innerHTML = this.bookCount;
     //reset the count to zero
@@ -242,6 +252,18 @@ export default class LibraryActions {
             <button type="button" class="addToWantToRead" data-id="${this.book.id}">${this.bttnNameWant}</button>
             <button type="button" class="addToRead" data-id="${this.book.id}">${this.bttnNameBefore}</button>
           </div>
+          <form>
+            <div class="progress">
+              Read:
+              <input type="range" class="progressInput" 
+                  name="progressInput" min="0" max="100" value="${this.progress}"
+                  oninput="progress.value=progressInput.value"
+                  data-id="${this.book.id}">
+
+              <output name="progress" id="progress" for="progressInput">0</output>
+              %
+            </div>
+          </form>
           <br><br>
           <div class="details_bttn_box"> 
             <!-- Trigger/Open The Modal -->       
@@ -371,6 +393,18 @@ export default class LibraryActions {
     return output.join("");  
   }
 
+  addReadingProgressEvent() {
+    let progressBars = document.querySelectorAll(".progressInput");
+    //add an event listener for "clicking" the button for each book 
+    progressBars.forEach(node => { 
+      const bookId = node.getAttribute("data-id");
+      node.value = this.readingProgress.get(bookId) ?? 0;
+      node.addEventListener("change", async () => {
+        this.handleReadingProgress(bookId, node.value);
+      });
+    });
+  }
+
   addBttnFunctionality() {
     //get a list of all the button nodes for the "reading shelf"
     let addToReadingBtn = document.querySelectorAll(".addToReading");
@@ -492,5 +526,16 @@ export default class LibraryActions {
       setLocalStorage(shelfId, shelf);
       // console.log("You're running this code!");
     }
+  }
+
+  setReadingProgress() {
+    const storedReadingProgress = getLocalStorage('reading-progress');
+    this.readingProgress = new Map(storedReadingProgress);
+  }
+
+  handleReadingProgress(bookId, progress) {
+    console.log(bookId, progress);
+    this.readingProgress.set(bookId, progress);
+    setLocalStorage('reading-progress', Array.from(this.readingProgress.entries()));
   }
 }

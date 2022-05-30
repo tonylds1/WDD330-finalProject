@@ -141,3 +141,13 @@ export function insertBookCount(bookCount) {
   console.log(main.firstChild.nextSibling);
   main.insertBefore(count, main.firstChild.nextSibling);
 }
+
+export const selectElement = selector => {
+  const element = document.querySelector(selector);
+  if (element) return element;
+  throw new Error(`Double check your '${element}' seletor and make sure it's typed correctly`);
+};
+
+export const isNullOrUndefined = (variable) => {
+  return variable == null || variable == undefined;
+}

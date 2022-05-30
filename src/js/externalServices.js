@@ -81,6 +81,7 @@ export default class ExternalServices {
     // console.log(jsonBookResults);
     return jsonBookResults;
   }
+  
   // get book by id
   async findBookById(id, set = true) {
     let book = await fetch(baseURL + id);

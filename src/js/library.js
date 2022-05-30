@@ -4,39 +4,59 @@ import LibraryActions from "./libraryActions.js";
 //put in the header & footer
 loadHeaderFooter();
 
-//create a variable for the "Read Before" shelf button element
-let readButton = document.querySelector("#read_bttn");
-//add an event listener to that button that calls the "getShelvedBooks" method
-readButton.addEventListener("click", () => {
-  //create a LibraryActions class object with "read-shelf" argument
-  //to make it possible to access its "getShelvedBooks" method
-  let shelf = new LibraryActions("read-shelf");
-  //this will add the list of books they've read to the page
-  shelf.getShelvedBooks();
-});
+  const buttons = [
+    {selector: "#read_bttn", shelf: "read-shelf"},
+    {selector: "#reading_bttn", shelf: "reading-shelf"},
+    {selector: "#want_bttn", shelf: "want-read-shelf"},
+  ];
 
-//create a variable for the "Reading Now" shelf button element
-let readingButton = document.querySelector("#reading_bttn");
-//add an event listener to that button that calls the "getShelvedBooks" method
-readingButton.addEventListener("click", () => {
-  //create a LibraryActions class object with "reading-shelf" argument
-  //to make it possible to access its "getShelvedBooks" method
-  let shelf = new LibraryActions("reading-shelf");
-  readingButton.setAttribute("class", ".active");
-  //this will add the list of books their reading to the page
-  shelf.getShelvedBooks();
-});
+  buttons.forEach(button => {
+    let readButton = document.querySelector(button.selector);
+    //add an event listener to that button that calls the "getShelvedBooks" method
+    readButton.addEventListener("click", () => {
+      //create a LibraryActions class object with "read-shelf" argument
+      //to make it possible to access its "getShelvedBooks" method
+      let shelf = new LibraryActions(button.shelf);
+      //this will add the list of books they've read to the page
+      shelf.getShelvedBooks();
+    });
+  });
 
-//create a variable for the "Want to Read" shelf button element
-let wantButton = document.querySelector("#want_bttn");
-//add an event listener to that button that calls the "getShelvedBooks" method
-wantButton.addEventListener("click", () => {
-  //create a LibraryActions class object with "want-read-shelf" argument
-  //to make it possible to access its "getShelvedBooks" method
-  let shelf = new LibraryActions("want-read-shelf");
-  //this will add the list of books their reading to the page
-  shelf.getShelvedBooks();
-});
+    document.querySelector("#reading_bttn").setAttribute("class", ".active");
+
+// //create a variable for the "Read Before" shelf button element
+// let readButton = document.querySelector("#read_bttn");
+// //add an event listener to that button that calls the "getShelvedBooks" method
+// readButton.addEventListener("click", () => {
+//   //create a LibraryActions class object with "read-shelf" argument
+//   //to make it possible to access its "getShelvedBooks" method
+//   let shelf = new LibraryActions("read-shelf");
+//   //this will add the list of books they've read to the page
+//   shelf.getShelvedBooks();
+// });
+
+// //create a variable for the "Reading Now" shelf button element
+// let readingButton = document.querySelector("#reading_bttn");
+// //add an event listener to that button that calls the "getShelvedBooks" method
+// readingButton.addEventListener("click", () => {
+//   //create a LibraryActions class object with "reading-shelf" argument
+//   //to make it possible to access its "getShelvedBooks" method
+//   let shelf = new LibraryActions("reading-shelf");
+//   readingButton.setAttribute("class", ".active");
+//   //this will add the list of books their reading to the page
+//   shelf.getShelvedBooks();
+// });
+
+// //create a variable for the "Want to Read" shelf button element
+// let wantButton = document.querySelector("#want_bttn");
+// //add an event listener to that button that calls the "getShelvedBooks" method
+// wantButton.addEventListener("click", () => {
+//   //create a LibraryActions class object with "want-read-shelf" argument
+//   //to make it possible to access its "getShelvedBooks" method
+//   let shelf = new LibraryActions("want-read-shelf");
+//   //this will add the list of books their reading to the page
+//   shelf.getShelvedBooks();
+// });
 
 //active listener for book shelve buttons MyLIB
 // This script adds active class to the current button (highlight it)
