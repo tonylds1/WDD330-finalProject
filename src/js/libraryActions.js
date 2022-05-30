@@ -256,9 +256,9 @@ export default class LibraryActions {
             <div class="progress">
               Read:
               <input type="range" class="progressInput" 
-                  name="progressInput" min="0" max="100" value="${this.progress}"
+                  name="progressInput" min="0" max="100" 
                   oninput="progress.value=progressInput.value"
-                  data-id="${this.book.id}">
+                  data-id="c${this.book.id}">
 
               <output name="progress" id="progress" for="progressInput">0</output>
               %
@@ -399,6 +399,8 @@ export default class LibraryActions {
     progressBars.forEach(node => { 
       const bookId = node.getAttribute("data-id");
       node.value = this.readingProgress.get(bookId) ?? 0;
+      node.nextElementSibling.innerHTML = node.value;
+
       node.addEventListener("change", async () => {
         this.handleReadingProgress(bookId, node.value);
       });
