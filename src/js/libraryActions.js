@@ -203,7 +203,13 @@ export default class LibraryActions {
       //set up the modal pop-up
       this.runModal(); 
 
-      this.addReadingProgressEvent();
+      if (this.storageKey != "want-read-shelf") {
+        document.querySelectorAll('div.progress').forEach(
+          progress => {progress.removeAttribute('hidden')}
+        );
+        this.addReadingProgressEvent();
+      }
+      
 
     }
     countHolder.innerHTML = this.bookCount;
@@ -253,7 +259,7 @@ export default class LibraryActions {
             <button type="button" class="addToRead" data-id="${this.book.id}">${this.bttnNameBefore}</button>
           </div>
           <form>
-            <div class="progress">
+            <div class="progress" hidden>
               Read:
               <input type="range" class="progressInput" 
                   name="progressInput" min="0" max="100" 
@@ -397,6 +403,7 @@ export default class LibraryActions {
     let progressBars = document.querySelectorAll(".progressInput");
     //add an event listener for "clicking" the button for each book 
     progressBars.forEach(node => { 
+
       const bookId = node.getAttribute("data-id");
       node.value = this.readingProgress.get(bookId) ?? 0;
       node.nextElementSibling.innerHTML = node.value;
