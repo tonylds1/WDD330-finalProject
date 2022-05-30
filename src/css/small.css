@@ -451,7 +451,7 @@ button.btnI {
   text-align: center;
 }
 
-/* Responsive both image and details on each phone and tablet */
+/************ START OF Responsive both image and details on each phone and tablet ************/
 @media only screen and (max-width: 32em) {
   .result-div img {
     margin: auto;
@@ -465,7 +465,83 @@ button.btnI {
     grid-row: 2/3;
   }
 }
+/*************** END OF Responsive both image and details on each phone and tablet ************/
 
+/********************* START OF CSS FOR MODAL POP-UP BOOK DETAILS PAGE ************************/
+.books_modal_title {
+  margin-top: 0;
+}
+
+img.book_modal_img {
+  max-width: 300px;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 80%;
+}
+
+/**** The Close Button to close the Modal ****/
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/**** The Details Button for the Modal to Open ****/
+.details_bttn_box { 
+  display: flex;
+}
+
+.details_bttn { 
+  grid-column: 2;
+  width: fit-content;
+  height: 30px;
+  margin: 0 1rem 0 auto;
+  background-color: var(--quaternary-color);
+  padding: 0 .5rem;
+  border: 3px outset white;
+  cursor: pointer;
+}
+
+.details_bttn:hover {
+  background-color: rgb(176, 103, 0);
+  color: white;
+}
+
+button.details_bttn:active {
+  background-color: green;
+  color: white;
+  transition: 0.05s;
+  transform: scale(1.05);
+}
+/********************* END OF CSS FOR MODAL POP-UP BOOK DETAILS PAGE **************************/
+
+/*************************** START OF CSS FOR BUTTONS ON BOOK CARDS ***************************/
 .current_shelf {
   width:fit-content;
   margin: .5rem auto;
@@ -489,6 +565,17 @@ button.btnI {
   /* display: inline-block; */
   font-size: 16px;
   border-radius: 7px;
+}
+
+.addToShelfButtons button:hover {
+  background-color: var(--tertiary-color);
+  color: rgb(100, 100, 100);
+  transition: 0.3s ease;
+}
+
+.addToShelfButtons button:active {
+  background-color: var(--tertiary-color);
+  color: rgb(255, 255, 255);
 }
 
 button.book_delete {
@@ -521,25 +608,15 @@ button.book_add {
   transition: 0.05s;
   transform: scale(1.05);
 }
+/*************************** END OF CSS FOR BUTTONS ON BOOK CARDS *****************************/
 
-.addToShelfButtons button:hover {
-  background-color: var(--tertiary-color);
-  color: rgb(100, 100, 100);
-  transition: 0.3s ease;
-}
-
-.addToShelfButtons button:active {
-  background-color: var(--tertiary-color);
-  color: rgb(255, 255, 255);
-}
-
+/**************************** START OF SHELF CARD SIZE & Title STYLING ************************/
 #my_book_lists {
   /* max-width: 700px; */
   max-width: 98%;
   margin: auto;
 }
 
-/**************************** START OF SHELF BUTTONS, CARD SIZE & Title STYLING *******************/
 div#MyLIB {
   padding-bottom: 3rem;
   width: 100%;
@@ -567,9 +644,9 @@ div#MyLIB {
   border: 1px solid orange;
   width: fit-content;
 }
-/***************************** END OF SHELF BUTTONS, CARD SIZE & Title STYLING ********************/
+/***************************** END OF SHELF CARD SIZE & Title STYLING *************************/
 
-/**************************** START OF ALERT STYLING **********************************************/
+/**************************** START OF ALERT STYLING ******************************************/
 p.alert, p.count_message {
   font-family: var(--font-family);
   font-size: var(--font-base);
@@ -597,4 +674,4 @@ span.count {
   font-size: 2rem;
   font-weight: 900;
 }
-/**************************** END OF ALERT STYLING ************************************************/
+/**************************** END OF ALERT STYLING ********************************************/
