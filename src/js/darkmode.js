@@ -1,8 +1,5 @@
 //this module is used for most of the work done on the library.html page
-import {
-  getLocalStorage,
-  setLocalStorage
-} from "./utils.js";
+import { getLocalStorage, setLocalStorage } from "./utils.js";
 
 export default class DarkMode {
   constructor() {
@@ -58,15 +55,16 @@ export default class DarkMode {
     console.log("dark");
     // let root = document.querySelector(":root");
     // console.log()
-    // console.log(root.style.getPropertyValue("--tertiary-color"))
     // document.documentElement.style.setProperty("--tertiary-color", "lightblue");
-    // document.documentElement.style.setProperty("--primary-color", "#1ad4ba");
-    // document.documentElement.style.setProperty("--secondary-color", "#ec1bbc");
-    // document.documentElement.style.setProperty("--tertiary-color:", "#000");
-    // document.documentElement.style.setProperty("--quaternary-color", "#b86eeb");
-    // document.documentElement.style.setProperty("--white", "#000");
+    document.documentElement.style.setProperty("--primary-color", "#000");
+    document.documentElement.style.setProperty("--secondary-color", "#000");
+    document.documentElement.style.setProperty("--tertiary-color", "#000");
+    document.documentElement.style.setProperty("--quaternary-color", "#000");
+    document.documentElement.style.setProperty("--base-color", "#000");
+    document.documentElement.style.setProperty("--text-color", "white");
+    document.documentElement.style.setProperty("--light-background", "#000");
     // console.log(root.style.getPropertyValue("--white"))
-    document.documentElement.style.setProperty("--tertiary-color", "black");
+    // document.documentElement.style.setProperty("--tertiary-color", "black");
 
   }
 
@@ -74,13 +72,16 @@ export default class DarkMode {
     console.log("light");
     // let root = document.querySelector(":root");
     // console.log(root.style.getPropertyValue("--tertiary-color"))
-    // document.documentElement.style.setProperty("--primary-color", "#04AA6D");
-    // document.documentElement.style.setProperty("--secondary-color", "#cbf3f0");
-    // document.documentElement.style.setProperty("--tertiary-color:", "#ffbf69");
-    // document.documentElement.style.setProperty("--quaternary-color", "#ff9f1c");
-    // document.documentElement.style.setProperty("--white", "#ffffff");
-    // console.log(root.style.getPropertyValue("--white"))
+    document.documentElement.style.setProperty("--primary-color", "#04AA6D");
+    document.documentElement.style.setProperty("--secondary-color", "#cbf3f0");
+    document.documentElement.style.setProperty("--tertiary-color", "#ffbf69");
+    document.documentElement.style.setProperty("--quaternary-color", "#ff9f1c");
+    document.documentElement.style.setProperty("--base-color", "#ffffff");
+    
+    document.documentElement.style.setProperty("--text-color", "black");
 
-    document.documentElement.style.setProperty("--tertiary-color", "white");
+    document.documentElement.style.setProperty("--light-background", "#fefefe");
+    // document.documentElement.style.setProperty("--tertiary-color", "white");
   }
+
 }
