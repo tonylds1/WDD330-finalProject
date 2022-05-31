@@ -417,6 +417,18 @@ button.btnI {
   cursor: pointer;
 }
 
+.advancer:hover, .back_to_top:hover {
+  background-color: rgb(102, 102, 102);
+  color: white;
+}
+
+.advancer:active, .back_to_top:active {
+  background-color: rgb(102, 102, 102);
+  color: white;
+  transition: 0.05s;
+  transform: scale(1.05);
+}
+
 .back_to_top {
   margin-bottom: 1rem;
 }
