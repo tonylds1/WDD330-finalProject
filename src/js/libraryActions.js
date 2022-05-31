@@ -7,7 +7,7 @@ import {
   insertTitle,
   insertBookCount,
   runModal,
-  getStars
+  getStars,
 } from "./utils.js";
 import ExternalServices from "./externalServices.js";
 
@@ -25,11 +25,11 @@ export default class LibraryActions {
     this.author = "No Author Listed";
     this.publisher = "No Publisher Listed";
     this.publishDate = "No Publish Date Listed";
-    this.starRating = "Not Given"
-    this.pages = "Not Listed"
-    this.genre = "Not Listed"
-    this.reviews = "None Given"
-    this.summary = "None Given"
+    this.starRating = "Not Given";
+    this.pages = "Not Listed";
+    this.genre = "Not Listed";
+    this.reviews = "None Given";
+    this.summary = "None Given";
     this.header = "";
     this.bttnNameNow = "";
     this.bttnNameBefore = "";
@@ -62,17 +62,17 @@ export default class LibraryActions {
       insertTitle(insertionPoint1, title);
       //remove any previous alerts from empty shelves
       removeAllInserts("alert", "opening");
-      //insert the total count of the books on the shelf      
+      //insert the total count of the books on the shelf
       insertBookCount(this.bookCount);
-      //remove any previous banners form empty shelves     
-     if (this.bookShelf.length >= 1) { 
-       removeAllInserts("banner2" , "opening") 
-      // const banners = document.querySelectorAll(".banner2");
-      // banners.forEach((banner) => document.querySelector("main").removeChild(banner));
-     }    
-      //display the books that are in the shelf     
-      this.displayBooksFromShelf(insertionPoint2);     
-    }    
+      //remove any previous banners form empty shelves
+      if (this.bookShelf.length >= 1) {
+        removeAllInserts("banner2", "opening");
+        // const banners = document.querySelectorAll(".banner2");
+        // banners.forEach((banner) => document.querySelector("main").removeChild(banner));
+      }
+      //display the books that are in the shelf
+      this.displayBooksFromShelf(insertionPoint2);
+    }
   }
 
   selectShelfName() {
@@ -106,7 +106,7 @@ export default class LibraryActions {
 
   addShelfTitleAndEmptyShelfMessage(insertionPoint1) {
     //remove any preexisting messages from other empty shelves
-    removeAllInserts("alert", "opening");   
+    removeAllInserts("alert", "opening");
 
     //code to post this message onto the page
     let message = "Nothing is here, try adding a book!";
@@ -119,9 +119,9 @@ export default class LibraryActions {
   }
 
   async displayBooksFromShelf(insertionPoint2) {
-    //set up variables for the elements holding the count   
+    //set up variables for the elements holding the count
     let countHolder = document.querySelector(".count");
-    //loop through list of the books from the shelf   
+    //loop through list of the books from the shelf
     for (const bookId of this.bookShelf) {
       this.book = await connection.findBookById(bookId.id, false);
       // console.log(this.book);
@@ -132,7 +132,7 @@ export default class LibraryActions {
         this.bookCover = "./images/bookCoverPlaceholder.gif";
       }
       //insert the subtitle or nothing if there isn't one
-      if(this.book.volumeInfo.subtitle) {
+      if (this.book.volumeInfo.subtitle) {
         this.subtitle = ": " + this.book.volumeInfo.subtitle;
       } else {
         this.subtitle = "";
@@ -158,16 +158,16 @@ export default class LibraryActions {
         this.publishDate = "No Publish Date Listed";
       }
       //insert the page count or state it isn't listed
-      if(this.book.volumeInfo.printedPageCount) {       
+      if (this.book.volumeInfo.printedPageCount) {
         this.pages = this.book.volumeInfo.printedPageCount + " Pages";
       } else {
         this.pages = "Book Length Not Given";
       }
       //insert the genre or state it isn't listed
-      if(this.book.volumeInfo.categories) {
+      if (this.book.volumeInfo.categories) {
         this.genre = "Category: " + this.book.volumeInfo.categories;
       } else {
-        this.genre = "Genre Not Listed"
+        this.genre = "Genre Not Listed";
       }
       //insert the number of reviews or state no reviews have been given
       if (this.book.volumeInfo.ratingsCount) {
@@ -188,20 +188,20 @@ export default class LibraryActions {
         this.summary = "There is no summary given for this book.";
       }
       //create a star rating to insert
-      this.starRating = getStars(this.book.volumeInfo.averageRating);      
-      //increase count by one for each book 
-      this.bookCount++;     
-      //display the filled out HTML    
-      insertionPoint2.innerHTML += this.renderBookDetails();     
+      this.starRating = getStars(this.book.volumeInfo.averageRating);
+      //increase count by one for each book
+      this.bookCount++;
+      //display the filled out HTML
+      insertionPoint2.innerHTML += this.renderBookDetails();
       //add the button functionality so they add the the other shelves
-      this.addBttnFunctionality(); 
+      this.addBttnFunctionality();
       //set up the modal pop-up
-      runModal(); 
+      runModal();
     }
     countHolder.innerHTML = this.bookCount;
     //reset the count to zero
-    this.bookCount = 0;      
-  }  
+    this.bookCount = 0;
+  }
 
   renderBanner() {
     return `
@@ -297,31 +297,31 @@ export default class LibraryActions {
       </div>
     `;
   }
-  
+
   // getStars(fiveRating) {
   //   // Round to nearest half
   //   let rating = Math.round(fiveRating * 2) / 2;
-  //   let output = [];  
+  //   let output = [];
   //   // Append all the filled whole stars
   //   for (var i = rating; i >= 1; i--)
-  //     output.push("<i class='fa fa-star' aria-hidden='true' style='color: gold;'></i>&nbsp;");  
+  //     output.push("<i class='fa fa-star' aria-hidden='true' style='color: gold;'></i>&nbsp;");
   //   // If there is a half a star, append it
-  //   if (i == .5) output.push("<i class='fa fa-star-half-o' aria-hidden='true' style='color: gold;'></i>&nbsp;");  
+  //   if (i == .5) output.push("<i class='fa fa-star-half-o' aria-hidden='true' style='color: gold;'></i>&nbsp;");
   //   // Fill the empty stars
   //   for (let n = (5 - rating); n >= 1; n--)
-  //     output.push("<i class='fa fa-star-o' aria-hidden='true' style='color: gold;'></i>&nbsp;");  
-  //   return output.join("");  
+  //     output.push("<i class='fa fa-star-o' aria-hidden='true' style='color: gold;'></i>&nbsp;");
+  //   return output.join("");
   // }
 
   addBttnFunctionality() {
     //get a list of all the button nodes for the "reading shelf"
     let addToReadingBtn = document.querySelectorAll(".addToReading");
-    //add an event listener for "clicking" the button for each book 
-    addToReadingBtn.forEach(node => { 
+    //add an event listener for "clicking" the button for each book
+    addToReadingBtn.forEach((node) => {
       //change class name if it is the delete button
-      //use this class name to chang the color to red     
+      //use this class name to chang the color to red
       if (node.textContent == "Remove") {
-        node.className += " book_delete";       
+        node.className += " book_delete";
       } else {
         node.className += " book_add";
       }
@@ -336,12 +336,12 @@ export default class LibraryActions {
     });
     //get a list of all the button nodes for the "read shelf"
     let addToReadBtn = document.querySelectorAll(".addToRead");
-    //add an event listener for "clicking" the button for each book 
-    addToReadBtn.forEach(node => {
+    //add an event listener for "clicking" the button for each book
+    addToReadBtn.forEach((node) => {
       //change class name if it is the delete button
-      //use this class name to chang the color to red     
+      //use this class name to chang the color to red
       if (node.textContent == "Remove") {
-        node.className += " book_delete";       
+        node.className += " book_delete";
       } else {
         node.className += " book_add";
       }
@@ -357,14 +357,14 @@ export default class LibraryActions {
     //get a list of all the button nodes for the "want to read shelf"
     let addToWantToReadBtn = document.querySelectorAll(".addToWantToRead");
     //add an event listener for "clicking" the button for each book
-    addToWantToReadBtn.forEach(node => {
+    addToWantToReadBtn.forEach((node) => {
       //change class name if it is the delete button
-      //use this class name to chang the color to red     
+      //use this class name to chang the color to red
       if (node.textContent == "Remove") {
-        node.className += " book_delete";       
+        node.className += " book_delete";
       } else {
         node.className += " book_add";
-      }      
+      }
 
       node.addEventListener("click", async () => {
         //set the id variable to the book.id stored in data-id
@@ -419,7 +419,7 @@ export default class LibraryActions {
       });
       // console.log(removedList);
       //make that list the new value of the local storage
-      setLocalStorage(shelfId, removedList);     
+      setLocalStorage(shelfId, removedList);
       //reload the page with that book removed
       this.getShelvedBooks();
       // console.log("You got this far.");

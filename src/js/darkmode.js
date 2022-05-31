@@ -1,20 +1,20 @@
 //this module is used for most of the work done on the library.html page
-import {
-  getLocalStorage,
-  setLocalStorage
-} from "./utils.js";
+import { getLocalStorage, setLocalStorage } from "./utils.js";
 
 export default class DarkMode {
   constructor() {
-    this.currentTheme = getLocalStorage("theme")
-    this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)")
+    this.currentTheme = getLocalStorage("theme");
+    this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
   }
 
   async init() {
-    if (window.matchMedia("(prefers-color-scheme: dark)") && this.currentTheme == null) {
-      this.currentTheme = "dark"
-    } 
-    await this.darkModeButton()
+    if (
+      window.matchMedia("(prefers-color-scheme: dark)") &&
+      this.currentTheme == null
+    ) {
+      this.currentTheme = "dark";
+    }
+    await this.darkModeButton();
     // else if (window.matchMedia("(prefers-color-scheme: light)") && this.currentTheme == null) {
     //   this.currentTheme = "light"
     // } else if (window.matchMedia("(prefers-color-scheme: no preference)") && this.currentTheme == null) {
@@ -23,44 +23,41 @@ export default class DarkMode {
 
     // Set the page colors based on the current theme
     if (this.currentTheme == "dark") {
-      this.darkMode()
+      this.darkMode();
     } else if (this.currentTheme == "light") {
-      this.lightMode()
+      this.lightMode();
     }
-
-    
   }
 
   async darkModeButton() {
-    let buttonList = document.querySelectorAll(".darkModeToggle")
+    let buttonList = document.querySelectorAll(".darkModeToggle");
     // console.log(buttons)
-    buttonList.forEach(button => {
-      if (this.currentTheme == "light"){
-        button.src = "../images/moon.png"
+    buttonList.forEach((button) => {
+      if (this.currentTheme == "light") {
+        button.src = "../images/moon.png";
         // console.log("sun")
-
       } else if (this.currentTheme == "dark") {
         // button.innerHTML = "Light mode"
-        button.src = "../images/sunny.png"
+        button.src = "../images/sunny.png";
         // console.log("moon")
       }
       button.addEventListener("click", () => {
         if (this.currentTheme == "light") {
           // button.innerHTML = "Light mode"
-          button.src = "../images/sunny.png"
-          this.currentTheme = "dark"
-          this.darkMode()
+          button.src = "../images/sunny.png";
+          this.currentTheme = "dark";
+          this.darkMode();
         } else if (this.currentTheme == "dark") {
           // button.innerHTML = "Dark mode"
-          button.src = "../images/moon.png"
-          this.lightMode()
-          this.currentTheme = "light"
-        }        
+          button.src = "../images/moon.png";
+          this.lightMode();
+          this.currentTheme = "light";
+        }
         setLocalStorage("theme", this.currentTheme);
-      })
-    })
-   
-    console.log(this.currentTheme)
+      });
+    });
+
+    console.log(this.currentTheme);
   }
 
   darkMode() {
@@ -88,5 +85,4 @@ export default class DarkMode {
     document.documentElement.style.setProperty("--light-background", "#fefefe");
     document.documentElement.style.setProperty("--dark-grey", "#000000");
   }
-
 }

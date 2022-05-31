@@ -105,7 +105,9 @@ export function alertMessage(message, id, scroll = true) {
 
 export function removeAllInserts(childClass, parentClass) {
   const inserts = document.querySelectorAll("." + childClass);
-  inserts.forEach((insert) => document.querySelector(`.${parentClass}`).removeChild(insert));
+  inserts.forEach((insert) =>
+    document.querySelector(`.${parentClass}`).removeChild(insert)
+  );
 }
 
 export function insertTitle(insertionPoint, title) {
@@ -141,11 +143,11 @@ export function insertBookCount(bookCount) {
   main.insertBefore(count, main.firstChild.nextSibling);
 }
 
-export function runModal(callBack1, callBack2, searchResult = false) {    
+export function runModal(callBack1, callBack2, searchResult = false) {
   //create variable for the div holding the modal HTML content
   let modal;
   //creat a variblae to hold the list of all modals on the page
-  let modals = document.querySelectorAll(".modal");     
+  let modals = document.querySelectorAll(".modal");
   //set counter to label the data-id for matching the div to the button
   let modalCnt = 0;
   //cycle through each div & set the data-id so it can be used for matching
@@ -154,7 +156,7 @@ export function runModal(callBack1, callBack2, searchResult = false) {
     //advand the count for unique labeling
     modalCnt++;
   });
-  console.log(modals);   
+  console.log(modals);
   //create a list of all the detail buttons on the page
   let btns = document.querySelectorAll(".details_bttn");
   // // When the user clicks on the button, open the modal
@@ -168,8 +170,8 @@ export function runModal(callBack1, callBack2, searchResult = false) {
     btn.setAttribute("data-id", "match" + btnCnt);
     //set a variable for the button that was pushed
     let clickedBtn = document.getElementById("details_bttn" + btnCnt);
-    //open the modal div when the user clicks on the button    
-    clickedBtn.onclick = function () {         
+    //open the modal div when the user clicks on the button
+    clickedBtn.onclick = function () {
       modals.forEach((card) => {
         //match the clicked button to the modal that goes with it
         if (
@@ -177,19 +179,20 @@ export function runModal(callBack1, callBack2, searchResult = false) {
         ) {
           if (searchResult == true) {
             //get the book's id stored in the data-id of the "Want to Read" button
-            //from the card that had the modal detail button clicked            
-            let bookIdElementContainer = clickedBtn.previousElementSibling.firstElementChild;            
+            //from the card that had the modal detail button clicked
+            let bookIdElementContainer =
+              clickedBtn.previousElementSibling.firstElementChild;
             let bookId = bookIdElementContainer.getAttribute("data-id");
             console.log(bookId);
             //get the element of the modal div where the modal deatail button was clicked
-            let bookCard = clickedBtn.parentElement.nextElementSibling;    
+            let bookCard = clickedBtn.parentElement.nextElementSibling;
             console.log(bookCard);
             //set a variable equal to the return value from the 1st call back function
             //this function fetches the book details from the api for that specific book
             let book = callBack1(bookId);
             //pass in the book details from the api and the element of the modal div
             //for that specific book only so the right info goes to each card
-            callBack2(book, bookCard)          
+            callBack2(book, bookCard);
           }
           //store the modal div that matches the button in a variable
           modal = card;
@@ -221,14 +224,21 @@ export function runModal(callBack1, callBack2, searchResult = false) {
 export function getStars(fiveRating) {
   // Round to nearest half
   let rating = Math.round(fiveRating * 2) / 2;
-  let output = [];  
+  let output = [];
   // Append all the filled whole stars
   for (var i = rating; i >= 1; i--)
-    output.push("<i class='fa fa-star' aria-hidden='true' style='color: gold;'></i>&nbsp;");  
+    output.push(
+      "<i class='fa fa-star' aria-hidden='true' style='color: gold;'></i>&nbsp;"
+    );
   // If there is a half a star, append it
-  if (i == .5) output.push("<i class='fa fa-star-half-o' aria-hidden='true' style='color: gold;'></i>&nbsp;");  
+  if (i == 0.5)
+    output.push(
+      "<i class='fa fa-star-half-o' aria-hidden='true' style='color: gold;'></i>&nbsp;"
+    );
   // Fill the empty stars
-  for (let n = (5 - rating); n >= 1; n--)
-    output.push("<i class='fa fa-star-o' aria-hidden='true' style='color: gold;'></i>&nbsp;");  
-  return output.join("");  
+  for (let n = 5 - rating; n >= 1; n--)
+    output.push(
+      "<i class='fa fa-star-o' aria-hidden='true' style='color: gold;'></i>&nbsp;"
+    );
+  return output.join("");
 }

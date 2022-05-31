@@ -5,7 +5,7 @@ import {
   getLocalStorage,
   setLocalStorage,
   runModal,
-  getStars
+  getStars,
 } from "./utils.js";
 
 import ExternalServices from "./externalServices.js";
@@ -25,7 +25,7 @@ export default class SearchResults {
     console.log(list);
 
     //render the list
-    this.renderList(list.items);    
+    this.renderList(list.items);
   }
 
   async renderList(list) {
@@ -38,7 +38,7 @@ export default class SearchResults {
       this.prepareTemplate
     );
     runModal(getSpecificBookInfo, populateModal, true);
-    console.log(cardTemplate)    
+    console.log(cardTemplate);
   }
 
   prepareTemplate(templateClone, book) {
@@ -51,8 +51,8 @@ export default class SearchResults {
         "./images/bookCoverPlaceholder.gif";
     }
 
-    templateClone.querySelector("img").alt = book.volumeInfo.title;   
-    templateClone.querySelector(".bookTitle").innerHTML = book.volumeInfo.title;   
+    templateClone.querySelector("img").alt = book.volumeInfo.title;
+    templateClone.querySelector(".bookTitle").innerHTML = book.volumeInfo.title;
     let authors = templateClone.querySelector(".authors");
 
     // Add in the author
@@ -77,10 +77,11 @@ export default class SearchResults {
     };
     let publishDate = new Date(book.volumeInfo.publishedDate);
     templateClone.querySelector(".publishDate").innerHTML +=
-      publishDate.toLocaleDateString("en-US", options);  
-    
+      publishDate.toLocaleDateString("en-US", options);
+
     // give functionality to each button
-    templateClone.querySelector(".addToShelfButtons").innerHTML = bookListButtons(book.id);
+    templateClone.querySelector(".addToShelfButtons").innerHTML =
+      bookListButtons(book.id);
 
     // templateClone.querySelector(".addToReading")
     let addToReadingBtn = templateClone.querySelector(".addToReading");
@@ -106,7 +107,7 @@ export default class SearchResults {
     });
     let bookId = addToReadingBtn.getAttribute("data-id");
     console.log(bookId);
-    // getSpecificBookInfo(bookId);        
+    // getSpecificBookInfo(bookId);
     return templateClone;
   }
 }
@@ -143,13 +144,12 @@ function bookListButtons(id) {
     <button class="addToWantToRead" data-id="${id}">Want to Read</button>`;
 }
 
-
 async function getSpecificBookInfo(bookId) {
   let bookIds = document.querySelectorAll(".addToReading");
-  bookIds.forEach(id => {
+  bookIds.forEach((id) => {
     let detailBookId = id.getAttribute("data-id");
     console.log(detailBookId);
-  }) 
+  });
   let book = await connection.findBookById(bookId, false);
   console.log(bookId);
   console.log(book);
@@ -158,9 +158,9 @@ async function getSpecificBookInfo(bookId) {
 
 async function populateModal(bookId, modalCard) {
   //get the promise fulfilled for getting the book from the api
-  let book = await bookId
+  let book = await bookId;
   console.log(book);
-  //add in the book cover image or a replacement if it is not available 
+  //add in the book cover image or a replacement if it is not available
   try {
     modalCard.querySelector(".book_modal_img").src =
       book.volumeInfo.imageLinks.smallThumbnail;
@@ -170,52 +170,55 @@ async function populateModal(bookId, modalCard) {
   }
   //add in the alt tag information
   modalCard.querySelector(".book_modal_img").alt = book.volumeInfo.title;
-  //add in the title 
-  modalCard.querySelector(".books_modal_title").innerHTML = book.volumeInfo.title;
+  //add in the title
+  modalCard.querySelector(".books_modal_title").innerHTML =
+    book.volumeInfo.title;
   //insert the subtitle or nothing if there isn't one
-  if(book.volumeInfo.subtitle) {
-    modalCard.querySelector(".books_modal_title").innerHTML += 
-    ": " + book.volumeInfo.subtitle;
+  if (book.volumeInfo.subtitle) {
+    modalCard.querySelector(".books_modal_title").innerHTML +=
+      ": " + book.volumeInfo.subtitle;
   } else {
     modalCard.querySelector(".books_modal_title").innerHTML += "";
-  } 
+  }
   //insert authors divided by commas or state the author isn't listed
   if (book.volumeInfo.authors) {
-    modalCard.querySelector(".books_modal_authors").innerHTML += 
-    book.volumeInfo.authors.join(", ");
+    modalCard.querySelector(".books_modal_authors").innerHTML +=
+      book.volumeInfo.authors.join(", ");
   } else {
     this.author = "No Author Listed";
   }
   //insert the publishing date or state it isn't listed
   if (book.volumeInfo.publishedDate) {
-    modalCard.querySelector(".books_modal_publish_date").innerHTML +=
-    new Date(book.volumeInfo.publishedDate).toDateString("en-US");
+    modalCard.querySelector(".books_modal_publish_date").innerHTML += new Date(
+      book.volumeInfo.publishedDate
+    ).toDateString("en-US");
   } else {
-    modalCard.querySelector(".books_modal_publish_date").innerHTML += 
-    "No Publish Date Listed";
+    modalCard.querySelector(".books_modal_publish_date").innerHTML +=
+      "No Publish Date Listed";
   }
   //insert the publisher if listed or state the publisher isn't listed
   if (book.volumeInfo.publisher) {
-    modalCard.querySelector(".books_modal_publisher").innerHTML += 
-    book.volumeInfo.publisher;
+    modalCard.querySelector(".books_modal_publisher").innerHTML +=
+      book.volumeInfo.publisher;
   } else {
-    modalCard.querySelector(".books_modal_publisher").innerHTML += "No Publisher Listed";
-  } 
+    modalCard.querySelector(".books_modal_publisher").innerHTML +=
+      "No Publisher Listed";
+  }
   //insert the page count or state it isn't listed
-  if(book.volumeInfo.printedPageCount) {       
-    modalCard.querySelector(".books_modal_page_count").innerHTML = 
-    book.volumeInfo.printedPageCount + " Pages";
+  if (book.volumeInfo.printedPageCount) {
+    modalCard.querySelector(".books_modal_page_count").innerHTML =
+      book.volumeInfo.printedPageCount + " Pages";
   } else {
     modalCard.querySelector(".books_modal_page_count").innerHTML =
-    "Book Length Not Given";
+      "Book Length Not Given";
   }
   //insert the genre or state it isn't listed
-  if(book.volumeInfo.categories) {
-    modalCard.querySelector(".books_modal_genre").innerHTML = 
-    "Category: " + book.volumeInfo.categories;
+  if (book.volumeInfo.categories) {
+    modalCard.querySelector(".books_modal_genre").innerHTML =
+      "Category: " + book.volumeInfo.categories;
   } else {
-    modalCard.querySelector(".books_modal_genre").innerHTML = 
-    "Genre Not Listed"
+    modalCard.querySelector(".books_modal_genre").innerHTML =
+      "Genre Not Listed";
   }
   //insert the number of reviews or state no reviews have been given
   if (book.volumeInfo.ratingsCount) {
@@ -225,22 +228,24 @@ async function populateModal(bookId, modalCard) {
     } else {
       review = " Reviews";
     }
-    //create stars from the average rating number to insert   
-    let starRating = getStars(book.volumeInfo.averageRating); 
-    modalCard.querySelector(".books_modal_ratings").innerHTML = 
-    book.volumeInfo.ratingsCount + review + " &nbsp; " + starRating;
+    //create stars from the average rating number to insert
+    let starRating = getStars(book.volumeInfo.averageRating);
+    modalCard.querySelector(".books_modal_ratings").innerHTML =
+      book.volumeInfo.ratingsCount + review + " &nbsp; " + starRating;
   } else {
     modalCard.querySelector(".books_modal_ratings").innerHTML = "No Reviews";
   }
   //insert the book's infoLink and from Google
-  modalCard.querySelector(".books_modal_infoLink").href = book.volumeInfo.infoLink;
-  modalCard.querySelector(".books_modal_previewLink").href = book.volumeInfo.previewLink;
+  modalCard.querySelector(".books_modal_infoLink").href =
+    book.volumeInfo.infoLink;
+  modalCard.querySelector(".books_modal_previewLink").href =
+    book.volumeInfo.previewLink;
   //insert the book summary or state that it has no summary
   if (book.volumeInfo.previewLink) {
-    modalCard.querySelector(".books_modal_summary").innerHTML = 
-    book.volumeInfo.description;
+    modalCard.querySelector(".books_modal_summary").innerHTML =
+      book.volumeInfo.description;
   } else {
-    modalCard.querySelector(".books_modal_summary").innerHTML = 
-    "There is no summary given for this book.";
-  } 
+    modalCard.querySelector(".books_modal_summary").innerHTML =
+      "There is no summary given for this book.";
+  }
 }

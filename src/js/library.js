@@ -5,11 +5,11 @@ import DarkMode from "./darkmode";
 //put in the header & footer
 // loadHeaderFooter();
 async function loadPage() {
-    await loadHeaderFooter();
-    const darkMode = new DarkMode
-    darkMode.init()
-  }
-  loadPage()
+  await loadHeaderFooter();
+  const darkMode = new DarkMode();
+  darkMode.init();
+}
+loadPage();
 //put in the header & footer
 // loadHeaderFooter();
 
