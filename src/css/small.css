@@ -93,7 +93,7 @@ body {
   margin-right: 10%;
   /* width: 100%; */
 }
-.navbar H1 {
+.navbar h1 {
   font-family: var(--font-headline);
   font-size: 3.2rem;
   padding-left: 0.3rem;
@@ -175,8 +175,10 @@ input[type="checkbox"] {
   user-select: none;
 }
 
+/* This is for the hamburger menu colors */
 .hamburger1 div {
-  background-color: var(--light-grey);
+  /* background-color: var(--light-grey); */
+  background-color: rgb(61, 61, 61);
   position: relative;
   width: 40px;
   height: 5px;
