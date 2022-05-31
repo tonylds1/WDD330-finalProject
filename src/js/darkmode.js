@@ -61,13 +61,12 @@ export default class DarkMode {
     // document.querySelector(".darkModeToggle").innerHTML = "Light mode"
     document.documentElement.style.setProperty("--primary-color", "#1BD4BA");
     document.documentElement.style.setProperty("--secondary-color", "#000");
-    document.documentElement.style.setProperty("--tertiary-color", "#bf8c00");
+    document.documentElement.style.setProperty("--tertiary-color", "#e05d0b");
     document.documentElement.style.setProperty("--quaternary-color", "#dadfe1");
     document.documentElement.style.setProperty("--base-color", "#363636");
     document.documentElement.style.setProperty("--text-color", "white");
     document.documentElement.style.setProperty("--light-background", "#dadfe1");
     document.documentElement.style.setProperty("--dark-grey", "#fefefe");
-
   }
 
   lightMode() {
