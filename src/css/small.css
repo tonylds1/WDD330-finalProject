@@ -1,9 +1,9 @@
 /************************** START OF VARIABLES USED IN CSS ********************************************/
 :root {
-  --font-body: "Roboto", sans-serif;
-  --font-headline: "Lato", sans-serif;
-  --font-family: "Montserrat Alternates", sans-serif;
-
+  --font-body:'Source Sans Pro', sans-serif;
+  --font-headline:'Montserrat', sans-serif;
+  --font-family: 'Architects Daughter', cursive;
+  
   /* colors- Dark Mode */
   --primary-color: #1ad4ba;
   --secondary-color: #ec1bbc;
@@ -59,7 +59,19 @@ li {
   padding: 1em;
 }
 .navbar img {
-  width: 100%;
+  width:6rem;
+  margin-right: 10%;
+  /* width: 100%; */
+}
+.navbar H1{
+  font-family: var(--font-headline);
+  font-size: 3.2rem;
+  padding-left: .3rem;
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+}
+.navbar ul{
+  font-family: var(--font-body);
 }
 
 .search-container {
@@ -79,6 +91,11 @@ li {
 .search-container form {
   margin: auto;
   text-align: center;
+}
+
+
+.bannerS h2{
+font-family: var(--font-body);
 }
 
 input[type="search"] {
@@ -132,6 +149,7 @@ input[type="checkbox"] {
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
+
 #toggle1 {
   display: none;
 }
@@ -668,6 +686,10 @@ p.alert, p.count_message {
   display: flex;
   justify-content: space-between;
 }
+
+
+
+/**************************** END OF ALERT STYLING ************************************************/
 
 p.count_message {
   margin-bottom: 2rem;
