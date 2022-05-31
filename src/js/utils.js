@@ -61,8 +61,6 @@ export async function loadHeaderFooter() {
   // console.log(footer);
   renderWithTemplate(headerTemplate, header);
   renderWithTemplate(footerTemplate, footer);
-
-
 }
 
 // retrieve data from localstorage
