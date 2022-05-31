@@ -193,6 +193,18 @@ input[type="checkbox"] {
   padding: 5px 14px;
 }
 
+/* Dark Mode button */
+.darkModeToggle {
+  /* background-color: orangered; */
+  border: none;
+  /* color: white; */
+  /* text-align: center; */
+  /* padding: 0.5em; */
+  margin: 0.5em;
+  /* text-decoration: none; */
+/* font-size: smaller; */
+}
+
 
 /* HYPERLINK STYLING */
 footer a:link {
