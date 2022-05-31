@@ -29,30 +29,38 @@ export default class SearchResults {
       this.searchBatchStart, this.limiter);
     //clear the previous results if getting the next 40
     let results = document.querySelectorAll(".result-div");
-    console.log(results);
-    if(results.length > 0) {
-    results.forEach(result => {   
-      result.parentNode.removeChild(result);
-    })
-  }
+    // console.log(results);
+    if (results.length > 0) {
+      results.forEach(result => {
+        result.parentNode.removeChild(result);
+      })
+    }
+    if (this.searchBatchStart != 0) {
+      document.querySelector(".rewinder").classList.remove("hide")
+    } else {
+      document.querySelector(".rewinder").classList.add("hide")
+    }
+
     //render the list
-    this.renderList(list.items);      
+    this.renderList(list.items);
   }
 
-  async renderList(list) {    
-    const cardTemplate = await loadTemplate("./partials/searchResults.html");     
+  async renderList(list) {
+    const cardTemplate = await loadTemplate("./partials/searchResults.html");
     renderListWithTemplate(
       cardTemplate,
       this.listElement,
       list,
-      this.prepareTemplate,        
+      this.prepareTemplate,
     );
     //clear the back to the top button if it is there
     let backToTopBttn = document.querySelector(".back_to_top");
-    console.log(backToTopBttn);
+    // console.log(backToTopBttn);
     if (backToTopBttn != null) {
-    backToTopBttn.parentNode.removeChild(backToTopBttn)
-    }  
+      backToTopBttn.parentNode.removeChild(backToTopBttn)
+    }
+
+
     //function to set up the modal pop-up when detail button is clicked
     runModal(getSpecificBookInfo, populateModal, true);
     //get the element that the number for the book card goes in
@@ -62,10 +70,10 @@ export default class SearchResults {
     //get the element to add the total search number results to
     let searchCount = document.querySelector(".search_results_header");
     //add the count interval of the search to the search header
-    searchCount.innerHTML = "(" + (this.searchBatchStart + 1) + 
-    "-" + (this.searchBatchStart + 40) + ")";
+    searchCount.innerHTML = "(" + (this.searchBatchStart + 1) +
+      "-" + (this.searchBatchStart + 40) + ")";
     //add a back to the top button at the bottom of the page
-    let top = document.createElement("button");    
+    let top = document.createElement("button");
     top.type = "button";
     top.className = "back_to_top";
     top.innerHTML = "Back to the Top"
@@ -85,8 +93,8 @@ export default class SearchResults {
         "./images/bookCoverPlaceholder.gif";
     }
 
-    templateClone.querySelector("img").alt = book.volumeInfo.title;   
-    templateClone.querySelector(".bookTitle").innerHTML = book.volumeInfo.title;   
+    templateClone.querySelector("img").alt = book.volumeInfo.title;
+    templateClone.querySelector(".bookTitle").innerHTML = book.volumeInfo.title;
     let authors = templateClone.querySelector(".authors");
 
     // Add in the author
@@ -101,8 +109,13 @@ export default class SearchResults {
     authors.innerHTML = authors.innerHTML.slice(0, -2);
 
     // Add in the publisher and the publish date
-    templateClone.querySelector(".publisher").innerHTML +=
-      book.volumeInfo.publisher;
+    if (book.volumeInfo.publisher) {
+      templateClone.querySelector(".publisher").innerHTML +=
+        book.volumeInfo.publisher;
+    } else {
+      templateClone.querySelector(".publisher").innerHTML =
+        "No Publisher Listed"
+    }
     const options = {
       weekday: "long",
       year: "numeric",
@@ -111,8 +124,8 @@ export default class SearchResults {
     };
     let publishDate = new Date(book.volumeInfo.publishedDate);
     templateClone.querySelector(".publishDate").innerHTML +=
-      publishDate.toLocaleDateString("en-US", options);  
-    
+      publishDate.toLocaleDateString("en-US", options);
+
     // give functionality to each button
     templateClone.querySelector(".addToShelfButtons").innerHTML = bookListButtons(book.id);
 
@@ -122,23 +135,24 @@ export default class SearchResults {
       let id = addToReadingBtn.getAttribute("data-id");
       // add the id to the reading list
       addToShelf(id, "reading-shelf");
-      console.log(id);
+      // console.log(id);
     });
     let addToReadBtn = templateClone.querySelector(".addToRead");
     addToReadBtn.addEventListener("click", async () => {
       let id = addToReadBtn.getAttribute("data-id");
       // add the id to the read list
       addToShelf(id, "read-shelf");
-      console.log(id);
+      // console.log(id);
     });
     let addToWantToReadBtn = templateClone.querySelector(".addToWantToRead");
     addToWantToReadBtn.addEventListener("click", async () => {
       let id = addToWantToReadBtn.getAttribute("data-id");
       // add the id to the want to read list
       addToShelf(id, "want-read-shelf");
-      console.log(id);
-    });  
-    
+      // console.log(id);
+
+    });
+
     // let description = templateClone.querySelector(".description");
     // if(book.volumeInfo.description) {    
     // description.innerHTML = book.volumeInfo.description;
@@ -156,7 +170,10 @@ function addToShelf(id, shelfId) {
     shelf = [];
   }
   let now = new Date();
-  let newBook = { id, now };
+  let newBook = {
+    id,
+    now
+  };
   let duplicate = false;
 
   // remove any duplicates
@@ -188,17 +205,17 @@ async function getSpecificBookInfo(bookId) {
   bookIds.forEach(id => {
     let detailBookId = id.getAttribute("data-id");
     // console.log(detailBookId);
-  }) 
+  })
   let book = await connection.findBookById(bookId, false);
-  console.log(bookId);
-  console.log(book);
+  // console.log(bookId);
+  // console.log(book);
   return book;
 }
 
 async function populateModal(bookId, modalCard) {
   //get the promise fulfilled for getting the book from the api
   let book = await bookId
-  console.log(book);
+  // console.log(book);
   //add in the book cover image or a replacement if it is not available 
   try {
     modalCard.querySelector(".book_modal_img").src =
@@ -212,49 +229,49 @@ async function populateModal(bookId, modalCard) {
   //add in the title 
   modalCard.querySelector(".books_modal_title").innerHTML = book.volumeInfo.title;
   //insert the subtitle or nothing if there isn't one
-  if(book.volumeInfo.subtitle) {
-    modalCard.querySelector(".books_modal_title").innerHTML += 
-    ": " + book.volumeInfo.subtitle;
+  if (book.volumeInfo.subtitle) {
+    modalCard.querySelector(".books_modal_title").innerHTML +=
+      ": " + book.volumeInfo.subtitle;
   } else {
     modalCard.querySelector(".books_modal_title").innerHTML += "";
-  } 
+  }
   //insert authors divided by commas or state the author isn't listed
   if (book.volumeInfo.authors) {
-    modalCard.querySelector(".books_modal_authors").innerHTML += 
-    book.volumeInfo.authors.join(", ");
+    modalCard.querySelector(".books_modal_authors").innerHTML +=
+      book.volumeInfo.authors.join(", ");
   } else {
     this.author = "No Author Listed";
   }
   //insert the publishing date or state it isn't listed
   if (book.volumeInfo.publishedDate) {
     modalCard.querySelector(".books_modal_publish_date").innerHTML +=
-    new Date(book.volumeInfo.publishedDate).toDateString("en-US");
+      new Date(book.volumeInfo.publishedDate).toDateString("en-US");
   } else {
-    modalCard.querySelector(".books_modal_publish_date").innerHTML += 
-    "No Publish Date Listed";
+    modalCard.querySelector(".books_modal_publish_date").innerHTML +=
+      "No Publish Date Listed";
   }
   //insert the publisher if listed or state the publisher isn't listed
   if (book.volumeInfo.publisher) {
-    modalCard.querySelector(".books_modal_publisher").innerHTML += 
-    book.volumeInfo.publisher;
+    modalCard.querySelector(".books_modal_publisher").innerHTML +=
+      book.volumeInfo.publisher;
   } else {
     modalCard.querySelector(".books_modal_publisher").innerHTML += "No Publisher Listed";
-  } 
+  }
   //insert the page count or state it isn't listed
-  if(book.volumeInfo.printedPageCount) {       
-    modalCard.querySelector(".books_modal_page_count").innerHTML = 
-    book.volumeInfo.printedPageCount + " Pages";
+  if (book.volumeInfo.printedPageCount) {
+    modalCard.querySelector(".books_modal_page_count").innerHTML =
+      book.volumeInfo.printedPageCount + " Pages";
   } else {
     modalCard.querySelector(".books_modal_page_count").innerHTML =
-    "Book Length Not Given";
+      "Book Length Not Given";
   }
   //insert the genre or state it isn't listed
-  if(book.volumeInfo.categories) {
-    modalCard.querySelector(".books_modal_genre").innerHTML = 
-    "Category: " + book.volumeInfo.categories;
+  if (book.volumeInfo.categories) {
+    modalCard.querySelector(".books_modal_genre").innerHTML =
+      "Category: " + book.volumeInfo.categories;
   } else {
-    modalCard.querySelector(".books_modal_genre").innerHTML = 
-    "Genre Not Listed"
+    modalCard.querySelector(".books_modal_genre").innerHTML =
+      "Genre Not Listed"
   }
   //insert the number of reviews or state no reviews have been given
   if (book.volumeInfo.ratingsCount) {
@@ -265,9 +282,9 @@ async function populateModal(bookId, modalCard) {
       review = " Reviews";
     }
     //create stars from the average rating number to insert   
-    let starRating = getStars(book.volumeInfo.averageRating); 
-    modalCard.querySelector(".books_modal_ratings").innerHTML = 
-    book.volumeInfo.ratingsCount + review + " &nbsp; " + starRating;
+    let starRating = getStars(book.volumeInfo.averageRating);
+    modalCard.querySelector(".books_modal_ratings").innerHTML =
+      book.volumeInfo.ratingsCount + review + " &nbsp; " + starRating;
   } else {
     modalCard.querySelector(".books_modal_ratings").innerHTML = "No Reviews";
   }
@@ -275,11 +292,11 @@ async function populateModal(bookId, modalCard) {
   modalCard.querySelector(".books_modal_infoLink").href = book.volumeInfo.infoLink;
   modalCard.querySelector(".books_modal_previewLink").href = book.volumeInfo.previewLink;
   //insert the book summary or state that it has no summary
-  if (book.volumeInfo.previewLink) {
-    modalCard.querySelector(".books_modal_summary").innerHTML = 
-    book.volumeInfo.description;
+  if (book.volumeInfo.description) {
+    modalCard.querySelector(".books_modal_summary").innerHTML =
+      book.volumeInfo.description;
   } else {
-    modalCard.querySelector(".books_modal_summary").innerHTML = 
-    "There is no summary given for this book.";
-  } 
+    modalCard.querySelector(".books_modal_summary").innerHTML =
+      "There is no summary given for this book.";
+  }
 }
