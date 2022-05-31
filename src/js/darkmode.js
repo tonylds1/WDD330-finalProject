@@ -33,24 +33,33 @@ export default class DarkMode {
     let buttonList = document.querySelectorAll(".darkModeToggle");
     // console.log(buttons)
     buttonList.forEach((button) => {
+      this.changeButtonImage()
+      button.addEventListener("click", () => {
+        if (this.currentTheme == "light") {
+          // button.src = "../images/sunny.png";
+          this.currentTheme = "dark";
+          this.darkMode();
+          this.changeButtonImage()
+        } else if (this.currentTheme == "dark") {
+          // button.src = "../images/moon.png";
+          this.lightMode();
+          this.currentTheme = "light";
+          this.changeButtonImage()
+        }
+        setLocalStorage("theme", this.currentTheme);
+      });
+    });
+  }
+
+  changeButtonImage() {
+    let buttonList = document.querySelectorAll(".darkModeToggle");
+    buttonList.forEach((button) => {
       if (this.currentTheme == "light") {
         button.src = "../images/moon.png";
       } else if (this.currentTheme == "dark") {
         button.src = "../images/sunny.png";
       }
-      button.addEventListener("click", () => {
-        if (this.currentTheme == "light") {
-          button.src = "../images/sunny.png";
-          this.currentTheme = "dark";
-          this.darkMode();
-        } else if (this.currentTheme == "dark") {
-          button.src = "../images/moon.png";
-          this.lightMode();
-          this.currentTheme = "light";
-        }
-        setLocalStorage("theme", this.currentTheme);
-      });
-    });
+    })
   }
 
   darkMode() {
