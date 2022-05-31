@@ -66,10 +66,10 @@ export default class ExternalServices {
   constructor() {}
 
   // get book list in increments of 40
-  async getBookData(enteredSearch, searchBatch = 0) {
+  async getBookData(searchGuide, enteredSearch, searchBatch = 0, limiter) {
     const requestResults = await fetch(
       baseURL +
-        `?q=search ${enteredSearch}
+        `?q=${searchGuide}${enteredSearch}${limiter}
     &printType=books&maxResults=40&startIndex=${searchBatch}`
     );
     const jsonBookResults = await convertToJson(requestResults);

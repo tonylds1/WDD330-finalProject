@@ -15,15 +15,18 @@ import ExternalServices from "./externalServices.js";
 let connection = new ExternalServices();
 
 export default class SearchResults {
-  constructor(searchTerm, dataSource, listElement, searchBatchStart) {
+  constructor(searchGuide, searchTerm, dataSource, listElement, searchBatchStart, limiter) {
+    this.searchGuide = searchGuide;
     this.searchTerm = searchTerm;
     this.dataSource = dataSource;
     this.listElement = listElement;
-    this.searchBatchStart = searchBatchStart;    
+    this.searchBatchStart = searchBatchStart;
+    this.limiter = limiter;    
   }
 
   async init() {
-    const list = await this.dataSource.getBookData(this.searchTerm, this.searchBatchStart);
+    const list = await this.dataSource.getBookData(this.searchGuide, this.searchTerm, 
+      this.searchBatchStart, this.limiter);
     //clear the previous results if getting the next 40
     let results = document.querySelectorAll(".result-div");
     console.log(results);
