@@ -8,18 +8,18 @@ export default class DarkMode {
   }
 
   async init() {
+    // Set the preference the first time the user visits the site
     if (
-      window.matchMedia("(prefers-color-scheme: dark)") &&
+      window.matchMedia("(prefers-color-scheme: light)").matches &&
       this.currentTheme == null
     ) {
-      this.currentTheme = "dark";
-    }
+      this.currentTheme = "light";
+
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches && this.currentTheme == null) {
+      this.currentTheme = "dark"
+    } 
     await this.darkModeButton();
-    // else if (window.matchMedia("(prefers-color-scheme: light)") && this.currentTheme == null) {
-    //   this.currentTheme = "light"
-    // } else if (window.matchMedia("(prefers-color-scheme: no preference)") && this.currentTheme == null) {
-    //   this.currentTheme = "light"
-    // }
+
 
     // Set the page colors based on the current theme
     if (this.currentTheme == "dark") {
@@ -35,20 +35,15 @@ export default class DarkMode {
     buttonList.forEach((button) => {
       if (this.currentTheme == "light") {
         button.src = "../images/moon.png";
-        // console.log("sun")
       } else if (this.currentTheme == "dark") {
-        // button.innerHTML = "Light mode"
         button.src = "../images/sunny.png";
-        // console.log("moon")
       }
       button.addEventListener("click", () => {
         if (this.currentTheme == "light") {
-          // button.innerHTML = "Light mode"
           button.src = "../images/sunny.png";
           this.currentTheme = "dark";
           this.darkMode();
         } else if (this.currentTheme == "dark") {
-          // button.innerHTML = "Dark mode"
           button.src = "../images/moon.png";
           this.lightMode();
           this.currentTheme = "light";
@@ -56,8 +51,6 @@ export default class DarkMode {
         setLocalStorage("theme", this.currentTheme);
       });
     });
-
-    console.log(this.currentTheme);
   }
 
   darkMode() {
