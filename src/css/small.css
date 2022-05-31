@@ -32,7 +32,8 @@
   /* colors-hyperlinks */
   --link-main: rgb(0, 162, 255);
   --link-visited: rgb(221, 2, 221);
-  --link-hover: rgb(229, 126, 24);
+  --link-hover: #ffbf69;
+  /* --link-hover: rgb(229, 126, 24); */
   --link-active: rgba(255, 0, 0, 0.5);
 
   /* sizes */
@@ -46,6 +47,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+body{
+  font-family:var(--font-family);
 }
 
 a {
@@ -134,7 +138,7 @@ input[type="search"]:focus {
 }
 
 .nav-links a {
-  color: #000;
+  color:var(--dark-grey);
 }
 
 /* LOGO */
@@ -170,7 +174,7 @@ input[type="checkbox"] {
 }
 
 .hamburger1 div {
-  background-color: rgb(61, 61, 61);
+  background-color: var(--light-grey);
   position: relative;
   width: 40px;
   height: 5px;
@@ -211,7 +215,7 @@ input[type="checkbox"] {
   display: flex;
   gap: 1em;
   font-size: 18px;
-  border: 1px solid #000;
+  border:none;
 }
 
 /* .menu li */
@@ -312,10 +316,9 @@ footer a:active {
   font-size: 4rem;
   padding: 2rem 1rem 1rem 3rem;
   color: var(--dark-grey);
-} */
-
-/* .banner p {
-  color: var(--base-color);
+}
+.banner p {
+  color: var(--white);
   font-size: 2rem;
   padding: 1rem 2rem 0.2rem 3rem;
 } */
@@ -323,16 +326,11 @@ footer a:active {
 /* Banner  Smaller for library results page */
 .bannerS-image {
   /* background-image: url("../images/Booksstack.png"); */
-  /* background-color: #6c7489; */
-  /* Used if the image is unavailable */
-  height: 250px;
-  /* You must set a specified height */
-  background-position: center;
-  /* Center the image */
-  background-repeat: no-repeat;
-  /* Do not repeat the image */
-  background-size: cover;
-  /* Resize the background image to cover the entire container */
+  /* background-color: var(--dark-grey); */
+  height: 250px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 .bannerS h2 {
@@ -343,6 +341,7 @@ footer a:active {
 
 .bannerS p {
   color: var(--base-color);
+  /* color: var(--white); */
   font-size: 2rem;
   padding: 1rem 2rem 0.2rem 3rem;
 }
@@ -387,6 +386,7 @@ footer a:active {
 .main-footer {
   font-size: 0.4;
   background-color: var(--accent-grey);
+  /* background-color: var(--dark-grey); */
 }
 
 .footer-banner p {
@@ -398,6 +398,7 @@ footer a:active {
 /* Create three equal columns that floats next to each other */
 .column {
   background-color: var(--accent-grey);
+  /* background-color: var(--dark-grey); */
   float: left;
   width: 33.33%;
   padding: 10px;
@@ -413,11 +414,12 @@ footer a:active {
 }
 
 .btn {
-  border: 1px solid black;
+  border: 1px solid var(--black);
   outline: none;
   padding: 5px 5px;
   margin: 0.5em;
   background-color: var(--base-color);
+  /* background-color: var(--white); */
   background-color: rgba(255, 150, 0, 0.3);
   cursor: pointer;
   font-size: 18px;
@@ -447,6 +449,7 @@ button.btnI {
   background-color: var(--quaternary-color);
   border: none;
   color: var(--base-color);
+  /* color:var(--white); */
   border-radius: 8px;
   transform: scale(110%);
 }
@@ -455,6 +458,7 @@ button.btnI {
   border: none;
   background-color: var(--tertiary-color);
   color: var(--base-color);
+  /* color:var(--white); */
   border-radius: 8px;
   transform: scale(115%);
 }
@@ -480,14 +484,17 @@ button.btnI {
   padding: 8px 16px;
   /* background-color: #04AA6D; */
   background-color: var(--primary-color);
-
   color: var(--base-color);
+  /* background-color: #04AA6D; */
+  /* color: var(--white); */
   border-radius: 5px;
 }
 
 .greenButton:hover {
   background-color: var(--accent-grey);
   color: var(--light-background);
+  /* background-color: #ddd; */
+  /* color: var(--black); */
 }
 
 .result-div {
@@ -607,7 +614,7 @@ img.book_modal_img {
 
 /**** The Close Button to close the Modal ****/
 .close {
-  color: #aaa;
+  color: var(--light-grey);
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -615,7 +622,7 @@ img.book_modal_img {
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: var(--black);
   text-decoration: none;
   cursor: pointer;
 }
@@ -639,11 +646,13 @@ img.book_modal_img {
 .details_bttn:hover {
   background-color: rgb(176, 103, 0);
   color: var(--base-color);
+  /* color: var(--white); */
 }
 
 button.details_bttn:active {
   background-color: green;
   color: var(--base-color);
+  /* color:var(--white); */
   transition: 0.05s;
   transform: scale(1.05);
 }
@@ -666,19 +675,18 @@ button.details_bttn:active {
   margin: 0.1em;
   background-color: var(--quaternary-color);
   border: none;
-  /* color: var(--dark-grey); */
   color: var(--dark-grey);
+  /* color: var(--black); */
   padding: 0.4em;
   text-align: center;
   text-decoration: none;
-  /* display: inline-block; */
   font-size: 16px;
   border-radius: 7px;
 }
 
 .addToShelfButtons button:hover {
   background-color: var(--tertiary-color);
-  color: rgb(100, 100, 100);
+  color: var(--dark-grey);
   transition: 0.3s ease;
 }
 
@@ -691,24 +699,30 @@ button.book_delete {
   background-color: rgb(248, 63, 63);
   color: var(--base-color);
   border: 3px outset var(--base-color);
+  /* color: var(--white); */
+  /* border: 3px outset var(--white); */
   cursor: pointer;
 }
 
 .addToShelfButtons button.book_delete:hover {
   background-color: rgb(176, 0, 0);
   color: var(--base-color);
+  /* color: var(white); */
 }
 
 button.book_add {
   background-color: var(--primary-color);
   color: var(--base-color);
   border: 3px groove var(--base-color);
+  /* color: var(--white); */
+  /* border: 3px groove var(white); */
   cursor: pointer;
 }
 
 .addToShelfButtons button.book_add:hover {
   background-color: green;
   color: var(--base-color);
+  /* color: var(white); */
 }
 
 .addToShelfButtons button.book_add:active {
