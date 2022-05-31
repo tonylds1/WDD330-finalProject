@@ -121,7 +121,7 @@ export default class LibraryActions {
   async displayBooksFromShelf(insertionPoint2) {
     //set up variables for the elements holding the count
     let countHolder = document.querySelector(".count");
-    //loop through list of the books from the shelf
+    //loop through list of the books from the shelf   
     for (const bookId of this.bookShelf) {
       this.book = await connection.findBookById(bookId.id, false);
       // console.log(this.book);
