@@ -124,7 +124,8 @@ export default class SearchResults {
       publishDate.toLocaleDateString("en-US", options);
 
     // give functionality to each button
-    templateClone.querySelector(".addToShelfButtons").innerHTML = bookListButtons(book.id);
+    templateClone.querySelector(".addToShelfButtons").innerHTML =
+      bookListButtons(book.id);
 
     // templateClone.querySelector(".addToReading")
     let addToReadingBtn = templateClone.querySelector(".addToReading");
@@ -149,6 +150,10 @@ export default class SearchResults {
       // console.log(id);
 
     });
+    
+//     let bookId = addToReadingBtn.getAttribute("data-id");
+//     console.log(bookId);
+    // getSpecificBookInfo(bookId);
 
     // let description = templateClone.querySelector(".description");
     // if(book.volumeInfo.description) {    
@@ -196,7 +201,6 @@ function bookListButtons(id) {
     <button class="addToWantToRead" data-id="${id}">Want to Read</button>`;
 }
 
-
 async function getSpecificBookInfo(bookId) {
   let bookIds = document.querySelectorAll(".addToReading");
   bookIds.forEach(id => {
@@ -223,8 +227,9 @@ async function populateModal(bookId, modalCard) {
   }
   //add in the alt tag information
   modalCard.querySelector(".book_modal_img").alt = book.volumeInfo.title;
-  //add in the title 
-  modalCard.querySelector(".books_modal_title").innerHTML = book.volumeInfo.title;
+  //add in the title
+  modalCard.querySelector(".books_modal_title").innerHTML =
+    book.volumeInfo.title;
   //insert the subtitle or nothing if there isn't one
   if (book.volumeInfo.subtitle) {
     modalCard.querySelector(".books_modal_title").innerHTML +=
@@ -268,7 +273,7 @@ async function populateModal(bookId, modalCard) {
       "Category: " + book.volumeInfo.categories;
   } else {
     modalCard.querySelector(".books_modal_genre").innerHTML =
-      "Genre Not Listed"
+      "Genre Not Listed";
   }
   //insert the number of reviews or state no reviews have been given
   if (book.volumeInfo.ratingsCount) {
@@ -278,7 +283,7 @@ async function populateModal(bookId, modalCard) {
     } else {
       review = " Reviews";
     }
-    //create stars from the average rating number to insert   
+    //create stars from the average rating number to insert
     let starRating = getStars(book.volumeInfo.averageRating);
     modalCard.querySelector(".books_modal_ratings").innerHTML =
       book.volumeInfo.ratingsCount + review + " &nbsp; " + starRating;
@@ -286,10 +291,12 @@ async function populateModal(bookId, modalCard) {
     modalCard.querySelector(".books_modal_ratings").innerHTML = "No Reviews";
   }
   //insert the book's infoLink and from Google
-  modalCard.querySelector(".books_modal_infoLink").href = book.volumeInfo.infoLink;
-  modalCard.querySelector(".books_modal_previewLink").href = book.volumeInfo.previewLink;
+  modalCard.querySelector(".books_modal_infoLink").href =
+    book.volumeInfo.infoLink;
+  modalCard.querySelector(".books_modal_previewLink").href =
+    book.volumeInfo.previewLink;
   //insert the book summary or state that it has no summary
-  if (book.volumeInfo.description) {
+  if (book.volumeInfo.previewLink) {
     modalCard.querySelector(".books_modal_summary").innerHTML =
       book.volumeInfo.description;
   } else {

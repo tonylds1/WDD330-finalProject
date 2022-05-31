@@ -2,9 +2,16 @@
 import ExternalServices from "./externalServices.js";
 import { loadHeaderFooter, getParam } from "./utils.js";
 import SearchResults from "./SearchResultsList.js";
+import DarkMode from "./darkmode";
 
 //put in the header & footer
-loadHeaderFooter();
+// loadHeaderFooter();
+async function loadPage() {
+  await loadHeaderFooter();
+  const darkMode = new DarkMode();
+  darkMode.init();
+}
+loadPage();
 
 //get the element for the button to rewind 
 //the search results to the next 40 results
