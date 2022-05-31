@@ -21,9 +21,9 @@
   --dark-grey: #303030;
 
   /* colors-hyperlinks */
-  --link-main: blue;
-  --link-visited: purple;
-  --link-hover: red;
+  --link-main: rgb(0, 162, 255);
+  --link-visited: rgb(221, 2, 221);
+  --link-hover: rgb(229, 126, 24);
   --link-active: rgba(255, 0, 0, 0.5);
 
   /* sizes */
@@ -32,7 +32,7 @@
   --large-font: 1.6em;
 }
 
-/* UTILITIES */
+/*  || UTILITIES */
 * {
   margin: 0;
   padding: 0;
@@ -46,7 +46,7 @@ li {
   list-style: none;
 }
 
-/* NAVBAR STYLING STARTS */
+/* ||NAVBAR STYLING */
 .navbar {
   display: grid;
   gap: 1em;
@@ -80,7 +80,7 @@ li {
 }
 
 .search-container input {
-  width: 60%;
+  width: 300px;
   height: 50px;
   margin: auto;
   padding: 12px 20px;
@@ -90,21 +90,19 @@ li {
 }
 .search-container form {
   margin: auto;
-  /* justify-content: center;
-  justify-self: center;
-  align-items: center;
-  align-self: center; */
   text-align: center;
 }
+
 
 .bannerS h2{
 font-family: var(--font-body);
 }
-input[type=search] {
-  transition: width 0.3s ease-in-out;
+
+input[type="search"] {
+  transition: width 0.5s ease-in-out;
 }
 
-input[type=search]:focus {
+input[type="search"]:focus {
   width: 100%;
   text-align: left;
 }
@@ -118,24 +116,28 @@ input[type=search]:focus {
   display: flex;
   align-items: center;
   max-width: 100px;
-  /* padding: .5em; */
-  /* text-align: center; */
-  /* margin: auto 0; */
-  /* grid-template-columns: 1fr 1fr; */
 }
 /* NAVBAR MENU */
 
- /* CSS hamburger */
-
+/* CSS hamburger */
 /* Hamburger */
 .hamburger1 {
   height: 45px;
-  margin: 10px;
+  /* margin: 10px; */
   display: -ms-grid;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   justify-items: center;
   z-index: 120;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+.hamburger {
+  display: none;
+  font-size: 24px;
+  user-select: none;
 }
 
 .hamburger1 div {
@@ -144,38 +146,31 @@ input[type=search]:focus {
   width: 40px;
   height: 5px;
   margin-top: 7px;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 #toggle1 {
   display: none;
 }
-
 #toggle1:checked + .hamburger1 .top {
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   margin-top: 22.5px;
 }
-
 #toggle1:checked + .hamburger1 .meat {
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   margin-top: -5px;
 }
-
 #toggle1:checked + .hamburger1 .bottom {
   -webkit-transform: scale(0);
-          transform: scale(0);
+  transform: scale(0);
 }
-
 #toggle1:checked ~ .menu {
-  height: 100px;
+  height: 150px;
 }
-
 /* end css hamburger */
-
-
 
 .menu {
   margin-top: 1em;
@@ -187,80 +182,41 @@ input[type=search]:focus {
 
 /* .menu li */
 .menu li:hover {
-  /* background-color: var(--quaternary-color); */
-  /* background-color: rgba(0, 0, 0, 0.08); */
   border-radius: 5px;
   transition: 1.3s ease;
 }
 .menu li {
   padding: 5px 14px;
-  /* border-top: 1px solid #000; */
-}
-/* DROPDOWN MENU */
-.services {
-  position: relative;
-}
-.dropdown {
-  background-color: var(--quaternary-color);
-  padding: 1em 0;
-  position: absolute; /*WITH RESPECT TO PARENT*/
-  display: none;
-  border-radius: 8px;
-  top: 35px;
-}
-.dropdown li + li {
-  margin-top: 10px;
-}
-.dropdown li {
-  padding: 0.5em 1em;
-  width: 8em;
-  text-align: center;
-}
-.dropdown li:hover {
-  background-color: var(--tertiary-color);
-}
-.library:hover .dropdown {
-  display: block;
-}
-/*RESPONSIVE NAVBAR MENU STARTS*/
-/* CHECKBOX HACK */
-input[type="checkbox"] {
-  display: none;
-}
-/*HAMBURGER MENU*/
-.hamburger {
-  display: none;
-  font-size: 24px;
-  user-select: none;
 }
 
+
 /* HYPERLINK STYLING */
-/* a:link {
+footer a:link {
   color: var(--link-main);
   background-color: transparent;
   text-decoration: none;
 }
 
-a:visited {
+footer a:visited {
   color: var(--link-visited);
   background-color: transparent;
   text-decoration: none;
 }
 
-a:hover {
+footer a:hover {
   color: var(--link-hover);
   background-color: transparent;
   text-decoration: underline;
 }
 
-a:active {
+footer a:active {
   color: var(--link-active);
   background-color: transparent;
   text-decoration: underline;
-} */
+}
 
 /* APPLYING MEDIA QUERIES */
-@media (max-width: 768px) {
+@media (max-width: 880px) {
   .menu {
     display: none;
     position: absolute;
@@ -273,8 +229,7 @@ a:active {
   .menu li:hover {
     display: inline-block;
     background-color: var(--quaternary-color);
-    transition: 0.3s ease; 
-
+    transition: 0.3s ease;
   }
   .menu li + li {
     margin-top: 12px;
@@ -285,19 +240,11 @@ a:active {
   .hamburger {
     display: block;
   }
-  .dropdown {
-    left: 50%;
-    top: 30px;
-    transform: translateX(35%);
-  }
-  .dropdown li:hover {
-    background-color: var(--primary-color);
-  }
 }
+
 /* Banner */
 .banner-image {
-  /* background-image: url("../images/booksHero.png"); */
-  background-color: #6c7489; /* Used if the image is unavailable */
+  background-color: #6c7489;
   height: 500px; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
@@ -367,7 +314,7 @@ a:active {
 .wrapper {
   /* padding-left: 5em; */
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
 }
 
 /* Footer Code to be cleaned up */
@@ -398,34 +345,77 @@ a:active {
   clear: both;
 }
 .btn {
-  border: none;
+  border: 1px solid black;
   outline: none;
-  padding: 10px 16px;
+  padding: 5px 5px;
+  margin: 0.5em;
   background-color: white;
+  background-color: rgba(255, 150, 0, 0.3);
   cursor: pointer;
   font-size: 18px;
   border-radius: 8px;
 }
 
+button.btnI {
+  display: none;
+}
+
+/* trying to style the info button to be smaller */
+/* .btn #small{
+  inheritance:only-child;
+  border: 10px;
+  outline: none;
+  padding: 4px 6px !important;
+  background-color: white;
+  cursor: pointer;
+  font-size: 1px;
+  border-radius: 8px;
+} */
+
+
+
 /* Style the active class, and buttons on mouse-over */
 .active {
   background-color: var(--quaternary-color);
+  border: none;
   color: white;
   border-radius: 8px;
-  transform:scale(110%); 
+  transform: scale(110%);
 }
- .btn:hover {
+.btn:hover {
+  border: none;
   background-color: var(--tertiary-color);
   color: white;
   border-radius: 8px;
-  transform:scale(125%);
- }
+  transform: scale(115%);
+}
 
 /* Design for results page search results */
 
 .searchResults {
   max-width: 700px;
   margin: auto;
+}
+
+.searchResults h2 {
+  padding: 30px 30px 0 30px;
+}
+
+/* Search results back button */
+.greenButton {
+  margin: 2em;
+  /* margin-left: 2em; */
+  /* margin-top: 2em; */
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #04AA6D;
+  color: white;
+  border-radius: 5px;
+}
+.greenButton:hover {
+  background-color: #ddd;
+  color: black;
 }
 
 .result-div {
@@ -443,18 +433,143 @@ a:active {
   padding: 0.5em;
 }
 
+.book_count {
+  display:flex;
+  flex-direction: column; 
+  justify-content: space-between; 
+}
+
+.specialCount {
+  display: block;
+  margin: .5rem 0 .75rem .5rem;
+  color: #fcd000;
+  font-size: 1.5rem;
+  font-weight: bold; 
+  --size: 32px;  
+  line-height: var(--size);
+  width: var(--size);
+  height: var(--size);  
+  transform: rotate(-5deg);
+  background: rgb(138, 137, 137);
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 1px 1px 0 #999;
+}
+
 .result-div img {
   /* margin-right: 0.5em; */
+  grid-column: 1;
   padding: 0.5em;
   width: 100%;
+  border-radius: 10px;
 }
+
+.shelf_label {
+  font-size: 12px;
+  text-align: center;
+}
+
+/************ START OF Responsive both image and details on each phone and tablet ************/
+@media only screen and (max-width: 32em) {
+  .result-div img {
+    margin: auto;
+    width: 70%;
+    grid-column: 1/3;
+    grid-row: 1/2;
+  }
+
+  .result-div .book-details {
+    grid-column: 1/3;
+    grid-row: 2/3;
+  }
+}
+/*************** END OF Responsive both image and details on each phone and tablet ************/
+
+/********************* START OF CSS FOR MODAL POP-UP BOOK DETAILS PAGE ************************/
+.books_modal_title {
+  margin-top: 0;
+}
+
+img.book_modal_img {
+  max-width: 300px;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 80%;
+}
+
+/**** The Close Button to close the Modal ****/
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/**** The Details Button for the Modal to Open ****/
+.details_bttn_box { 
+  display: flex;
+}
+
+.details_bttn { 
+  grid-column: 2;
+  width: fit-content;
+  height: 30px;
+  margin: 0 1rem 0 auto;
+  background-color: var(--quaternary-color);
+  padding: 0 .5rem;
+  border: 3px outset white;
+  cursor: pointer;
+}
+
+.details_bttn:hover {
+  background-color: rgb(176, 103, 0);
+  color: white;
+}
+
+button.details_bttn:active {
+  background-color: green;
+  color: white;
+  transition: 0.05s;
+  transform: scale(1.05);
+}
+/********************* END OF CSS FOR MODAL POP-UP BOOK DETAILS PAGE **************************/
+
+/*************************** START OF CSS FOR BUTTONS ON BOOK CARDS ***************************/
 .current_shelf {
+  width:fit-content;
+  margin: .5rem auto;
   background-color: var(--quaternary-color);
   border: none;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 7px;
   padding: 0.4em;
 }
+
 .addToShelfButtons button {
   /* float: center; */
   margin: 0.1em;
@@ -473,7 +588,7 @@ a:active {
 .addToShelfButtons button:hover {
   background-color: var(--tertiary-color);
   color: rgb(100, 100, 100);
-  transition:0.3s ease;
+  transition: 0.3s ease;
 }
 
 .addToShelfButtons button:active {
@@ -481,23 +596,55 @@ a:active {
   color: rgb(255, 255, 255);
 }
 
-#my_book_lists{
+button.book_delete {
+  background-color: rgb(248, 63, 63);
+  color: var(--white);
+  border: 3px outset white;
+  cursor: pointer;
+}
+
+.addToShelfButtons button.book_delete:hover {
+  background-color: rgb(176, 0, 0);
+  color: white;
+}
+
+button.book_add {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: 3px groove white;
+  cursor: pointer;
+}
+
+.addToShelfButtons button.book_add:hover {
+  background-color: green;
+  color: white;
+}
+
+.addToShelfButtons button.book_add:active {
+  background-color: green;
+  color: white;
+  transition: 0.05s;
+  transform: scale(1.05);
+}
+/*************************** END OF CSS FOR BUTTONS ON BOOK CARDS *****************************/
+
+/**************************** START OF SHELF CARD SIZE & Title STYLING ************************/
+#my_book_lists {
   /* max-width: 700px; */
   max-width: 98%;
   margin: auto;
 }
 
-/**************************** START OF SHELF BUTTONS, CARD SIZE & Title STYLING *******************/
 div#MyLIB {
-  padding-bottom: 3rem;  
+  padding-bottom: 3rem;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-#card-container {  
-  display: flex;  
-  flex-direction:row;
+#card-container {
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
@@ -515,10 +662,10 @@ div#MyLIB {
   border: 1px solid orange;
   width: fit-content;
 }
-/***************************** END OF SHELF BUTTONS, CARD SIZE & Title STYLING ********************/
+/***************************** END OF SHELF CARD SIZE & Title STYLING *************************/
 
-/**************************** START OF ALERT STYLING **********************************************/
-p.alert {
+/**************************** START OF ALERT STYLING ******************************************/
+p.alert, p.count_message {
   font-family: var(--font-family);
   font-size: var(--font-base);
   font-weight: 900;
@@ -536,6 +683,17 @@ p.alert {
 }
 
 
+
 /**************************** END OF ALERT STYLING ************************************************/
 
+p.count_message {
+  margin-bottom: 2rem;
+  margin-top: -2rem;
+  max-width: 425px;
+}
 
+span.count {
+  font-size: 2rem;
+  font-weight: 900;
+}
+/**************************** END OF ALERT STYLING ********************************************/

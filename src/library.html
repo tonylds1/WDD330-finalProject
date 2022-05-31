@@ -1,3 +1,4 @@
+<!-- libraryActions.js does most of the work for this page -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +18,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Montserrat+Alternates:ital,wght@1,200&family=Roboto&display=swap"
-      rel="stylesheet" -->
+
+      <----rel="stylesheet" -->
     
 <!-- New Fonts  -->
 <link rel="preconnect" href="https://fonts.googleapis.com"> 
@@ -25,6 +27,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Montserrat:ital,wght@0,800;1,300&family=Source+Sans+Pro:ital@1&display=swap" rel="stylesheet">
 
     <link rel="shortcut icon" href="#" />
+
+     
+    <!-- Added to fix flavacon error -->
+    <link rel="shortcut icon" href="./images/favicon.ico">
     <script src="./js/library.js" type="module" defer></script>
   </head>
   <header>
@@ -34,8 +40,11 @@
   <body>
     <section>
       <div class="bannerS">
+
         <div class="bannerS-image" style="background-image:url(./images/Booksstack.png)">
           <h2>Library</h2>
+          
+
           <!-- <p>Search for books</p>
           <div class="search-container">
             <form action="/action_page.php">
@@ -50,19 +59,30 @@
 
       <div class="wrapper">
         <div id="MyLIB">
-          <button class="btn active">
+         </button>
+          <button class="btn btnI active">
+            <img
+              src="./images/learnlogo.png"
+              max
+              width="100px"
+              rel="images"
+              alt="Information"
+              id="info_bttn"              
+            />
+          </button>
+          <button class="btn">
             <img
               src="./images/ReadingIcon.png"
               max
               width="100px"
               rel="images"
               alt="Books I'm Reading"
-              id="reading_bttn"              
+              id="reading_bttn"
             />
           </button>
           <button class="btn">
             <img
-              src="./images/wantIcon.png"
+              src="./images/wantto2.png"
               max
               width="100px"
               rel="images"
@@ -80,10 +100,20 @@
               id="read_bttn"
             />
           </button>
+          <!-- <button class="btn active" >
+            <img
+              src="./images/infoT.png"
+              max
+              width="100px"
+              rel="images"
+              alt="Information"
+              id="info_bttn"              
+            />
+          </button> -->
         </div>
       </div>
     </section>
-    <main id="my_book_lists">
+    <main id="my_book_lists" class="opening">
       <div class="banner2">
         <p>
           Search for books and create your personal library of books you desire
@@ -91,7 +121,7 @@
         </p>
       </div>
       <section id="card-container">
-      <!-- List for each book shelf of "Read"/"Reading"/"Want to Read" -->
+        <!-- List for each book shelf of "Read"/"Reading"/"Want to Read" -->
       </section>
     </main>
     <div class="footer-banner">

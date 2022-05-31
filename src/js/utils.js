@@ -104,25 +104,40 @@ export function alertMessage(message, id, scroll = true) {
   }
 }
 
-export function removeAllAlerts() {
-  const alerts = document.querySelectorAll(".alert");
-  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+export function removeAllInserts(childClass, parentClass) {
+  const inserts = document.querySelectorAll("." + childClass);
+  inserts.forEach((insert) => document.querySelector(`.${parentClass}`).removeChild(insert));
 }
 
 export function insertTitle(insertionPoint, title) {
-  //remove any preexisting titles   
+  //remove any preexisting titles
   const insertedTitle = document.querySelectorAll(".shelf_title");
   insertedTitle.className = "delete_me";
   // console.log(insertedTitle);
-  if(insertedTitle.className === "delete_me"){
+  if(insertedTitle.className === "delete_me"){    
     insertedTitle.forEach((oldTitle) => insertionPoint.removeChild(oldTitle));
-  }  
+  }
   //create an element for the title
   let h1Title = document.createElement("h1");
   //add a class to the title
-  h1Title.className = "shelf_title"   
+  h1Title.className = "shelf_title";
   //put the text of the title in
-  h1Title.innerHTML = `Welcome to Your ${title}!`
-  //put the title at the top    
-  insertionPoint.prepend(h1Title);   
+  h1Title.innerHTML = `Welcome to Your ${title}!`;
+  //put the title at the top
+  insertionPoint.prepend(h1Title);
+}
+
+export function insertBookCount(bookCount) {
+  removeAllInserts("count_message", "opening");
+  //create element to hold the count
+  const count = document.createElement("p");
+  //add class to style the count
+  count.className = "count_message"; 
+  //add count display mesage
+  count.innerHTML = `You have &nbsp;- <span class="count">${bookCount}</span> -&nbsp; total books on this shelf.`;
+  console.log(count.innerHTML);  
+  // add the count under the shelf title
+  const main = document.querySelector("main");
+  console.log(main.firstChild.nextSibling);
+  main.insertBefore(count, main.firstChild.nextSibling);
 }
