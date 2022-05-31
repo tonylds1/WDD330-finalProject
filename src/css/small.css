@@ -354,6 +354,11 @@ footer a:active {
   cursor: pointer;
   font-size: 18px;
   border-radius: 8px;
+  /* max-width:fit-content;  */
+}
+
+#read_bttn, #want_bttn, #reading_bttn {
+  max-width: 100%;
 }
 
 button.btnI {
@@ -398,7 +403,57 @@ button.btnI {
 }
 
 .searchResults h2 {
-  padding: 30px 30px 0 30px;
+  padding: 30px 30px 0 30px; 
+}
+
+#search_rotator {
+  display:flex;
+  justify-content:center;
+}
+
+.rotate_arrow {
+  transform: rotate(180deg);
+  display: inline-block;  
+}
+
+.advancer, .rewinder, .back_to_top {
+  margin-top: .5rem; 
+  padding: .5rem;
+  border: 10px outset gray;
+  border-radius: .5rem;
+  font-size: 1.15rem;
+  /* font-weight: 900; */
+  cursor: pointer;
+}
+
+.rewinder {
+  margin-right: 3px;
+  margin-left: 18px;
+}
+
+.advancer {
+  margin-right: 18px;
+}
+
+button.back_to_top {
+  margin-left: 30px;
+ justify-self: end;
+}
+
+.advancer:hover, .rewinder:hover, .back_to_top:hover {
+  background-color: rgb(102, 102, 102);
+  color: white;
+}
+
+.advancer:active, .rewinder:active, .back_to_top:active {
+  background-color: rgb(102, 102, 102);
+  color: white;
+  transition: 0.05s;
+  transform: scale(1.05);
+}
+
+.back_to_top {
+  margin-bottom: 1rem;
 }
 
 /* Search results back button */
@@ -471,7 +526,7 @@ button.btnI {
 
 /************ START OF Responsive both image and details on each phone and tablet ************/
 @media only screen and (max-width: 32em) {
-  .result-div img {
+  .result-div img, div.book_count {
     margin: auto;
     width: 70%;
     grid-column: 1/3;
@@ -538,6 +593,11 @@ img.book_modal_img {
 /**** The Details Button for the Modal to Open ****/
 .details_bttn_box { 
   display: flex;
+}
+
+button.search_details_bttn {
+  margin-bottom: 1rem;
+
 }
 
 .details_bttn { 
@@ -637,7 +697,7 @@ button.book_add {
 #my_book_lists {
   /* max-width: 700px; */
   max-width: 98%;
-  margin: auto;
+  /* margin-right: 3px; */
 }
 
 div#MyLIB {
@@ -679,19 +739,26 @@ p.alert, p.count_message {
   margin: 0 auto;
   padding-left: 10px;
   padding-right: 10px;
-  line-height: 40px;
-  text-align: left;
+  line-height: 40px; 
   max-width: 500px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
+  cursor: pointer;  
+  /* justify-content: space-between; */
 }
 
+p.alert {
+  /* text-align: left; */
+  display:flex;
+  justify-content: space-around;
+}
 
+.hide {
+  display: none
+}
 
 /**************************** END OF ALERT STYLING ************************************************/
 
 p.count_message {
+  text-align: center;
   margin-bottom: 2rem;
   margin-top: -2rem;
   max-width: 425px;
