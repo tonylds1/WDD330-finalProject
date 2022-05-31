@@ -56,14 +56,17 @@ export default class DarkMode {
     // let root = document.querySelector(":root");
     // console.log()
     // document.documentElement.style.setProperty("--tertiary-color", "lightblue");
-    document.documentElement.style.setProperty("--primary-color", "#000");
+    document.documentElement.style.setProperty("--primary-color", "#1BD4BA");
     document.documentElement.style.setProperty("--secondary-color", "#000");
-    document.documentElement.style.setProperty("--tertiary-color", "#000");
-    document.documentElement.style.setProperty("--quaternary-color", "#000");
-    document.documentElement.style.setProperty("--base-color", "#000");
+    document.documentElement.style.setProperty("--tertiary-color", "#bf8c00");
+    document.documentElement.style.setProperty("--quaternary-color", "#dadfe1");
+    document.documentElement.style.setProperty("--base-color", "#363636");
     document.documentElement.style.setProperty("--text-color", "white");
-    document.documentElement.style.setProperty("--light-background", "#000");
+    document.documentElement.style.setProperty("--light-background", "#dadfe1");
+    document.documentElement.style.setProperty("--dark-grey", "#fefefe");
+
     // console.log(root.style.getPropertyValue("--white"))
+
     // document.documentElement.style.setProperty("--tertiary-color", "black");
 
   }
@@ -77,10 +80,10 @@ export default class DarkMode {
     document.documentElement.style.setProperty("--tertiary-color", "#ffbf69");
     document.documentElement.style.setProperty("--quaternary-color", "#ff9f1c");
     document.documentElement.style.setProperty("--base-color", "#ffffff");
-    
     document.documentElement.style.setProperty("--text-color", "black");
-
     document.documentElement.style.setProperty("--light-background", "#fefefe");
+    document.documentElement.style.setProperty("--dark-grey", "#000000");
+
     // document.documentElement.style.setProperty("--tertiary-color", "white");
   }
 
