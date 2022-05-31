@@ -98,8 +98,13 @@ export default class SearchResults {
     authors.innerHTML = authors.innerHTML.slice(0, -2);
 
     // Add in the publisher and the publish date
+    if(book.volumeInfo.publisher) {
     templateClone.querySelector(".publisher").innerHTML +=
       book.volumeInfo.publisher;
+    } else {
+      templateClone.querySelector(".publisher").innerHTML =
+      "No Publisher Listed"
+    }
     const options = {
       weekday: "long",
       year: "numeric",
@@ -272,7 +277,7 @@ async function populateModal(bookId, modalCard) {
   modalCard.querySelector(".books_modal_infoLink").href = book.volumeInfo.infoLink;
   modalCard.querySelector(".books_modal_previewLink").href = book.volumeInfo.previewLink;
   //insert the book summary or state that it has no summary
-  if (book.volumeInfo.previewLink) {
+  if (book.volumeInfo.description) {
     modalCard.querySelector(".books_modal_summary").innerHTML = 
     book.volumeInfo.description;
   } else {

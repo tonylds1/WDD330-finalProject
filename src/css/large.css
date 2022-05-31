@@ -72,4 +72,13 @@
   p.count_message {
     display: flex;     
   }
+
+  #search_rotator {
+    display:flex;
+    justify-content: flex-end;
+  }
+
+  .searchResults h2 {   
+    margin-bottom: -50px;
+  }
 }

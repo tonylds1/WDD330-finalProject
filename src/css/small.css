@@ -403,12 +403,21 @@ button.btnI {
 }
 
 .searchResults h2 {
-  padding: 30px 30px 0 30px;
+  padding: 30px 30px 0 30px; 
 }
 
-.advancer, .back_to_top {
-  margin-top: .5rem;
-  margin-left: 30px;
+#search_rotator {
+  display:flex;
+  justify-content:center;
+}
+
+.rotate_arrow {
+  transform: rotate(180deg);
+  display: inline-block;  
+}
+
+.advancer, .rewinder, .back_to_top {
+  margin-top: .5rem; 
   padding: .5rem;
   border: 10px outset gray;
   border-radius: .5rem;
@@ -417,12 +426,26 @@ button.btnI {
   cursor: pointer;
 }
 
-.advancer:hover, .back_to_top:hover {
+.rewinder {
+  margin-right: 3px;
+  margin-left: 18px;
+}
+
+.advancer {
+  margin-right: 18px;
+}
+
+button.back_to_top {
+  margin-left: 30px;
+ justify-self: end;
+}
+
+.advancer:hover, .rewinder:hover, .back_to_top:hover {
   background-color: rgb(102, 102, 102);
   color: white;
 }
 
-.advancer:active, .back_to_top:active {
+.advancer:active, .rewinder:active, .back_to_top:active {
   background-color: rgb(102, 102, 102);
   color: white;
   transition: 0.05s;
