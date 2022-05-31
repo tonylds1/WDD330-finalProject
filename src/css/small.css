@@ -751,6 +751,10 @@ p.alert {
   justify-content: space-around;
 }
 
+.hide {
+  display: none
+}
+
 /**************************** END OF ALERT STYLING ************************************************/
 
 p.count_message {
