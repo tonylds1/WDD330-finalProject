@@ -9,8 +9,8 @@ export default class DarkMode {
   }
 
   async init() {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      this.deviceColorSetting = "dark"
+    if (window.matchMedia("(prefers-color-scheme: dark)") && this.currentTheme == null) {
+      this.currentTheme = "dark"
     } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
       this.deviceColorSetting = "light"
     } else {
