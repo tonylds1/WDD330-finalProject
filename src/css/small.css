@@ -85,7 +85,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   text-align: center;
-  background-color: var(--base-color);
+  /* background-color: var(--base-color); */
 }
 
 .search-container form {
