@@ -139,6 +139,7 @@ input[type="search"]:focus {
 
 .nav-links a {
   color:var(--dark-grey);
+  /* color: #000; */
 }
 
 /* LOGO */
