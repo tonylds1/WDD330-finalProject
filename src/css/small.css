@@ -1,8 +1,22 @@
 /************************** START OF VARIABLES USED IN CSS ********************************************/
 :root {
-  --font-body: "Roboto", sans-serif;
-  --font-headline: "Lato", sans-serif;
-  --font-family: "Montserrat Alternates", sans-serif;
+
+  --font-body:'Source Sans Pro', sans-serif;
+  --font-headline:'Montserrat', sans-serif;
+  --font-family: 'Architects Daughter', cursive;
+
+  --font-body:'Source Sans Pro', sans-serif;
+  --font-headline:'Montserrat', sans-serif;
+  --font-family: 'Architects Daughter', cursive;
+  
+  /* colors- Dark Mode NOT IN USE CURRENTLY*/
+  /* --primary-color: #1ad4ba;
+  --secondary-color: #ec1bbc;
+  --tertiary-color: #ffbf69;
+  --quaternary-color: #b86eeb;
+  --black: #000000;
+  --light-grey: #c6c6c6; */
+
 
   /* colors-Regular */
   --primary-color: #2ec4b6;
@@ -69,7 +83,19 @@ body {
 }
 
 .navbar img {
-  width: 100%;
+  width:6rem;
+  margin-right: 10%;
+  /* width: 100%; */
+}
+.navbar H1{
+  font-family: var(--font-headline);
+  font-size: 3.2rem;
+  padding-left: .3rem;
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+}
+.navbar ul{
+  font-family: var(--font-body);
 }
 
 .search-container {
@@ -91,6 +117,11 @@ body {
 .search-container form {
   margin: auto;
   text-align: center;
+}
+
+
+.bannerS h2{
+font-family: var(--font-body);
 }
 
 input[type="search"] {
@@ -531,6 +562,11 @@ button.btnI {
   margin-top: 0;
 }
 
+h2.books_modal_authors, h2.books_modal_ratings, h2.books_modal_summary_title { 
+  padding: 0;
+  margin: 0;
+}
+
 img.book_modal_img {
   max-width: 300px;
 }
@@ -737,6 +773,10 @@ p.count_message {
   display: flex;
   justify-content: space-between;
 }
+
+
+
+/**************************** END OF ALERT STYLING ************************************************/
 
 p.count_message {
   margin-bottom: 2rem;
