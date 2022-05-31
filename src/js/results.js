@@ -11,6 +11,20 @@ let limiter = "";
 let searchGuide1 = ""
 let limiter1 = " inauthor:John Flanagan"
 
+//get the element for the button to rewind 
+//the search results to the next 40 results
+const rewindBttn = document.querySelector(".rewinder");
+//set an even listening for someone clicking it
+rewindBttn.addEventListener("click", () => {
+    if (searchBatchStart != 0) {
+    searchBatchStart -= 40;
+    // console.log(searchBatchStart);
+    const searchResults2 = new SearchResults(search, externalServices, 
+        listElement, searchBatchStart);
+    searchResults2.init();
+    }
+})
+
 //get the element for the button to advance 
 //the search results to the next 40 results
 const advanceBttn = document.querySelector(".advancer");
