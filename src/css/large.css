@@ -49,4 +49,8 @@
     display: grid;
     grid-template-columns: 30% 70%;
   }
+
+  .books_modal_details {
+    margin-left: 1rem;
+  }
 }
