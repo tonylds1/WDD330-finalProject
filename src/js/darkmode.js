@@ -14,6 +14,7 @@ export default class DarkMode {
     if (window.matchMedia("(prefers-color-scheme: dark)") && this.currentTheme == null) {
       this.currentTheme = "dark"
     } 
+    await this.darkModeButton()
     // else if (window.matchMedia("(prefers-color-scheme: light)") && this.currentTheme == null) {
     //   this.currentTheme = "light"
     // } else if (window.matchMedia("(prefers-color-scheme: no preference)") && this.currentTheme == null) {
@@ -27,7 +28,7 @@ export default class DarkMode {
       this.lightMode()
     }
 
-    await this.darkModeButton()
+    
   }
 
   async darkModeButton() {
@@ -35,17 +36,23 @@ export default class DarkMode {
     // console.log(buttons)
     buttonList.forEach(button => {
       if (this.currentTheme == "light"){
-        button.innerHTML = "Dark mode"
+        button.src = "../images/moon.png"
+        // console.log("sun")
+
       } else if (this.currentTheme == "dark") {
-        button.innerHTML = "Light mode"
+        // button.innerHTML = "Light mode"
+        button.src = "../images/sunny.png"
+        // console.log("moon")
       }
       button.addEventListener("click", () => {
         if (this.currentTheme == "light") {
-          button.innerHTML = "Light mode"
+          // button.innerHTML = "Light mode"
+          button.src = "../images/sunny.png"
           this.currentTheme = "dark"
           this.darkMode()
         } else if (this.currentTheme == "dark") {
-          button.innerHTML = "Dark mode"
+          // button.innerHTML = "Dark mode"
+          button.src = "../images/moon.png"
           this.lightMode()
           this.currentTheme = "light"
         }        

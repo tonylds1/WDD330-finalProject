@@ -201,7 +201,7 @@ input[type="checkbox"] {
 }
 
 #toggle1:checked~.menu {
-  height: 150px;
+  height: 175px;
 }
 
 /* end css hamburger */
@@ -222,6 +222,8 @@ input[type="checkbox"] {
 
 .menu li {
   padding: 5px 14px;
+  /* margin: 0.5em */
+  gap: 1em;
 }
 
 /* Dark Mode button */
@@ -231,7 +233,7 @@ input[type="checkbox"] {
   /* color: white; */
   /* text-align: center; */
   /* padding: 0.5em; */
-  margin: 0.5em;
+  /* margin: 1em; */
   /* text-decoration: none; */
 /* font-size: smaller; */
 }
