@@ -6,10 +6,10 @@ import SearchResults from "./SearchResultsList.js";
 //put in the header & footer
 loadHeaderFooter();
 
-let searchGuide = "search "
-let limiter = "";
-let searchGuide1 = ""
-let limiter1 = " inauthor:John Flanagan"
+let searchScope = "search ";
+let limiter1 = "intitle:";
+let limiter2 = "inauthor:";
+let limiter3 = "subject:";
 
 //get the element for the button to rewind 
 //the search results to the next 40 results
@@ -19,7 +19,7 @@ rewindBttn.addEventListener("click", () => {
     if (searchBatchStart != 0) {
     searchBatchStart -= 40;
     // console.log(searchBatchStart);
-    const searchResults2 = new SearchResults(search, externalServices, 
+    const searchResults2 = new SearchResults(searchScope, search, externalServices, 
         listElement, searchBatchStart);
     searchResults2.init();
     }
@@ -32,8 +32,8 @@ const advanceBttn = document.querySelector(".advancer");
 advanceBttn.addEventListener("click", () => {
     searchBatchStart += 40;
     console.log(searchBatchStart);
-    const searchResults2 = new SearchResults(searchGuide, search, 
-        externalServices, listElement, searchBatchStart, limiter);
+    const searchResults2 = new SearchResults(searchScope, search, 
+        externalServices, listElement, searchBatchStart);
     searchResults2.init();
 })
 let searchBatchStart = 0;
@@ -42,6 +42,6 @@ const search = getParam("searchInput");
 const externalServices = new ExternalServices();
 const listElement = document.querySelector(".searchResults");
 
-const searchResults = new SearchResults(searchGuide, search, externalServices, 
-    listElement, searchBatchStart, limiter);
+const searchResults = new SearchResults(searchScope, search, externalServices, 
+    listElement, searchBatchStart);
 searchResults.init();
