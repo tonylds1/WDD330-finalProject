@@ -13,7 +13,7 @@ const rewindBttn = document.querySelector(".rewinder");
 rewindBttn.addEventListener("click", () => {
     if (searchBatchStart != 0) {
     searchBatchStart -= 40;
-    console.log(searchBatchStart);
+    // console.log(searchBatchStart);
     const searchResults2 = new SearchResults(search, externalServices, 
         listElement, searchBatchStart);
     searchResults2.init();
@@ -26,7 +26,7 @@ const advanceBttn = document.querySelector(".advancer");
 //set an even listening for someone clicking it
 advanceBttn.addEventListener("click", () => {
     searchBatchStart += 40;
-    console.log(searchBatchStart);
+    // console.log(searchBatchStart);
     const searchResults2 = new SearchResults(search, externalServices, 
         listElement, searchBatchStart);
     searchResults2.init();
