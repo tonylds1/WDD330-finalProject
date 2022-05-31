@@ -5,7 +5,8 @@ import {
   getLocalStorage,
   setLocalStorage,
   runModal,
-  getStars
+  getStars,
+  doubleNumberInsert
 } from "./utils.js";
 
 import ExternalServices from "./externalServices.js";
@@ -14,31 +15,61 @@ import ExternalServices from "./externalServices.js";
 let connection = new ExternalServices();
 
 export default class SearchResults {
-  constructor(searchTerm, dataSource, listElement) {
+  constructor(searchTerm, dataSource, listElement, searchBatchStart) {
     this.searchTerm = searchTerm;
     this.dataSource = dataSource;
     this.listElement = listElement;
+    this.searchBatchStart = searchBatchStart;    
   }
 
   async init() {
-    const list = await this.dataSource.getBookData(this.searchTerm);
-    console.log(list);
-
+    const list = await this.dataSource.getBookData(this.searchTerm, this.searchBatchStart);
+    //clear the previous results if getting the next 40
+    let results = document.querySelectorAll(".result-div");
+    console.log(results);
+    if(results.length > 0) {
+    results.forEach(result => {   
+      result.parentNode.removeChild(result);
+    })
+  }
     //render the list
-    this.renderList(list.items);    
+    this.renderList(list.items);      
   }
 
-  async renderList(list) {
-    // this.listElement.innerHTML = "";
-    const cardTemplate = await loadTemplate("./partials/searchResults.html");
+  async renderList(list) {    
+    const cardTemplate = await loadTemplate("./partials/searchResults.html");     
     renderListWithTemplate(
       cardTemplate,
       this.listElement,
       list,
-      this.prepareTemplate
+      this.prepareTemplate,        
     );
+    //clear the back to the top button if it is there
+    let backToTopBttn = document.querySelector(".back_to_top");
+    console.log(backToTopBttn);
+    if (backToTopBttn != null) {
+    backToTopBttn.parentNode.removeChild(backToTopBttn)
+    }  
+    //function to set up the modal pop-up when detail button is clicked
     runModal(getSpecificBookInfo, populateModal, true);
-    console.log(cardTemplate)    
+    //get the element that the number for the book card goes in
+    let countHolder = document.querySelectorAll(".specialCount");
+    //function to insert the number in the search results and modal cards
+    doubleNumberInsert(countHolder, this.searchBatchStart);
+    //get the element to add the total search number results to
+    let searchCount = document.querySelector(".search_results_header");
+    //add the count interval of the search to the search header
+    searchCount.innerHTML = "(" + (this.searchBatchStart + 1) + 
+    "-" + (this.searchBatchStart + 40) + ")";
+    //add a back to the top button at the bottom of the page
+    let top = document.createElement("button");    
+    top.type = "button";
+    top.className = "back_to_top";
+    top.innerHTML = "Back to the Top"
+    this.listElement.appendChild(top);
+    top.addEventListener("click", () => {
+      window.scrollTo(0, 0);
+    })
   }
 
   prepareTemplate(templateClone, book) {
@@ -103,10 +134,15 @@ export default class SearchResults {
       // add the id to the want to read list
       addToShelf(id, "want-read-shelf");
       console.log(id);
-    });
-    let bookId = addToReadingBtn.getAttribute("data-id");
-    console.log(bookId);
-    // getSpecificBookInfo(bookId);        
+    });  
+    
+    // let description = templateClone.querySelector(".description");
+    // if(book.volumeInfo.description) {    
+    // description.innerHTML = book.volumeInfo.description;
+    // console.log(book.volumeInfo.description);
+    // } else {
+    //   description.innerHTML = "No description available.";
+    // }         
     return templateClone;
   }
 }
@@ -148,7 +184,7 @@ async function getSpecificBookInfo(bookId) {
   let bookIds = document.querySelectorAll(".addToReading");
   bookIds.forEach(id => {
     let detailBookId = id.getAttribute("data-id");
-    console.log(detailBookId);
+    // console.log(detailBookId);
   }) 
   let book = await connection.findBookById(bookId, false);
   console.log(bookId);

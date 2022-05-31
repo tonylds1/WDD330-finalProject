@@ -25,7 +25,8 @@ export function renderListWithTemplate(
   template,
   parentElement,
   list,
-  callback
+  callback,
+  count 
 ) {
   // clone it once for each product in our list
   list.forEach((item) => {
@@ -156,7 +157,7 @@ export function runModal(callBack1, callBack2, searchResult = false) {
     //advand the count for unique labeling
     modalCnt++;
   });
-  console.log(modals);   
+  // console.log(modals);   
   //create a list of all the detail buttons on the page
   let btns = document.querySelectorAll(".details_bttn");
   // // When the user clicks on the button, open the modal
@@ -180,11 +181,13 @@ export function runModal(callBack1, callBack2, searchResult = false) {
           if (searchResult == true) {
             //get the book's id stored in the data-id of the "Want to Read" button
             //from the card that had the modal detail button clicked            
-            let bookIdElementContainer = clickedBtn.previousElementSibling.firstElementChild;            
+            let bookIdElementContainer = clickedBtn.previousElementSibling
+            .lastElementChild.previousElementSibling.previousElementSibling.firstElementChild; 
+            console.log(bookIdElementContainer);           
             let bookId = bookIdElementContainer.getAttribute("data-id");
             console.log(bookId);
             //get the element of the modal div where the modal deatail button was clicked
-            let bookCard = clickedBtn.parentElement.nextElementSibling;    
+            let bookCard = clickedBtn.nextElementSibling;    
             console.log(bookCard);
             //set a variable equal to the return value from the 1st call back function
             //this function fetches the book details from the api for that specific book
@@ -233,4 +236,18 @@ export function getStars(fiveRating) {
   for (let n = (5 - rating); n >= 1; n--)
     output.push("<i class='fa fa-star-o' aria-hidden='true' style='color: gold;'></i>&nbsp;");  
   return output.join("");  
+}
+
+export function doubleNumberInsert(elements, startingNumber) {
+   //set up a variable for the count
+   let count = startingNumber;
+   //set up a variable for alternating number increase
+   let numberWatcher = 0;   
+   elements.forEach(element => {
+     if (numberWatcher % 2 == 0) {
+     count++;
+     }
+     element.innerHTML = count;
+     numberWatcher++
+   })
 }
