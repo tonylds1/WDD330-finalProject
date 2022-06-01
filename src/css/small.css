@@ -142,6 +142,7 @@ div.searchScopeContainer {
   text-align: center;
 }
 
+
 label {
   float: left;
   padding: 0 1em;
@@ -151,6 +152,7 @@ label {
 .bannerS h2 {
 font-family: var(--font-body);
 }
+
 
 input[type="search"] {
   transition: width 0.5s ease-in-out;
@@ -358,13 +360,19 @@ footer a:active {
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
+ 
 }
 
 .bannerS h2 {
-  font-size: 3rem;
-  padding: 2rem 1rem 1rem 3rem;
-  color: var(--black);
- 
+  font-size: 2rem;
+  padding: 3.5rem 2rem 1rem 10rem;
+  
+}
+
+.bannerS p {
+  font-size: 2rem;
+  padding: 3.5rem 2rem 1rem 10rem;
+  
 }
 
 .bannerS p {
