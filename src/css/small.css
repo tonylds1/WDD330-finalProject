@@ -431,6 +431,10 @@ footer a:active {
   background-color: #303030;
 }
 
+.dmModePointer {
+  cursor: pointer;
+}
+
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 880px) {
   .menu {
