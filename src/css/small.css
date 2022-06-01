@@ -297,6 +297,103 @@ footer a:active {
   text-decoration: underline;
 }
 
+/* FOOTER CSS */
+
+.logoFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  padding-top: 5%;
+}
+
+.whiteCloud {
+  font-family: var(--font-headline);
+  color: white;
+}
+
+.address {
+  text-align: center;
+}
+
+.socialMedia {
+  text-align: center;
+}
+
+/* Footer Menu */
+
+.footerMenu {
+  border: none;
+  font-family: var(--font-body);
+  font-size: 1.6rem;
+  text-align: center;
+  align-items: center;
+  padding-top: 5%;
+}
+
+.footerMenu li a {
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.footerMenu li {
+  padding: 10px 0 10px 0;
+}
+
+.footerMenu li:hover {
+  border-radius: 5px;
+  background-color: rgba(204, 204, 204, 0.5);
+  transition: transform 0.2s;
+}
+
+/* Footer Menu HYPERLINK STYLING */
+.footerMenu a:link {
+  color: var(--link-main);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.footerMenu a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.footerMenu a:hover {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.footerMenu a:active {
+  color: var(--link-active);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.links {
+  padding: 5% 0 10% 0;
+  text-align: center;
+}
+
+.column {
+  background-color: #303030;
+  padding: 10px;
+}
+
+.column1 {
+  background-color: #303030;
+  padding: 10px;
+}
+
+.row {
+  background-color: #303030;
+  height: 150px;
+}
+
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 880px) {
   .menu {
