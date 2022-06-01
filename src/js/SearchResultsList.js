@@ -6,7 +6,7 @@ import {
   setLocalStorage,
   runModal,
   getStars,
-  doubleNumberInsert
+  doubleNumberInsert,
 } from "./utils.js";
 
 import ExternalServices from "./externalServices.js";
@@ -15,12 +15,18 @@ import ExternalServices from "./externalServices.js";
 let connection = new ExternalServices();
 
 export default class SearchResults {
-  constructor(searchScope, searchTerm, dataSource, listElement, searchBatchStart) {
+  constructor(
+    searchScope,
+    searchTerm,
+    dataSource,
+    listElement,
+    searchBatchStart
+  ) {
     this.searchScope = searchScope;
     this.searchTerm = searchTerm;
     this.dataSource = dataSource;
     this.listElement = listElement;
-    this.searchBatchStart = searchBatchStart;       
+    this.searchBatchStart = searchBatchStart;
   }
 
   async init() {
@@ -30,25 +36,25 @@ export default class SearchResults {
     //and set the searchScope to "search " to get the correct search
     const searchScope1 = document.getElementById("searchScope1");
     let checkedBttn1 = getLocalStorage("searchScope");
-    if(checkedBttn1 == searchScope1.value) {     
+    if (checkedBttn1 == searchScope1.value) {
       searchScope1.checked = true;
-      this.searchScope = searchScope1.value
+      this.searchScope = searchScope1.value;
     }
     //if the search scope is set to "Title" by the user on the search
     //page then set the radial button to "Title" as search page loads
     //and set the searchScope to "intitle:" to get the correct search
     const searchScope2 = document.getElementById("searchScope2");
     let checkedBttn2 = getLocalStorage("searchScope");
-    if(checkedBttn2 == searchScope2.value) {     
+    if (checkedBttn2 == searchScope2.value) {
       searchScope2.checked = true;
-      this.searchScope = searchScope2.value
-    }  
+      this.searchScope = searchScope2.value;
+    }
     //if the search scope is set to "Author" by the user on the search
     //page then set the radial button to "Author" as search page loads
     //and set the searchScope to "inauthor:" to get the correct search
     const searchScope3 = document.getElementById("searchScope3");
     let checkedBttn3 = getLocalStorage("searchScope");
-    if(checkedBttn3 == searchScope3.value) {     
+    if (checkedBttn3 == searchScope3.value) {
       searchScope3.checked = true;
       this.searchScope = searchScope3.value;
     }
@@ -57,26 +63,29 @@ export default class SearchResults {
     //and set the searchScope to "subject:" to get the correct search
     const searchScope4 = document.getElementById("searchScope4");
     let checkedBttn4 = getLocalStorage("searchScope");
-    if(checkedBttn4 == searchScope4.value) {     
+    if (checkedBttn4 == searchScope4.value) {
       searchScope4.checked = true;
       this.searchScope = searchScope4.value;
     }
-    //get the list from the search of the api 
-    console.log(this.searchScope); 
-    const list = await this.dataSource.getBookData(this.searchScope, this.searchTerm, 
-      this.searchBatchStart);
+    //get the list from the search of the api
+    console.log(this.searchScope);
+    const list = await this.dataSource.getBookData(
+      this.searchScope,
+      this.searchTerm,
+      this.searchBatchStart
+    );
     //clear the previous results if getting the next 40
     let results = document.querySelectorAll(".result-div");
     // console.log(results);
     if (results.length > 0) {
-      results.forEach(result => {
+      results.forEach((result) => {
         result.parentNode.removeChild(result);
-      })
+      });
     }
     if (this.searchBatchStart != 0) {
-      document.querySelector(".rewinder").classList.remove("hide")
+      document.querySelector(".rewinder").classList.remove("hide");
     } else {
-      document.querySelector(".rewinder").classList.add("hide")
+      document.querySelector(".rewinder").classList.add("hide");
     }
 
     //render the list
@@ -89,15 +98,14 @@ export default class SearchResults {
       cardTemplate,
       this.listElement,
       list,
-      this.prepareTemplate,
+      this.prepareTemplate
     );
     //clear the back to the top button if it is there
     let backToTopBttn = document.querySelector(".back_to_top");
     // console.log(backToTopBttn);
     if (backToTopBttn != null) {
-      backToTopBttn.parentNode.removeChild(backToTopBttn)
+      backToTopBttn.parentNode.removeChild(backToTopBttn);
     }
-
 
     //function to set up the modal pop-up when detail button is clicked
     runModal(getSpecificBookInfo, populateModal, true);
@@ -108,17 +116,21 @@ export default class SearchResults {
     //get the element to add the total search number results to
     let searchCount = document.querySelector(".search_results_header");
     //add the count interval of the search to the search header
-    searchCount.innerHTML = "(" + (this.searchBatchStart + 1) +
-      "-" + (this.searchBatchStart + 40) + ")";
+    searchCount.innerHTML =
+      "(" +
+      (this.searchBatchStart + 1) +
+      "-" +
+      (this.searchBatchStart + 40) +
+      ")";
     //add a back to the top button at the bottom of the page
     let top = document.createElement("button");
     top.type = "button";
     top.className = "back_to_top";
-    top.innerHTML = "Back to the Top"
+    top.innerHTML = "Back to the Top";
     this.listElement.appendChild(top);
     top.addEventListener("click", () => {
       window.scrollTo(0, 0);
-    })   
+    });
   }
 
   prepareTemplate(templateClone, book) {
@@ -152,7 +164,7 @@ export default class SearchResults {
         book.volumeInfo.publisher;
     } else {
       templateClone.querySelector(".publisher").innerHTML =
-        "No Publisher Listed"
+        "No Publisher Listed";
     }
     const options = {
       weekday: "long",
@@ -168,7 +180,6 @@ export default class SearchResults {
     templateClone.querySelector(".addToShelfButtons").innerHTML =
       bookListButtons(book.id);
 
-    
     // templateClone.querySelector(".addToReading")
     let addToReadingBtn = templateClone.querySelector(".addToReading");
     addToReadingBtn.addEventListener("click", async () => {
@@ -190,7 +201,7 @@ export default class SearchResults {
       // add the id to the want to read list
       addToShelf(id, "want-read-shelf");
       // console.log(id);
-    });        
+    });
     return templateClone;
   }
 }
@@ -203,7 +214,7 @@ function addToShelf(id, shelfId) {
   let now = new Date();
   let newBook = {
     id,
-    now
+    now,
   };
   let duplicate = false;
 
@@ -232,10 +243,10 @@ function bookListButtons(id) {
 
 async function getSpecificBookInfo(bookId) {
   let bookIds = document.querySelectorAll(".addToReading");
-  bookIds.forEach(id => {
+  bookIds.forEach((id) => {
     let detailBookId = id.getAttribute("data-id");
     // console.log(detailBookId);
-  })
+  });
   let book = await connection.findBookById(bookId, false);
   // console.log(bookId);
   // console.log(book);
@@ -244,9 +255,9 @@ async function getSpecificBookInfo(bookId) {
 
 async function populateModal(bookId, modalCard) {
   //get the promise fulfilled for getting the book from the api
-  let book = await bookId
+  let book = await bookId;
   // console.log(book);
-  //add in the book cover image or a replacement if it is not available 
+  //add in the book cover image or a replacement if it is not available
   try {
     modalCard.querySelector(".book_modal_img").src =
       book.volumeInfo.imageLinks.smallThumbnail;
@@ -275,8 +286,9 @@ async function populateModal(bookId, modalCard) {
   }
   //insert the publishing date or state it isn't listed
   if (book.volumeInfo.publishedDate) {
-    modalCard.querySelector(".books_modal_publish_date").innerHTML +=
-      new Date(book.volumeInfo.publishedDate).toDateString("en-US");
+    modalCard.querySelector(".books_modal_publish_date").innerHTML += new Date(
+      book.volumeInfo.publishedDate
+    ).toDateString("en-US");
   } else {
     modalCard.querySelector(".books_modal_publish_date").innerHTML +=
       "No Publish Date Listed";
@@ -286,7 +298,8 @@ async function populateModal(bookId, modalCard) {
     modalCard.querySelector(".books_modal_publisher").innerHTML +=
       book.volumeInfo.publisher;
   } else {
-    modalCard.querySelector(".books_modal_publisher").innerHTML += "No Publisher Listed";
+    modalCard.querySelector(".books_modal_publisher").innerHTML +=
+      "No Publisher Listed";
   }
   //insert the page count or state it isn't listed
   if (book.volumeInfo.printedPageCount) {

@@ -1,17 +1,13 @@
 @media only screen and (min-width: 641px) {
-
-
-    .navbar h1 {
-        font-family: var(--font-headline);
-        font-size: 4.4rem;
-        padding-left: 0.3rem;
-        margin-top: 0.2rem;
-        margin-bottom: 0.2rem;
-    }
-    .bannerS h2 {
-        font-size: 3rem;
-        padding: 3.5rem 0rem 1rem 8rem;
-    
-      }
-    
+  .navbar h1 {
+    font-family: var(--font-headline);
+    font-size: 4.4rem;
+    padding-left: 0.3rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+  .bannerS h2 {
+    font-size: 3rem;
+    padding: 3.5rem 0rem 1rem 8rem;
+  }
 }
