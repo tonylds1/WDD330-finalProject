@@ -53,6 +53,11 @@
     transform: scale(1.1);  
   }
 
+  div.searchScopeContainer {  
+    grid-column: 3/4; 
+    margin-right: 60%; 
+  }
+
   .search-container {
     grid-column: 3/4;
   }
@@ -70,8 +75,9 @@
   }
 
   p.count_message {
-    display: flex;     
-  }
+    display: flex;
+    justify-content:space-around;     
+  } 
 
   #search_rotator {
     display:flex;

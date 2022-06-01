@@ -42,7 +42,28 @@
         <li><a href="">Dark Mode</a></li>
       </div>
     </ul>
-    <div class="search-container">
+    <!-- <p>&#9699; &#129095; &#9660; 🔻 &#128317; ▼ &#9698;</p>
+    <svg width="16" height="10">
+      <polygon points="0,0 16,0 8,10"/>
+    </svg> -->
+    <div class="searchScopeContainer">
+    <label for="myChoice1">All<br />
+      <input type="radio" id="searchScope1" name="searchScope" value="search " checked/>
+    </label>
+    
+    <label for="myChoice2">Title<br />
+      <input type="radio" id="searchScope2" name="searchScope" value="intitle:" />
+    </label>
+    
+    <label for="myChoice3">Author<br />
+      <input type="radio" id="searchScope3" name="searchScope" value="inauthor:" />
+    </label>
+    
+    <label for="myChoice4">Subject<br />
+      <input type="radio" id="searchScope4" name="searchScope" value="subject:" />
+    </label>
+  </div>
+    <div class="search-container">    
       <form action="./results.html">        
         <input
           class="header-search-bar"
@@ -51,6 +72,16 @@
           name="searchInput"
         />
       </form>
+        <!-- <div id="select">
+        <p>All</p>
+        <p>&#128317;</p>       
+        <ul>
+          <li class="options">All</li>
+          <li class="options">Title</li>
+          <li class="options">Author</li>
+          <li class="options">Subject</li>         
+        </ul>       
+      </div> -->
     </div>
   </nav>
 </div>

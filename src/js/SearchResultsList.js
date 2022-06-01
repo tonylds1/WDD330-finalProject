@@ -24,6 +24,45 @@ export default class SearchResults {
   }
 
   async init() {
+    //add the entered search scope to the page
+    //if the search scope is set to "All" by the user on the search
+    //page then set the radial button to "All" as search page loads
+    //and set the searchScope to "search " to get the correct search
+    const searchScope1 = document.getElementById("searchScope1");
+    let checkedBttn1 = getLocalStorage("searchScope");
+    if(checkedBttn1 == searchScope1.value) {     
+      searchScope1.checked = true;
+      this.searchScope = searchScope1.value
+    }
+    //if the search scope is set to "Title" by the user on the search
+    //page then set the radial button to "Title" as search page loads
+    //and set the searchScope to "intitle:" to get the correct search
+    const searchScope2 = document.getElementById("searchScope2");
+    let checkedBttn2 = getLocalStorage("searchScope");
+    if(checkedBttn2 == searchScope2.value) {     
+      searchScope2.checked = true;
+      this.searchScope = searchScope2.value
+    }  
+    //if the search scope is set to "Author" by the user on the search
+    //page then set the radial button to "Author" as search page loads
+    //and set the searchScope to "inauthor:" to get the correct search
+    const searchScope3 = document.getElementById("searchScope3");
+    let checkedBttn3 = getLocalStorage("searchScope");
+    if(checkedBttn3 == searchScope3.value) {     
+      searchScope3.checked = true;
+      this.searchScope = searchScope3.value;
+    }
+    //if the search scope is set to "Subject" by the user on the search
+    //page then set the radial button to "Subject" as search page loads
+    //and set the searchScope to "subject:" to get the correct search
+    const searchScope4 = document.getElementById("searchScope4");
+    let checkedBttn4 = getLocalStorage("searchScope");
+    if(checkedBttn4 == searchScope4.value) {     
+      searchScope4.checked = true;
+      this.searchScope = searchScope4.value;
+    }
+    //get the list from the search of the api 
+    console.log(this.searchScope); 
     const list = await this.dataSource.getBookData(this.searchScope, this.searchTerm, 
       this.searchBatchStart);
     //clear the previous results if getting the next 40
@@ -79,7 +118,7 @@ export default class SearchResults {
     this.listElement.appendChild(top);
     top.addEventListener("click", () => {
       window.scrollTo(0, 0);
-    })
+    })   
   }
 
   prepareTemplate(templateClone, book) {
@@ -150,15 +189,7 @@ export default class SearchResults {
       addToShelf(id, "want-read-shelf");
       // console.log(id);
 
-    });
-
-    // let description = templateClone.querySelector(".description");
-    // if(book.volumeInfo.description) {    
-    // description.innerHTML = book.volumeInfo.description;
-    // console.log(book.volumeInfo.description);
-    // } else {
-    //   description.innerHTML = "No description available.";
-    // }         
+    });        
     return templateClone;
   }
 }
