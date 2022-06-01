@@ -57,9 +57,9 @@
     transform: scale(1.1);
   }
 
-  div.searchScopeContainer {      
-    grid-column: 3/4; 
-    margin-right: 60%; 
+  div.searchScopeContainer {
+    grid-column: 3/4;
+    margin-right: 60%;
   }
 
   .search-container {
@@ -121,7 +121,7 @@
     font-size: 60px;
     padding-left: 80px;
   }
-  
+
   .pHero {
     text-align: left;
     font-size: 35px;

@@ -114,16 +114,16 @@ body {
 label {
   float: left;
   padding: 0 1em;
-  text-align: center; 
+  text-align: center;
   min-width: 51px;
 }
 
-div.searchScopeContainer { 
+div.searchScopeContainer {
   /* background-color: #edf1f1;   */
   display: flex;
   justify-content: space-evenly;
   width: 300px;
-  margin: 0 auto -12px auto; 
+  margin: 0 auto -12px auto;
   grid-column: 1/4;
   padding: 0 5px;
 }
@@ -133,7 +133,7 @@ div.searchScopeContainer input {
 }
 
 input[name="searchScope"] {
-	accent-color: #615555;
+  accent-color: #615555;
 }
 
 /* input[type='radio']:after {
@@ -509,7 +509,7 @@ footer a:active {
   height: 100%;
 }
 
-.h2Hero{
+.h2Hero {
   font-size: 40px;
   color: white;
   text-shadow: 2px 2px black;
@@ -522,8 +522,6 @@ footer a:active {
   font-size: 25px;
   text-shadow: 2px 2px black;
 }
-
-
 
 .bookshelf {
   /* margin-left: 5rem; */
@@ -1062,4 +1060,3 @@ span.count {
 }
 
 /**************************** END OF ALERT STYLING ********************************************/
-

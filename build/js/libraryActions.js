@@ -1,4 +1,166 @@
-var l=(_,t,e)=>new Promise((s,o)=>{var a=r=>{try{i(e.next(r))}catch(d){o(d)}},n=r=>{try{i(e.throw(r))}catch(d){o(d)}},i=r=>r.done?s(r.value):Promise.resolve(r.value).then(a,n);i((e=e.apply(_,t)).next())});import{getLocalStorage as b,setLocalStorage as h,alertMessage as g,removeAllInserts as u,insertTitle as c,insertBookCount as m,runModal as f,getStars as p}from"./utils.js";import k from"./externalServices.js";let v=new k;export default class y{constructor(t){this.storageKey=t,this.bookShelf=[],this.book={},this.readingProgress=new Map,this.bookCover="./images/bookCoverPlaceholder.png",this.subtitle="None",this.author="No Author Listed",this.publisher="No Publisher Listed",this.publishDate="No Publish Date Listed",this.starRating="Not Given",this.pages="Not Listed",this.genre="Not Listed",this.reviews="None Given",this.summary="None Given",this.header="",this.bttnNameNow="",this.bttnNameBefore="",this.bttnNameWant="",this.bookCount=0}getShelvedBooks(){return l(this,null,function*(){const t=document.getElementById("my_book_lists"),e=document.getElementById("card-container");if(this.selectShelfName(this.storageKey),this.bookShelf=yield b(this.storageKey),this.changeNullShelfToList(this.storageKey),e.innerHTML="",this.bookShelf.length<1)t.innerHTML=this.renderBanner(),this.addShelfTitleAndEmptyShelfMessage(t);else{let s=this.header+" Shelf!";c(t,s),u("alert","opening"),m(this.bookCount),this.bookShelf.length>=1&&u("banner2","opening"),this.setReadingProgress(),this.displayBooksFromShelf(e)}})}selectShelfName(){this.storageKey=="reading-shelf"?(this.header="Reading",this.bttnNameNow="Remove",this.bttnNameBefore="Read",this.bttnNameWant="Want to Read"):this.storageKey=="read-shelf"?(this.header="Read",this.bttnNameNow="Reading",this.bttnNameBefore="Remove",this.bttnNameWant="Want to Read"):this.storageKey=="want-read-shelf"&&(this.header="Want To Read",this.bttnNameNow="Reading",this.bttnNameBefore="Read",this.bttnNameWant="Remove")}changeNullShelfToList(){this.bookShelf==null&&(this.bookShelf=[],h(this.storageKey,this.bookShelf))}addShelfTitleAndEmptyShelfMessage(t){u("alert","opening"),g("Nothing is here, try adding a book!","my_book_lists",!1);let s=this.header+" Shelf!";c(t,s)}displayBooksFromShelf(t){return l(this,null,function*(){let e=document.querySelector(".count");for(const s of this.bookShelf){this.book=yield v.findBookById(s.id,!1),this.book.progress=this.readingProgress.get(s);try{this.bookCover=this.book.volumeInfo.imageLinks.smallThumbnail}catch(o){this.bookCover="./images/bookCoverPlaceholder.gif"}if(this.book.volumeInfo.subtitle?this.subtitle=": "+this.book.volumeInfo.subtitle:this.subtitle="",this.book.volumeInfo.authors?this.author=this.book.volumeInfo.authors.join(", "):this.author="No Author Listed",this.book.volumeInfo.publisher?this.publisher=this.book.volumeInfo.publisher:this.publisher="No Publisher Listed",this.book.volumeInfo.publishedDate?this.publishDate=new Date(this.book.volumeInfo.publishedDate).toDateString("en-US"):this.publishDate="No Publish Date Listed",this.book.volumeInfo.printedPageCount?this.pages=this.book.volumeInfo.printedPageCount+" Pages":this.pages="Book Length Not Given",this.book.volumeInfo.categories?this.genre="Category: "+this.book.volumeInfo.categories:this.genre="Genre Not Listed",this.book.volumeInfo.ratingsCount){let o;this.book.volumeInfo.ratingsCount==1?o=" Review":o=" Reviews",this.reviews=this.book.volumeInfo.ratingsCount+o}else this.reviews="No Reviews";this.book.volumeInfo.previewLink?this.summary=this.book.volumeInfo.description:this.summary="There is no summary given for this book.",this.starRating=p(this.book.volumeInfo.averageRating),this.bookCount++,t.innerHTML+=this.renderBookDetails(),this.addBttnFunctionality(),f(),this.storageKey!="want-read-shelf"&&(document.querySelectorAll("div.progress").forEach(o=>{o.removeAttribute("hidden")}),this.addReadingProgressEvent())}e.innerHTML=this.bookCount,this.bookCount=0})}renderBanner(){return`
+var l = (_, t, e) =>
+  new Promise((s, o) => {
+    var a = (r) => {
+        try {
+          i(e.next(r));
+        } catch (d) {
+          o(d);
+        }
+      },
+      n = (r) => {
+        try {
+          i(e.throw(r));
+        } catch (d) {
+          o(d);
+        }
+      },
+      i = (r) => (r.done ? s(r.value) : Promise.resolve(r.value).then(a, n));
+    i((e = e.apply(_, t)).next());
+  });
+import {
+  getLocalStorage as b,
+  setLocalStorage as h,
+  alertMessage as g,
+  removeAllInserts as u,
+  insertTitle as c,
+  insertBookCount as m,
+  runModal as f,
+  getStars as p,
+} from "./utils.js";
+import k from "./externalServices.js";
+let v = new k();
+export default class y {
+  constructor(t) {
+    (this.storageKey = t),
+      (this.bookShelf = []),
+      (this.book = {}),
+      (this.readingProgress = new Map()),
+      (this.bookCover = "./images/bookCoverPlaceholder.png"),
+      (this.subtitle = "None"),
+      (this.author = "No Author Listed"),
+      (this.publisher = "No Publisher Listed"),
+      (this.publishDate = "No Publish Date Listed"),
+      (this.starRating = "Not Given"),
+      (this.pages = "Not Listed"),
+      (this.genre = "Not Listed"),
+      (this.reviews = "None Given"),
+      (this.summary = "None Given"),
+      (this.header = ""),
+      (this.bttnNameNow = ""),
+      (this.bttnNameBefore = ""),
+      (this.bttnNameWant = ""),
+      (this.bookCount = 0);
+  }
+  getShelvedBooks() {
+    return l(this, null, function* () {
+      const t = document.getElementById("my_book_lists"),
+        e = document.getElementById("card-container");
+      if (
+        (this.selectShelfName(this.storageKey),
+        (this.bookShelf = yield b(this.storageKey)),
+        this.changeNullShelfToList(this.storageKey),
+        (e.innerHTML = ""),
+        this.bookShelf.length < 1)
+      )
+        (t.innerHTML = this.renderBanner()),
+          this.addShelfTitleAndEmptyShelfMessage(t);
+      else {
+        let s = this.header + " Shelf!";
+        c(t, s),
+          u("alert", "opening"),
+          m(this.bookCount),
+          this.bookShelf.length >= 1 && u("banner2", "opening"),
+          this.setReadingProgress(),
+          this.displayBooksFromShelf(e);
+      }
+    });
+  }
+  selectShelfName() {
+    this.storageKey == "reading-shelf"
+      ? ((this.header = "Reading"),
+        (this.bttnNameNow = "Remove"),
+        (this.bttnNameBefore = "Read"),
+        (this.bttnNameWant = "Want to Read"))
+      : this.storageKey == "read-shelf"
+      ? ((this.header = "Read"),
+        (this.bttnNameNow = "Reading"),
+        (this.bttnNameBefore = "Remove"),
+        (this.bttnNameWant = "Want to Read"))
+      : this.storageKey == "want-read-shelf" &&
+        ((this.header = "Want To Read"),
+        (this.bttnNameNow = "Reading"),
+        (this.bttnNameBefore = "Read"),
+        (this.bttnNameWant = "Remove"));
+  }
+  changeNullShelfToList() {
+    this.bookShelf == null &&
+      ((this.bookShelf = []), h(this.storageKey, this.bookShelf));
+  }
+  addShelfTitleAndEmptyShelfMessage(t) {
+    u("alert", "opening"),
+      g("Nothing is here, try adding a book!", "my_book_lists", !1);
+    let s = this.header + " Shelf!";
+    c(t, s);
+  }
+  displayBooksFromShelf(t) {
+    return l(this, null, function* () {
+      let e = document.querySelector(".count");
+      for (const s of this.bookShelf) {
+        (this.book = yield v.findBookById(s.id, !1)),
+          (this.book.progress = this.readingProgress.get(s));
+        try {
+          this.bookCover = this.book.volumeInfo.imageLinks.smallThumbnail;
+        } catch (o) {
+          this.bookCover = "./images/bookCoverPlaceholder.gif";
+        }
+        if (
+          (this.book.volumeInfo.subtitle
+            ? (this.subtitle = ": " + this.book.volumeInfo.subtitle)
+            : (this.subtitle = ""),
+          this.book.volumeInfo.authors
+            ? (this.author = this.book.volumeInfo.authors.join(", "))
+            : (this.author = "No Author Listed"),
+          this.book.volumeInfo.publisher
+            ? (this.publisher = this.book.volumeInfo.publisher)
+            : (this.publisher = "No Publisher Listed"),
+          this.book.volumeInfo.publishedDate
+            ? (this.publishDate = new Date(
+                this.book.volumeInfo.publishedDate
+              ).toDateString("en-US"))
+            : (this.publishDate = "No Publish Date Listed"),
+          this.book.volumeInfo.printedPageCount
+            ? (this.pages = this.book.volumeInfo.printedPageCount + " Pages")
+            : (this.pages = "Book Length Not Given"),
+          this.book.volumeInfo.categories
+            ? (this.genre = "Category: " + this.book.volumeInfo.categories)
+            : (this.genre = "Genre Not Listed"),
+          this.book.volumeInfo.ratingsCount)
+        ) {
+          let o;
+          this.book.volumeInfo.ratingsCount == 1
+            ? (o = " Review")
+            : (o = " Reviews"),
+            (this.reviews = this.book.volumeInfo.ratingsCount + o);
+        } else this.reviews = "No Reviews";
+        this.book.volumeInfo.previewLink
+          ? (this.summary = this.book.volumeInfo.description)
+          : (this.summary = "There is no summary given for this book."),
+          (this.starRating = p(this.book.volumeInfo.averageRating)),
+          this.bookCount++,
+          (t.innerHTML += this.renderBookDetails()),
+          this.addBttnFunctionality(),
+          f(),
+          this.storageKey != "want-read-shelf" &&
+            (document.querySelectorAll("div.progress").forEach((o) => {
+              o.removeAttribute("hidden");
+            }),
+            this.addReadingProgressEvent());
+      }
+      (e.innerHTML = this.bookCount), (this.bookCount = 0);
+    });
+  }
+  renderBanner() {
+    return `
     <div class="banner2">
       <p>
         Search for books and create your personal library of books you desire
@@ -8,7 +170,10 @@ var l=(_,t,e)=>new Promise((s,o)=>{var a=r=>{try{i(e.next(r))}catch(d){o(d)}},n=
     <section id="card-container">
     <!-- List for each book shelf of "Read"/"Reading"/"Want to Read" -->
     </section>
-      `}renderBookDetails(){return`
+      `;
+  }
+  renderBookDetails() {
+    return `
       <div class="result-div card_size">
         <div class="book_count">
           <span class="specialCount">${this.bookCount}</span>       
@@ -97,4 +262,72 @@ var l=(_,t,e)=>new Promise((s,o)=>{var a=r=>{try{i(e.next(r))}catch(d){o(d)}},n=
         </div>        
         <!-- ***************************** End of modal pop up HTML **************************** -->      
       </div>
-    `}addReadingProgressEvent(){document.querySelectorAll(".progressInput").forEach(e=>{var o;const s=e.getAttribute("data-id");e.value=(o=this.readingProgress.get(s))!=null?o:0,e.nextElementSibling.innerHTML=e.value,e.addEventListener("change",()=>l(this,null,function*(){this.handleReadingProgress(s,e.value)}))})}addBttnFunctionality(){let t=document.querySelectorAll(".addToReading");[{class:".addToReading",name:"reading-shelf"},{class:".addToRead",name:"read-shelf"},{class:".addToWantToRead",name:"want-read-shelf"}].forEach(s=>{document.querySelectorAll(s.class).forEach(a=>{a.textContent=="Remove"?a.className+=" book_delete":a.className+=" book_add",a.addEventListener("click",()=>l(this,null,function*(){let n=a.getAttribute("data-id");this.alterShelf(n,s.name),this.storageKey!="read-shelf"&&this.alterShelf(n,this.storageKey)}))})})}alterShelf(t,e){let s=b(e);s==null&&(s=[]);let o=new Date,a={id:t,now:o},n=!1;if(s.forEach(i=>{t==i.id?(i.now=o,n=!0,i.duplicate=!0):i.duplicate=!1}),this.storageKey==e){let i=[];s.forEach(r=>{r.duplicate==!1&&i.push(r)}),h(e,i),this.getShelvedBooks()}else n==!1&&(a.duplicate=!1,s.push(a)),h(e,s)}setReadingProgress(){const t=b("reading-progress");this.readingProgress=new Map(t)}handleReadingProgress(t,e){console.log(t,e),this.readingProgress.set(t,e),h("reading-progress",Array.from(this.readingProgress.entries()))}}
+    `;
+  }
+  addReadingProgressEvent() {
+    document.querySelectorAll(".progressInput").forEach((e) => {
+      var o;
+      const s = e.getAttribute("data-id");
+      (e.value = (o = this.readingProgress.get(s)) != null ? o : 0),
+        (e.nextElementSibling.innerHTML = e.value),
+        e.addEventListener("change", () =>
+          l(this, null, function* () {
+            this.handleReadingProgress(s, e.value);
+          })
+        );
+    });
+  }
+  addBttnFunctionality() {
+    let t = document.querySelectorAll(".addToReading");
+    [
+      { class: ".addToReading", name: "reading-shelf" },
+      { class: ".addToRead", name: "read-shelf" },
+      { class: ".addToWantToRead", name: "want-read-shelf" },
+    ].forEach((s) => {
+      document.querySelectorAll(s.class).forEach((a) => {
+        a.textContent == "Remove"
+          ? (a.className += " book_delete")
+          : (a.className += " book_add"),
+          a.addEventListener("click", () =>
+            l(this, null, function* () {
+              let n = a.getAttribute("data-id");
+              this.alterShelf(n, s.name),
+                this.storageKey != "read-shelf" &&
+                  this.alterShelf(n, this.storageKey);
+            })
+          );
+      });
+    });
+  }
+  alterShelf(t, e) {
+    let s = b(e);
+    s == null && (s = []);
+    let o = new Date(),
+      a = { id: t, now: o },
+      n = !1;
+    if (
+      (s.forEach((i) => {
+        t == i.id
+          ? ((i.now = o), (n = !0), (i.duplicate = !0))
+          : (i.duplicate = !1);
+      }),
+      this.storageKey == e)
+    ) {
+      let i = [];
+      s.forEach((r) => {
+        r.duplicate == !1 && i.push(r);
+      }),
+        h(e, i),
+        this.getShelvedBooks();
+    } else n == !1 && ((a.duplicate = !1), s.push(a)), h(e, s);
+  }
+  setReadingProgress() {
+    const t = b("reading-progress");
+    this.readingProgress = new Map(t);
+  }
+  handleReadingProgress(t, e) {
+    console.log(t, e),
+      this.readingProgress.set(t, e),
+      h("reading-progress", Array.from(this.readingProgress.entries()));
+  }
+}
