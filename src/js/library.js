@@ -15,53 +15,53 @@ async function loadPage() {
   //set the search scope to "search " if clicked
   const searchScope1 = document.getElementById("searchScope1");
   searchScope1.addEventListener("click", () => {
-      searchScope = searchScope1.value;
-      setLocalStorage("searchScope", searchScope);  
-  })
+    searchScope = searchScope1.value;
+    setLocalStorage("searchScope", searchScope);
+  });
   //set the search scope to "intitle:" if clicked
   const searchScope2 = document.getElementById("searchScope2");
   searchScope2.addEventListener("click", () => {
-      searchScope = searchScope2.value;
-      console.log(searchScope);
-      setLocalStorage("searchScope", searchScope);  
-  })
+    searchScope = searchScope2.value;
+    console.log(searchScope);
+    setLocalStorage("searchScope", searchScope);
+  });
   //set the search scope to "inauthor:" if clicked
   const searchScope3 = document.getElementById("searchScope3");
   searchScope3.addEventListener("click", () => {
-      searchScope = searchScope3.value;
-      console.log(searchScope);
-      setLocalStorage("searchScope", searchScope);       
-  })
+    searchScope = searchScope3.value;
+    console.log(searchScope);
+    setLocalStorage("searchScope", searchScope);
+  });
   //set the search scope to "subject:" if clicked
   const searchScope4 = document.getElementById("searchScope4");
   searchScope4.addEventListener("click", () => {
-      searchScope = searchScope4.value;
-      console.log(searchScope);
-      setLocalStorage("searchScope", searchScope);  
-  })
+    searchScope = searchScope4.value;
+    console.log(searchScope);
+    setLocalStorage("searchScope", searchScope);
+  });
 }
 //run this fuction that waits for the header and footer to load
 loadPage();
 
-  const buttons = [
-    {selector: "#read_bttn", shelf: "read-shelf"},
-    {selector: "#reading_bttn", shelf: "reading-shelf"},
-    {selector: "#want_bttn", shelf: "want-read-shelf"},
-  ];
+const buttons = [
+  { selector: "#read_bttn", shelf: "read-shelf" },
+  { selector: "#reading_bttn", shelf: "reading-shelf" },
+  { selector: "#want_bttn", shelf: "want-read-shelf" },
+];
 
-  buttons.forEach(button => {
-    let readButton = document.querySelector(button.selector);
-    //add an event listener to that button that calls the "getShelvedBooks" method
-    readButton.addEventListener("click", () => {
-      //create a LibraryActions class object with "read-shelf" argument
-      //to make it possible to access its "getShelvedBooks" method
-      let shelf = new LibraryActions(button.shelf);
-      //this will add the list of books they've read to the page
-      shelf.getShelvedBooks();
-    });
+buttons.forEach((button) => {
+  let readButton = document.querySelector(button.selector);
+  //add an event listener to that button that calls the "getShelvedBooks" method
+  readButton.addEventListener("click", () => {
+    //create a LibraryActions class object with "read-shelf" argument
+    //to make it possible to access its "getShelvedBooks" method
+    let shelf = new LibraryActions(button.shelf);
+    //this will add the list of books they've read to the page
+    shelf.getShelvedBooks();
   });
+});
 
-    document.querySelector("#reading_bttn").setAttribute("class", ".active");
+document.querySelector("#reading_bttn").setAttribute("class", ".active");
 
 // //create a variable for the "Read Before" shelf button element
 // let readButton = document.querySelector("#read_bttn");
@@ -107,4 +107,3 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
-
