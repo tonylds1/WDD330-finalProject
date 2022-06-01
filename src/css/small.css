@@ -375,7 +375,7 @@ footer a:active {
 }
 
 .links {
-  padding: 5% 0 10% 0;
+  padding-top: 20px;
   text-align: center;
 }
 
@@ -525,18 +525,14 @@ footer a:active {
 .footer-banner p {
   color: var(--primary-color);
   size: 10rem;
-  padding: 3em 3em 3em 3em;
 }
 
 /* Create three equal columns that floats next to each other */
 .column {
   background-color: var(--accent-grey);
   /* background-color: var(--dark-grey); */
-  float: left;
-  width: 33.33%;
   padding: 10px;
-  height: 300px;
-  /* Should be removed. Only for demonstration */
+
 }
 
 /* Clear floats after the columns */

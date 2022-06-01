@@ -89,7 +89,6 @@
   .searchResults h2 {   
     margin-bottom: -50px;
   }
-
   
   /* Footer CSS */
 
@@ -97,7 +96,7 @@
     float: left;
     width: 33.33%;
     padding: 10px;
-    height: 200px; /* Should be removed. Only for demonstration */
+    height: 200px;
   }
 
   .column1 {
