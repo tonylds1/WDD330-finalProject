@@ -1,13 +1,18 @@
 import { loadHeaderFooter, setLocalStorage } from "./utils.js";
+import DarkMode from "./darkmode";
 
-// setLocalStorage("searchScope", "search ");
-async function loadSearchScope() {
+//put in the header & footer
+
+async function loadPage() {
     //set the search scope to the default of search all
     setLocalStorage("searchScope", "search ");
     //set search default value first
     let searchScope = "search ";
     //then put in the header & footer next
     await loadHeaderFooter();
+    //then put in dark mode
+    const darkMode = new DarkMode();
+    darkMode.init();
     //set the search scope to "search " if clicked
     const searchScope1 = document.getElementById("searchScope1");
     searchScope1.addEventListener("click", () => {
@@ -35,7 +40,10 @@ async function loadSearchScope() {
         console.log(searchScope);
         setLocalStorage("searchScope", searchScope);  
     })    
-
 }
 //run this fuction that waits for the header and footer to load
-loadSearchScope();
+loadPage();
+
+
+
+

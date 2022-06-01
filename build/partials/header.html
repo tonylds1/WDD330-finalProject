@@ -12,7 +12,7 @@
         />
       </a>
     </div>
-    <h1>Cloud Shelf</h1>
+    <h1>Cloud<span style="color: #545454">Shelf</span></h1>
     <!-- NAVIGATION MENU -->
     <ul class="nav-links">
       <!-- USING CHECKBOX HACK -->
@@ -27,20 +27,40 @@
         </label>
         <!-- NAVIGATION MENUS -->
         <div class="menu">
-          <li><a href="./index.html">Homepage</a></li>
+          <li><a href="./index.html">Home</a></li>
           <li><a href="./library.html">My Library</a></li>
-          <li><a href="">Toggle Dark Mode</a></li>
+          <!-- <li><button class="darkModeToggle"></button></li> -->
+          <li>
+            <input
+              width="50px"
+              type="image"
+              class="darkModeToggle"
+              src=""
+              alt="dark mode toggle"
+            />
+          </li>
         </div>
       </nav>
       <!-- Duplicate to work around hamburger menu constraints -->
       <div class="menu">
-        <li><a href="./index.html">Homepage</a></li>
+        <li><a href="./index.html">Home</a></li>
         <li><a href="library.html">My Library</a></li>
-        <li><a href="">Toggle Dark Mode</a></li>
+        <!-- <li><button class="darkModeToggle"></button></li> -->
+        <input
+          width="50px"
+          type="image"
+          class="darkModeToggle"
+          src=""
+          alt="dark mode toggle"
+        />
+
+        <!-- <input width="50px" type="image" class="darkModeToggle" src="../images/bookCoverPlaceholder.gif" /> -->
+        <!-- <li><button class="darkModeToggle">Toggle Dark Mode</button></li> -->
+        <!-- <section id="darkModeToggle"></section> -->
       </div>
     </ul>
     <div class="search-container">
-      <form action="./results.html">
+      <form action="./results.html">        
         <input
           class="header-search-bar"
           type="search"

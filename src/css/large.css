@@ -11,46 +11,46 @@
   .navbar {
     display: grid;
     /* gap: 1em; */
-    grid-template-columns: 15% auto 50%;
+    grid-template-columns: 15% auto 35%;
     border: none;
   }
 
   .navbar img {
-    width:8rem;
+    width: 8rem;
     margin-right: 10%;
     /* width: 100%; */
   }
-  .navbar H1{
+  .navbar H1 {
     font-family: var(--font-headline);
     font-size: 5.6rem;
-    padding-left: .3rem;
+    padding-left: 0.3rem;
   }
-  .navbar ul{
+  .navbar ul {
     font-family: var(--font-body);
     font: size 1.5em;
   }
-  
+
   .menu {
     border: none;
     font-family: var(--font-body);
-    font-size:1.6rem;
-     text-align: center;
+    font-size: 1.6rem;
+    text-align: center;
     align-items: center;
   }
-  
-  .menu li{
-    border:none;
-    border-radius: 8px;
-    background-color: rgba(0,0,0,0.1);
-    transition: transform .2s;
-  }
 
-  .menu li:hover{
+  .menu li {
     border: none;
     border-radius: 8px;
-    background-color: rgba(255,200,0,0.5);
-    transition: transform .2s;
-    transform: scale(1.1);  
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+
+  .menu li:hover {
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 200, 0, 0.5);
+    transition: transform 0.2s;
+    transform: scale(1.1);
   }
 
   div.searchScopeContainer {  
@@ -60,6 +60,8 @@
 
   .search-container {
     grid-column: 3/4;
+    /* margin-left: auto; */
+    /* justify-content: flex-end; */
   }
   .search-container form {
     text-align: initial;

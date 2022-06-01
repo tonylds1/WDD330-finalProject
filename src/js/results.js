@@ -2,13 +2,16 @@
 import ExternalServices from "./externalServices.js";
 import { loadHeaderFooter, getParam, setLocalStorage } from "./utils.js";
 import SearchResults from "./SearchResultsList.js";
-
+import DarkMode from "./darkmode";
 
 async function loadSearchScope() {
     //set search default value first
     let searchScope = "search ";
     //then put in the header & footer next
     await loadHeaderFooter();
+    //then put in dark mode
+    const darkMode = new DarkMode();
+    darkMode.init();
     //set the search scope to "search " if clicked
     const searchScope1 = document.getElementById("searchScope1");
     searchScope1.addEventListener("click", () => {
