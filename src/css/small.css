@@ -66,14 +66,14 @@ main {
   background-color: var(--base-color);
 }
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
 p,
 span {
   color: var(--text-color);
-}
+} */
 
 body {
   background-color: var(--base-color);
@@ -369,13 +369,27 @@ footer a:active {
 
 /* .banner form {
   font-size: 3rem;
-  padding: 0.2rem 1rem 2rem 3rem;
+  padding: 0.2rem 1rem 2rem 2rem;
 } */
 .banner2 p {
-  font-size: 1.75rem;
-  padding: 3.5rem 3.5rem 3.5rem 3.5rem;
+  font-size: 1.45rem;
+   padding: 1rem 1rem 2rem 2rem; 
   color: var(--dark-grey);
-  text-align: center;
+  text-align: left;
+  font-family: var(--font-body);
+}
+
+.banner2 h3{
+  font-size: 2rem;
+  color:var(--primary-color);
+  padding: 1rem 1rem 2rem 2rem; 
+  font-family: var(--font-headline);
+}
+.banner2 h2{
+  font-size: 2rem;
+  color:var(--quaternary-color);
+  padding: 1rem 1.25rem 2rem 2rem; 
+  font-family: var(--font-headline);
 }
 
 /* library toogle wrapper... extra code, needs to be cleaned up */
