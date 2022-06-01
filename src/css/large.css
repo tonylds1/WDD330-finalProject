@@ -11,35 +11,52 @@
   .navbar {
     display: grid;
     /* gap: 1em; */
-    grid-template-columns: 15% auto 50%;
+    grid-template-columns: 15% auto 35%;
     border: none;
   }
-  .menu li{
-    border: solid 1px black;
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0.1);
-    transition: transform .2s;
-  }
 
-  .menu li:hover{
-    border: solid 1px black;
-    border-radius: 5px;
-    background-color: rgba(255,200,0,0.5);
-    transition: transform .2s;
-    transform: scale(1.1);  
+  .navbar img {
+    width: 8rem;
+    margin-right: 10%;
+    /* width: 100%; */
+  }
+  .navbar H1 {
+    font-family: var(--font-headline);
+    font-size: 5.6rem;
+    padding-left: 0.3rem;
+  }
+  .navbar ul {
+    font-family: var(--font-body);
+    font: size 1.5em;
   }
 
   .menu {
     border: none;
+    font-family: var(--font-body);
+    font-size: 1.6rem;
     text-align: center;
-    align-items: center
+    align-items: center;
   }
-  .navbar img {
-    /* width: 100%; */
+
+  .menu li {
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+
+  .menu li:hover {
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 200, 0, 0.5);
+    transition: transform 0.2s;
+    transform: scale(1.1);
   }
 
   .search-container {
     grid-column: 3/4;
+    /* margin-left: auto; */
+    /* justify-content: flex-end; */
   }
   .search-container form {
     text-align: initial;
@@ -48,5 +65,22 @@
   .modal_top_display {
     display: grid;
     grid-template-columns: 30% 70%;
+  }
+
+  .books_modal_details {
+    margin-left: 1rem;
+  }
+
+  p.count_message {
+    display: flex;     
+  }
+
+  #search_rotator {
+    display:flex;
+    justify-content: flex-end;
+  }
+
+  .searchResults h2 {   
+    margin-bottom: -50px;
   }
 }

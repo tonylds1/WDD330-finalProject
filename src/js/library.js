@@ -1,8 +1,17 @@
 import { loadHeaderFooter } from "./utils.js";
 import LibraryActions from "./libraryActions.js";
+import DarkMode from "./darkmode";
 
 //put in the header & footer
-loadHeaderFooter();
+// loadHeaderFooter();
+async function loadPage() {
+  await loadHeaderFooter();
+  const darkMode = new DarkMode();
+  darkMode.init();
+}
+loadPage();
+//put in the header & footer
+// loadHeaderFooter();
 
   const buttons = [
     {selector: "#read_bttn", shelf: "read-shelf"},

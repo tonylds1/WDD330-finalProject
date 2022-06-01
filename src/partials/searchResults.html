@@ -1,15 +1,66 @@
 <div class="result-div">
+  <span class="specialCount"></span> 
   <img
     src="https://user-images.githubusercontent.com/101482/29592647-40da86ca-875a-11e7-8bc3-941700b0a323.png"
     alt="thumbnail placeholder"
+    class="shelf_img"
   />
   <div class="book-details">
     <h3 class="bookTitle"></h3>
     <hr />
-    <p class="authors">By:</p>
+    <p class="authors">By: </p>
     <br />
-    <p class="publishDate">Published on</p>
-    <p class="publisher">by</p>
+    <p class="publishDate">Published on </p>
+    <p class="publisher">by </p>
+    <br>
     <div class="addToShelfButtons"></div>
+    <br>
+    <p class="description"></p>
   </div>
+  <!-- Trigger/Open The Modal --> 
+  <button type="button" class="details_bttn search_details_bttn">Details</button>
+  <!--_______________________________________ *** The Modal *** _________________________ -->
+  <!--                                   |||                     |||                      -->
+  <!--__________________________________ YYY Modal content Below YYY _____________________-->      
+  <div id="myModal" class="modal">
+    <div class="modal-content">        
+      <span class="close">&times;</span>
+      <section class="books-details">             
+        <div class="modal_top_display">
+          <div class="book_count">
+            <span class="specialCount"></span> 
+            <img  
+            src=""
+            alt="Cover for "
+            class="book_modal_img"
+            class="pop-up"
+            />               
+          </div>               
+          <div class="books_modal_details">  
+            <h1 class="books_modal_title"></h1>       
+            <hr>
+            <h2 class="books_modal_authors">By: </h2>
+            <br>
+            <p class="books_modal_publish_date">Published on </p>
+            <p class="books_modal_publisher">by </p>
+            <br>
+            <h3 class ="books_modal_page_count"></h3>
+            <br><br><br>
+            <h3 class="books_modal_genre"></h3>
+            <br>
+            <h2 class="books_modal_ratings"></h2>            
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+            <br><br><br>
+            <h3><u>Book Links</u></h3>                 
+            <h3><a href="#"" target="_blank" class="books_modal_infoLink">Book Info From Google Play</a></h3>              
+            <h3><a href="#"" target="_blank" class="books_modal_previewLink">Book Preview from Google Books</a></h3>     
+          </div> 
+        </div>
+        <br>             
+        <h2 class="books_modal_summary_title">Book Summary:</h2>
+        <p class="books_modal_summary"></p>       
+      </section>
+    </div>
+  </div>        
+  <!-- ***************************** End of modal pop up HTML **************************** -->      
 </div>
