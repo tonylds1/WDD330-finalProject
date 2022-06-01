@@ -55,9 +55,9 @@ export default class DarkMode {
     let buttonList = document.querySelectorAll(".darkModeToggle");
     buttonList.forEach((button) => {
       if (this.currentTheme == "light") {
-        button.src = "../images/moon.png";
+        button.src = "./images/moon.png";
       } else if (this.currentTheme == "dark") {
-        button.src = "../images/sunny.png";
+        button.src = "./images/sunny.png";
       }
     })
   }
