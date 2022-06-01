@@ -51,13 +51,11 @@ export default class LibraryActions {
     //reset bookShelf to an empty list if localStorage is empty
     this.changeNullShelfToList(this.storageKey);
     //if the bookshelf is empty in localStorage post a message
+    insertionPoint2.innerHTML = "";
     if (this.bookShelf.length < 1) {
-      insertionPoint2.innerHTML = "";
       insertionPoint1.innerHTML = this.renderBanner();
       this.addShelfTitleAndEmptyShelfMessage(insertionPoint1);
     } else {
-      //clear previous data from area holding the list
-      insertionPoint2.innerHTML = "";
       //add in the title at the top by creating a title
       let title = this.header + " Shelf!";
       //put the title at the top
@@ -67,15 +65,15 @@ export default class LibraryActions {
       //insert the total count of the books on the shelf
       insertBookCount(this.bookCount);
 
-      //remove any previous banners form empty shelves     
-     if (this.bookShelf.length >= 1) { 
-       removeAllInserts("banner2" , "opening") 
-      // const banners = document.querySelectorAll(".banner2");
-      // banners.forEach((banner) => document.querySelector("main").removeChild(banner));
-     }    
-     this.setReadingProgress();
-      //display the books that are in the shelf     
-      this.displayBooksFromShelf(insertionPoint2);     
+      //remove any previous banners form empty shelves
+      if (this.bookShelf.length >= 1) {
+        removeAllInserts("banner2", "opening");
+        // const banners = document.querySelectorAll(".banner2");
+        // banners.forEach((banner) => document.querySelector("main").removeChild(banner));
+      }
+      this.setReadingProgress();
+      //display the books that are in the shelf
+      this.displayBooksFromShelf(insertionPoint2);
     }
   }
 
@@ -125,8 +123,8 @@ export default class LibraryActions {
   async displayBooksFromShelf(insertionPoint2) {
     //set up variables for the elements holding the count
     let countHolder = document.querySelector(".count");
-    
-    //loop through list of the books from the shelf   
+
+    //loop through list of the books from the shelf
     for (const bookId of this.bookShelf) {
       this.book = await connection.findBookById(bookId.id, false);
       this.book.progress = this.readingProgress.get(bookId);
@@ -202,14 +200,14 @@ export default class LibraryActions {
       insertionPoint2.innerHTML += this.renderBookDetails();
       //add the button functionality so they add the the other shelves
 
-      this.addBttnFunctionality(); 
+      this.addBttnFunctionality();
       //set up the modal pop-up
-      runModal(); 
+      runModal();
 
       if (this.storageKey != "want-read-shelf") {
-        document.querySelectorAll('div.progress').forEach(
-          progress => {progress.removeAttribute('hidden')}
-        );
+        document.querySelectorAll("div.progress").forEach((progress) => {
+          progress.removeAttribute("hidden");
+        });
         this.addReadingProgressEvent();
       }
     }
@@ -342,9 +340,8 @@ export default class LibraryActions {
 
   addReadingProgressEvent() {
     let progressBars = document.querySelectorAll(".progressInput");
-    //add an event listener for "clicking" the button for each book 
-    progressBars.forEach(node => { 
-
+    //add an event listener for "clicking" the button for each book
+    progressBars.forEach((node) => {
       const bookId = node.getAttribute("data-id");
       node.value = this.readingProgress.get(bookId) ?? 0;
       node.nextElementSibling.innerHTML = node.value;
@@ -358,62 +355,34 @@ export default class LibraryActions {
   addBttnFunctionality() {
     //get a list of all the button nodes for the "reading shelf"
     let addToReadingBtn = document.querySelectorAll(".addToReading");
-    //add an event listener for "clicking" the button for each book
-    addToReadingBtn.forEach((node) => {
-      //change class name if it is the delete button
-      //use this class name to chang the color to red
-      if (node.textContent == "Remove") {
-        node.className += " book_delete";
-      } else {
-        node.className += " book_add";
-      }
+    const shelfs = [
+      {'class':'.addToReading', 'name':'reading-shelf'},
+      {'class':'.addToRead', 'name':'read-shelf'},
+      {'class':'.addToWantToRead', 'name':'want-read-shelf'}
+    ];
 
-      node.addEventListener("click", async () => {
-        //set the id variable to the book.id stored in data-id
-        let id = node.getAttribute("data-id");
-        //subtract the book with this id if the button is in "reading-shelf"
-        //or add the book to the appropriate list if it is not already in that list
-        this.alterShelf(id, "reading-shelf");
-      });
-    });
-    //get a list of all the button nodes for the "read shelf"
-    let addToReadBtn = document.querySelectorAll(".addToRead");
-    //add an event listener for "clicking" the button for each book
-    addToReadBtn.forEach((node) => {
-      //change class name if it is the delete button
-      //use this class name to chang the color to red
-      if (node.textContent == "Remove") {
-        node.className += " book_delete";
-      } else {
-        node.className += " book_add";
-      }
-
-      node.addEventListener("click", async () => {
-        //set the id variable to the book.id stored in data-id
-        let id = node.getAttribute("data-id");
-        //subtract the book with this id if the button is in "read-shelf"
-        //or add the book to the appropriate list if it is not already in that list
-        this.alterShelf(id, "read-shelf");
-      });
-    });
-    //get a list of all the button nodes for the "want to read shelf"
-    let addToWantToReadBtn = document.querySelectorAll(".addToWantToRead");
-    //add an event listener for "clicking" the button for each book
-    addToWantToReadBtn.forEach((node) => {
-      //change class name if it is the delete button
-      //use this class name to chang the color to red
-      if (node.textContent == "Remove") {
-        node.className += " book_delete";
-      } else {
-        node.className += " book_add";
-      }
-
-      node.addEventListener("click", async () => {
-        //set the id variable to the book.id stored in data-id
-        let id = node.getAttribute("data-id");
-        //subtract the book with this id if the button is in "want-read-shelf"
-        //or add the book to the appropriate list if it is not already in that list
-        this.alterShelf(id, "want-read-shelf");
+    shelfs.forEach(shelf => {
+      let btn = document.querySelectorAll(shelf.class);
+      btn.forEach((node) => {
+        //change class name if it is the delete button
+        //use this class name to chang the color to red
+        if (node.textContent == "Remove") {
+          node.className += " book_delete";
+        } else {
+          node.className += " book_add";
+        }
+  
+        node.addEventListener("click", async () => {
+          //set the id variable to the book.id stored in data-id
+          let id = node.getAttribute("data-id");
+          //subtract the book with this id if the button is in "reading-shelf"
+          //or add the book to the appropriate list if it is not already in that list
+          
+          this.alterShelf(id, shelf.name);
+          if ('read-shelf' != this.storageKey) {
+            this.alterShelf(id, this.storageKey);
+          }
+        });
       });
     });
   }
@@ -479,13 +448,16 @@ export default class LibraryActions {
   }
 
   setReadingProgress() {
-    const storedReadingProgress = getLocalStorage('reading-progress');
+    const storedReadingProgress = getLocalStorage("reading-progress");
     this.readingProgress = new Map(storedReadingProgress);
   }
 
   handleReadingProgress(bookId, progress) {
     console.log(bookId, progress);
     this.readingProgress.set(bookId, progress);
-    setLocalStorage('reading-progress', Array.from(this.readingProgress.entries()));
+    setLocalStorage(
+      "reading-progress",
+      Array.from(this.readingProgress.entries())
+    );
   }
 }

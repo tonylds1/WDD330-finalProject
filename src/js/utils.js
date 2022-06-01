@@ -24,7 +24,7 @@ export function renderListWithTemplate(
   parentElement,
   list,
   callback,
-  count 
+  count
 ) {
   // clone it once for each product in our list
   list.forEach((item) => {
@@ -144,15 +144,17 @@ export function insertBookCount(bookCount) {
   main.insertBefore(count, main.firstChild.nextSibling);
 }
 
-export const selectElement = selector => {
+export const selectElement = (selector) => {
   const element = document.querySelector(selector);
   if (element) return element;
-  throw new Error(`Double check your '${element}' seletor and make sure it's typed correctly`);
+  throw new Error(
+    `Double check your '${element}' seletor and make sure it's typed correctly`
+  );
 };
 
 export const isNullOrUndefined = (variable) => {
   return variable == null || variable == undefined;
-}
+};
 
 export function runModal(callBack1, callBack2, searchResult = false) {
   //create variable for the div holding the modal HTML content
@@ -189,14 +191,16 @@ export function runModal(callBack1, callBack2, searchResult = false) {
         ) {
           if (searchResult == true) {
             //get the book's id stored in the data-id of the "Want to Read" button
-            //from the card that had the modal detail button clicked            
-            let bookIdElementContainer = clickedBtn.previousElementSibling
-            .lastElementChild.previousElementSibling.previousElementSibling.firstElementChild; 
-            console.log(bookIdElementContainer);           
+            //from the card that had the modal detail button clicked
+            let bookIdElementContainer =
+              clickedBtn.previousElementSibling.lastElementChild
+                .previousElementSibling.previousElementSibling
+                .firstElementChild;
+            console.log(bookIdElementContainer);
             let bookId = bookIdElementContainer.getAttribute("data-id");
             console.log(bookId);
             //get the element of the modal div where the modal deatail button was clicked
-            let bookCard = clickedBtn.nextElementSibling;    
+            let bookCard = clickedBtn.nextElementSibling;
             console.log(bookCard);
             //set a variable equal to the return value from the 1st call back function
             //this function fetches the book details from the api for that specific book
@@ -255,16 +259,15 @@ export function getStars(fiveRating) {
 }
 
 export function doubleNumberInsert(elements, startingNumber) {
-   //set up a variable for the count
-   let count = startingNumber;
-   //set up a variable for alternating number increase
-   let numberWatcher = 0;   
-   elements.forEach(element => {
-     if (numberWatcher % 2 == 0) {
-     count++;
-     }
-     element.innerHTML = count;
-     numberWatcher++
-   })
+  //set up a variable for the count
+  let count = startingNumber;
+  //set up a variable for alternating number increase
+  let numberWatcher = 0;
+  elements.forEach((element) => {
+    if (numberWatcher % 2 == 0) {
+      count++;
+    }
+    element.innerHTML = count;
+    numberWatcher++;
+  });
 }
-
