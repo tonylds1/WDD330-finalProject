@@ -108,9 +108,22 @@ body {
   font-family: var(--font-body);
 }
 
+div.searchScopeContainer {   
+  display: flex;
+  justify-content:space-evenly;
+  width: 300px;
+  margin: 0 auto -15px auto; 
+  grid-column: 1/4;
+  padding: 0 20px;
+
+}
+
 .search-container {
   grid-column: 1/4;
   width: 100%;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 }
 
 .search-container input {
@@ -129,9 +142,17 @@ body {
   text-align: center;
 }
 
-/* .bannerS h2 {
-  font-family: var(--font-body);
-} */
+
+label {
+  float: left;
+  padding: 0 1em;
+  text-align: center;
+}
+
+.bannerS h2 {
+font-family: var(--font-body);
+}
+
 
 input[type="search"] {
   transition: width 0.5s ease-in-out;
@@ -843,7 +864,16 @@ div#MyLIB {
   width: fit-content;
 }
 
-/***************************** END OF SHELF CARD SIZE & Title STYLING *************************/
+/***************************** END OF SHELF BUTTONS, CARD SIZE & Title STYLING ********************/
+
+/***************************** START OF PROGRESS READING BAR *************************/
+
+.progress {
+  margin: 10px;
+  width: 100%;
+}
+
+/***************************** END OF PROGRESS READING BAR *************************/
 
 /**************************** START OF ALERT STYLING ******************************************/
 p.alert,
@@ -862,8 +892,7 @@ p.count_message {
   /* justify-content: space-between; */
 }
 
-p.alert {
-  /* text-align: left; */
+p.alert {  
   display:flex;
   justify-content: space-around;
 }

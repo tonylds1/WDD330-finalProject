@@ -144,6 +144,16 @@ export function insertBookCount(bookCount) {
   main.insertBefore(count, main.firstChild.nextSibling);
 }
 
+export const selectElement = selector => {
+  const element = document.querySelector(selector);
+  if (element) return element;
+  throw new Error(`Double check your '${element}' seletor and make sure it's typed correctly`);
+};
+
+export const isNullOrUndefined = (variable) => {
+  return variable == null || variable == undefined;
+}
+
 export function runModal(callBack1, callBack2, searchResult = false) {
   //create variable for the div holding the modal HTML content
   let modal;
@@ -257,3 +267,4 @@ export function doubleNumberInsert(elements, startingNumber) {
      numberWatcher++
    })
 }
+

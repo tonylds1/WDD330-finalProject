@@ -15,7 +15,7 @@
 // Working with volumes
 // Performing a search
 // You can perform a volumes search by sending an HTTP GET request to the following URI:
-
+//                                              =inauthor:keyes
 // https://www.googleapis.com/books/v1/volumes?q=search+terms
 // This request has a single required parameter:
 
@@ -66,10 +66,10 @@ export default class ExternalServices {
   constructor() {}
 
   // get book list in increments of 40
-  async getBookData(enteredSearch, searchBatch = 0) {
+  async getBookData(searchScope, enteredSearch, searchBatch = 0) {
     const requestResults = await fetch(
       baseURL +
-        `?q=search ${enteredSearch}
+        `?q=${searchScope}${enteredSearch}
     &printType=books&maxResults=40&startIndex=${searchBatch}`
     );
     const jsonBookResults = await convertToJson(requestResults);
@@ -81,6 +81,7 @@ export default class ExternalServices {
     // console.log(jsonBookResults);
     return jsonBookResults;
   }
+  
   // get book by id
   async findBookById(id, set = true) {
     let book = await fetch(baseURL + id);
