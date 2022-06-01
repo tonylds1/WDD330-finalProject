@@ -107,17 +107,60 @@ body {
 .navbar ul {
   font-family: var(--font-body);
 }
+/********************* START OF STYLING FOR THE SEARCH OPTIONS SELECTOR ********************/
+label {
+  float: left;
+  padding: 0 1em;
+  text-align: center; 
+  min-width: 51px;
+}
 
-div.searchScopeContainer {   
+div.searchScopeContainer { 
+  /* background-color: #edf1f1;   */
   display: flex;
   justify-content:space-evenly;
   width: 300px;
-  margin: 0 auto -15px auto; 
+  margin: 0 auto -12px auto; 
   grid-column: 1/4;
-  padding: 0 20px;
-
+  padding: 0 5px;
 }
 
+div.searchScopeContainer input {
+  min-width: 51px;
+}
+
+input[name="searchScope"] {
+	accent-color: #615555;
+}
+
+/* input[type='radio']:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: 17px;
+  position: relative;
+  background-color: #d1d3d1;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: 17px;
+    position: relative;
+    background-color: #615555;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+} */
+/********************* END OF STYLING FOR THE SEARCH OPTIONS SELECTOR ********************/
 .search-container {
   grid-column: 1/4;
   width: 100%;
@@ -142,17 +185,9 @@ div.searchScopeContainer {
   text-align: center;
 }
 
-
-label {
-  float: left;
-  padding: 0 1em;
-  text-align: center;
-}
-
 .bannerS h2 {
 font-family: var(--font-body);
 }
-
 
 input[type="search"] {
   transition: width 0.5s ease-in-out;
@@ -915,3 +950,4 @@ span.count {
 }
 
 /**************************** END OF ALERT STYLING ********************************************/
+

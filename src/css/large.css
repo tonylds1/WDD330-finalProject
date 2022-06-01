@@ -53,7 +53,8 @@
     transform: scale(1.1);
   }
 
-  div.searchScopeContainer {  
+  div.searchScopeContainer {
+      
     grid-column: 3/4; 
     margin-right: 60%; 
   }
