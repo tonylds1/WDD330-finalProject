@@ -107,4 +107,24 @@
     background-color: #303030;
     width: 100%;
   }
+
+  /* Hero Text Banner */
+
+  .textHero {
+    padding-top: 80px;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+  }
+
+  .h2Hero {
+    text-align: left;
+    font-size: 60px;
+    padding-left: 80px;
+  }
+  
+  .pHero {
+    text-align: left;
+    font-size: 35px;
+    padding-left: 200px;
+  }
 }
