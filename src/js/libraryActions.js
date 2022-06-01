@@ -51,13 +51,11 @@ export default class LibraryActions {
     //reset bookShelf to an empty list if localStorage is empty
     this.changeNullShelfToList(this.storageKey);
     //if the bookshelf is empty in localStorage post a message
+    insertionPoint2.innerHTML = "";
     if (this.bookShelf.length < 1) {
-      insertionPoint2.innerHTML = "";
       insertionPoint1.innerHTML = this.renderBanner();
       this.addShelfTitleAndEmptyShelfMessage(insertionPoint1);
     } else {
-      //clear previous data from area holding the list
-      insertionPoint2.innerHTML = "";
       //add in the title at the top by creating a title
       let title = this.header + " Shelf!";
       //put the title at the top
@@ -358,62 +356,34 @@ export default class LibraryActions {
   addBttnFunctionality() {
     //get a list of all the button nodes for the "reading shelf"
     let addToReadingBtn = document.querySelectorAll(".addToReading");
-    //add an event listener for "clicking" the button for each book
-    addToReadingBtn.forEach((node) => {
-      //change class name if it is the delete button
-      //use this class name to chang the color to red
-      if (node.textContent == "Remove") {
-        node.className += " book_delete";
-      } else {
-        node.className += " book_add";
-      }
+    const shelfs = [
+      {'class':'.addToReading', 'name':'reading-shelf'},
+      {'class':'.addToRead', 'name':'read-shelf'},
+      {'class':'.addToWantToRead', 'name':'want-read-shelf'}
+    ];
 
-      node.addEventListener("click", async () => {
-        //set the id variable to the book.id stored in data-id
-        let id = node.getAttribute("data-id");
-        //subtract the book with this id if the button is in "reading-shelf"
-        //or add the book to the appropriate list if it is not already in that list
-        this.alterShelf(id, "reading-shelf");
-      });
-    });
-    //get a list of all the button nodes for the "read shelf"
-    let addToReadBtn = document.querySelectorAll(".addToRead");
-    //add an event listener for "clicking" the button for each book
-    addToReadBtn.forEach((node) => {
-      //change class name if it is the delete button
-      //use this class name to chang the color to red
-      if (node.textContent == "Remove") {
-        node.className += " book_delete";
-      } else {
-        node.className += " book_add";
-      }
-
-      node.addEventListener("click", async () => {
-        //set the id variable to the book.id stored in data-id
-        let id = node.getAttribute("data-id");
-        //subtract the book with this id if the button is in "read-shelf"
-        //or add the book to the appropriate list if it is not already in that list
-        this.alterShelf(id, "read-shelf");
-      });
-    });
-    //get a list of all the button nodes for the "want to read shelf"
-    let addToWantToReadBtn = document.querySelectorAll(".addToWantToRead");
-    //add an event listener for "clicking" the button for each book
-    addToWantToReadBtn.forEach((node) => {
-      //change class name if it is the delete button
-      //use this class name to chang the color to red
-      if (node.textContent == "Remove") {
-        node.className += " book_delete";
-      } else {
-        node.className += " book_add";
-      }
-
-      node.addEventListener("click", async () => {
-        //set the id variable to the book.id stored in data-id
-        let id = node.getAttribute("data-id");
-        //subtract the book with this id if the button is in "want-read-shelf"
-        //or add the book to the appropriate list if it is not already in that list
-        this.alterShelf(id, "want-read-shelf");
+    shelfs.forEach(shelf => {
+      let btn = document.querySelectorAll(shelf.class);
+      btn.forEach((node) => {
+        //change class name if it is the delete button
+        //use this class name to chang the color to red
+        if (node.textContent == "Remove") {
+          node.className += " book_delete";
+        } else {
+          node.className += " book_add";
+        }
+  
+        node.addEventListener("click", async () => {
+          //set the id variable to the book.id stored in data-id
+          let id = node.getAttribute("data-id");
+          //subtract the book with this id if the button is in "reading-shelf"
+          //or add the book to the appropriate list if it is not already in that list
+          
+          this.alterShelf(id, shelf.name);
+          if ('read-shelf' != this.storageKey) {
+            this.alterShelf(id, this.storageKey);
+          }
+        });
       });
     });
   }
