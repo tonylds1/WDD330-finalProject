@@ -50,6 +50,10 @@ body {
   font-family: var(--font-family);
 }
 
+html,body{
+  overflow-x: hidden;
+}
+
 a {
   text-decoration: none;
 }
@@ -81,7 +85,7 @@ body {
   gap: 1em;
   grid-template-columns: 15% auto 10%;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: space-around;
   /* padding: 20px; */
   background-color: var(--tertiary-color);
   color: #000;
@@ -89,13 +93,13 @@ body {
 }
 
 .navbar img {
-  width: 6rem;
+  width: 4rem;
   margin-right: 10%;
   /* width: 100%; */
 }
 .navbar h1 {
   font-family: var(--font-headline);
-  font-size: 3.2rem;
+  font-size: 2.4rem;
   padding-left: 0.3rem;
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
@@ -338,14 +342,15 @@ footer a:active {
 }
 
 .bannerS h2 {
-  font-size: 4rem;
+  font-size: 3rem;
   padding: 2rem 1rem 1rem 3rem;
-  color: var(--dark-grey);
+  color: var(--black);
+ 
 }
 
 .bannerS p {
-  color: var(--base-color);
-  /* color: var(--white); */
+  /* color: var(--base-color); */
+  color: var(--white); 
   font-size: 2rem;
   padding: 1rem 2rem 0.2rem 3rem;
 }
