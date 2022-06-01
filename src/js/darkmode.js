@@ -14,12 +14,13 @@ export default class DarkMode {
       this.currentTheme == null
     ) {
       this.currentTheme = "light";
-
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches && this.currentTheme == null) {
-      this.currentTheme = "dark"
-    } 
+    } else if (
+      window.matchMedia("(prefers-color-scheme: dark)").matches &&
+      this.currentTheme == null
+    ) {
+      this.currentTheme = "dark";
+    }
     await this.darkModeButton();
-
 
     // Set the page colors based on the current theme
     if (this.currentTheme == "dark") {
@@ -33,18 +34,18 @@ export default class DarkMode {
     let buttonList = document.querySelectorAll(".darkModeToggle");
     // console.log(buttons)
     buttonList.forEach((button) => {
-      this.changeButtonImage()
+      this.changeButtonImage();
       button.addEventListener("click", () => {
         if (this.currentTheme == "light") {
           // button.src = "../images/sunny.png";
           this.currentTheme = "dark";
           this.darkMode();
-          this.changeButtonImage()
+          this.changeButtonImage();
         } else if (this.currentTheme == "dark") {
           // button.src = "../images/moon.png";
           this.lightMode();
           this.currentTheme = "light";
-          this.changeButtonImage()
+          this.changeButtonImage();
         }
         setLocalStorage("theme", this.currentTheme);
       });
@@ -59,7 +60,7 @@ export default class DarkMode {
       } else if (this.currentTheme == "dark") {
         button.src = "./images/sunny.png";
       }
-    })
+    });
   }
 
   darkMode() {

@@ -53,9 +53,9 @@
     transform: scale(1.1);
   }
 
-  div.searchScopeContainer {  
-    grid-column: 3/4; 
-    margin-right: 60%; 
+  div.searchScopeContainer {
+    grid-column: 3/4;
+    margin-right: 60%;
   }
 
   .search-container {
@@ -78,18 +78,18 @@
 
   p.count_message {
     display: flex;
-    justify-content:space-around;     
-  } 
+    justify-content: space-around;
+  }
 
   #search_rotator {
-    display:flex;
+    display: flex;
     justify-content: flex-end;
   }
 
-  .searchResults h2 {   
+  .searchResults h2 {
     margin-bottom: -50px;
   }
-  
+
   /* Footer CSS */
 
   .column {
@@ -103,6 +103,4 @@
     background-color: #303030;
     width: 100%;
   }
-
 }
-
