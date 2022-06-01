@@ -86,6 +86,8 @@ body {
   grid-template-columns: 15% auto 10%;
   align-items: center;
   justify-content: space-around;
+  justify-items: center;
+
   /* padding: 20px; */
   background-color: var(--tertiary-color);
   color: #000;
@@ -341,16 +343,17 @@ footer a:active {
 /* Resize the background image to cover the entire container */
 /* } */
 
-/* .banner h2 {
+.banner h2 {
   font-size: 4rem;
   padding: 2rem 1rem 1rem 3rem;
-  color: var(--dark-grey);
+  color: var(--white);
+  font: var(--font-family);
 }
 .banner p {
   color: var(--white);
   font-size: 2rem;
   padding: 1rem 2rem 0.2rem 3rem;
-} */
+}
 
 /* Banner  Smaller for library results page */
 .bannerS-image {
@@ -366,7 +369,7 @@ footer a:active {
 .bannerS h2 {
   font-size: 2rem;
   padding: 3.5rem 2rem 1rem 10rem;
-  
+ font-family:var(); 
 }
 
 .bannerS p {
