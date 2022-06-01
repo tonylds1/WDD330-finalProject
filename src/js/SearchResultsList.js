@@ -127,6 +127,7 @@ export default class SearchResults {
     templateClone.querySelector(".addToShelfButtons").innerHTML =
       bookListButtons(book.id);
 
+    
     // templateClone.querySelector(".addToReading")
     let addToReadingBtn = templateClone.querySelector(".addToReading");
     addToReadingBtn.addEventListener("click", async () => {
