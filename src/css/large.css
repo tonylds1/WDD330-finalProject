@@ -35,6 +35,7 @@
   }
 
   .menu {
+    margin-top: 0;
     border: none;
     font-family: var(--font-body);
     font-size: 1.6rem;
