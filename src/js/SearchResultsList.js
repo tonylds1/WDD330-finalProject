@@ -68,7 +68,7 @@ export default class SearchResults {
       this.searchScope = searchScope4.value;
     }
     //get the list from the search of the api
-    console.log(this.searchScope);
+    // console.log(this.searchScope);
     const list = await this.dataSource.getBookData(
       this.searchScope,
       this.searchTerm,
@@ -242,11 +242,11 @@ function bookListButtons(id) {
 }
 
 async function getSpecificBookInfo(bookId) {
-  let bookIds = document.querySelectorAll(".addToReading");
-  bookIds.forEach((id) => {
-    let detailBookId = id.getAttribute("data-id");
+  // let bookIds = document.querySelectorAll(".addToReading");
+  // bookIds.forEach((id) => {
+    // let detailBookId = id.getAttribute("data-id");
     // console.log(detailBookId);
-  });
+  // });
   let book = await connection.findBookById(bookId, false);
   // console.log(bookId);
   // console.log(book);

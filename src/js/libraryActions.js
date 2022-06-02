@@ -380,7 +380,10 @@ export default class LibraryActions {
           //or add the book to the appropriate list if it is not already in that list
 
           this.alterShelf(id, shelf.name);
-          if ("read-shelf" != this.storageKey && shelf.name != this.storageKey) {
+          if (
+            "read-shelf" != this.storageKey &&
+            shelf.name != this.storageKey
+          ) {
             this.alterShelf(id, this.storageKey);
           }
         });
@@ -454,7 +457,7 @@ export default class LibraryActions {
   }
 
   handleReadingProgress(bookId, progress) {
-    console.log(bookId, progress);
+    // console.log(bookId, progress);
     this.readingProgress.set(bookId, progress);
     setLocalStorage(
       "reading-progress",

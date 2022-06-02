@@ -22,21 +22,21 @@ async function loadSearchScope() {
   const searchScope2 = document.getElementById("searchScope2");
   searchScope2.addEventListener("click", () => {
     searchScope = searchScope2.value;
-    console.log(searchScope);
+    // console.log(searchScope);
     setLocalStorage("searchScope", searchScope);
   });
   //set the search scope to "inauthor:" if clicked
   const searchScope3 = document.getElementById("searchScope3");
   searchScope3.addEventListener("click", () => {
     searchScope = searchScope3.value;
-    console.log(searchScope);
+    // console.log(searchScope);
     setLocalStorage("searchScope", searchScope);
   });
   //set the search scope to "subject:" if clicked
   const searchScope4 = document.getElementById("searchScope4");
   searchScope4.addEventListener("click", () => {
     searchScope = searchScope4.value;
-    console.log(searchScope);
+    // console.log(searchScope);
     setLocalStorage("searchScope", searchScope);
   });
   //get the element for the button to rewind
@@ -63,7 +63,7 @@ async function loadSearchScope() {
   //set an even listening for someone clicking it
   advanceBttn.addEventListener("click", () => {
     searchBatchStart += 40;
-    console.log(searchBatchStart);
+    // console.log(searchBatchStart);
     const searchResults2 = new SearchResults(
       searchScope,
       search,

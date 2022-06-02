@@ -22,21 +22,21 @@ async function loadPage() {
   const searchScope2 = document.getElementById("searchScope2");
   searchScope2.addEventListener("click", () => {
     searchScope = searchScope2.value;
-    console.log(searchScope);
+    // console.log(searchScope);
     setLocalStorage("searchScope", searchScope);
   });
   //set the search scope to "inauthor:" if clicked
   const searchScope3 = document.getElementById("searchScope3");
   searchScope3.addEventListener("click", () => {
     searchScope = searchScope3.value;
-    console.log(searchScope);
+    // console.log(searchScope);
     setLocalStorage("searchScope", searchScope);
   });
   //set the search scope to "subject:" if clicked
   const searchScope4 = document.getElementById("searchScope4");
   searchScope4.addEventListener("click", () => {
     searchScope = searchScope4.value;
-    console.log(searchScope);
+    // console.log(searchScope);
     setLocalStorage("searchScope", searchScope);
   });
 }

@@ -123,9 +123,7 @@
     cursor: pointer;
   }
 
-  Hero Text Banner
-
-  .textHero {
+  Hero Text Banner .textHero {
     padding-top: 80px;
     background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(0px);
@@ -142,9 +140,9 @@
     font-size: 35px;
     padding-left: 200px;
   }
-  .banner2 img{
+  .banner2 img {
     padding: 1rem 10rem;
     align-items: center;
-    max-width:60rem;
-   }
+    max-width: 60rem;
+  }
 }

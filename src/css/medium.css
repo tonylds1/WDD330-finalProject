@@ -1,6 +1,6 @@
 /* styling for 641px to 880px */
 
-@media only screen and (min-width: 641px){
+@media only screen and (min-width: 641px) {
   .navbar h1 {
     font-family: var(--font-headline);
     font-size: 4.4rem;
@@ -32,10 +32,9 @@
     padding-left: 150px;
   }
 
-  .banner2 img{
+  .banner2 img {
     padding: 1rem 4.5rem 1rem 4.5rem;
     align-items: center;
     max-width: 40rem;
-   }
-
+  }
 }
