@@ -6,8 +6,27 @@
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
   }
-  .bannerS h2 {
-    font-size: 3rem;
-    padding: 3.5rem 0rem 1rem 8rem;
+
+  /* Hero Text Banner */
+
+  .textHero {
+    padding-top: 90px;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+  }
+
+  .h2Hero {
+    text-align: left;
+    font-size: 40px;
+    color: white;
+    padding-left: 80px;
+  }
+
+  .pHero {
+    color: white;
+    text-align: left;
+    padding-top: 10px;
+    font-size: 25px;
+    padding-left: 150px;
   }
 }
