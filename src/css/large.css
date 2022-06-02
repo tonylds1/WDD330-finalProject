@@ -91,7 +91,7 @@
     justify-content: flex-end;
   }
 
-  .searchResults h2 {
+  h2.search_results_title {
     margin-bottom: -53px;
   }
 
@@ -129,7 +129,7 @@
     cursor: pointer;
   }
 
-  /* Hero Text Banner */
+  Hero Text Banner
 
   .textHero {
     padding-top: 80px;
