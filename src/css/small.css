@@ -570,7 +570,7 @@ footer a:active {
   font-family: var(--font-headline);
 }
 .banner2 img{
-  padding: 1rem 1rem 2rem rem;
+  padding: 1rem 1rem 1rem 1rem;
   align-items: center;
   max-width:25rem;
  }
