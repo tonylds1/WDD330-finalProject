@@ -733,7 +733,7 @@ button.back_to_top {
 }
 
 .book-details {
-  float: right;
+  /* float: right; */
   padding: 0.5em;
 }
 
@@ -773,22 +773,70 @@ button.back_to_top {
   text-align: center;
 }
 
+.details_bttn_box {
+  display: flex;
+}
+
+.details_bttn {
+  grid-column: 2;
+  width: fit-content;
+  height: 30px;
+  margin: 0 1rem 0 auto;
+  background-color: var(--quaternary-color);
+  padding: 0 0.5rem;
+  border: 3px outset var(--base-color);
+  cursor: pointer;
+}
+
+button.search_details_bttn {
+  margin: 0 3.5rem .5rem auto;
+}
+
 /************ START OF Responsive both image and details on each phone and tablet ************/
-@media only screen and (max-width: 32em) {
+@media only screen and (max-width: 32em) {  
+  div.addToShelfButtons button {
+    font-size: 14px;
+  }
+
   .result-div img,
   div.book_count {
-    margin: auto;
-    width: 70%;
-    grid-column: 1/3;
-    grid-row: 1/2;
+    justify-content: flex-start;
+    width: 100%;
+    grid-column: 1;
+    /* grid-row: 1/2; */
+  }
+
+  .specialCount {
+    grid-column: 1;
+    /* grid-row: 1/2; */
   }
 
   .result-div .book-details {
-    grid-column: 1/3;
-    grid-row: 2/3;
+    grid-column: 2/3;
+    grid-row: 1/3;
+  }
+
+  .result-div {
+    margin: .1em .1em;
+    display: grid;
+    grid-template-columns: 35% 75%;
+  } 
+
+  .progressInput, .progress {
+    width: 50%;
+    white-space: nowrap; 
+  }
+ 
+    
+  .book-details {
+    font-size: 14px;
+    width: 85%;
+  }
+
+  .search_details_bttn {
+    margin: 0 2.5rem .5rem auto;
   }
 }
-
 /*************** END OF Responsive both image and details on each phone and tablet ************/
 
 /********************* START OF CSS FOR MODAL POP-UP BOOK DETAILS PAGE ************************/
@@ -851,26 +899,6 @@ img.book_modal_img {
 .close:focus {
   color: var(--black);
   text-decoration: none;
-  cursor: pointer;
-}
-
-/**** The Details Button for the Modal to Open ****/
-.details_bttn_box {
-  display: flex;
-}
-
-button.search_details_bttn {
-  margin-bottom: 1rem;
-}
-
-.details_bttn {
-  grid-column: 2;
-  width: fit-content;
-  height: 30px;
-  margin: 0 1rem 0 auto;
-  background-color: var(--quaternary-color);
-  padding: 0 0.5rem;
-  border: 3px outset var(--base-color);
   cursor: pointer;
 }
 
@@ -966,6 +994,8 @@ button.book_add {
 /*************************** END OF CSS FOR BUTTONS ON BOOK CARDS *****************************/
 
 /**************************** START OF SHELF CARD SIZE & Title STYLING ************************/
+
+
 #my_book_lists {
   /* max-width: 700px; */
   max-width: 98%;

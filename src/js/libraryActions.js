@@ -232,6 +232,7 @@ export default class LibraryActions {
 
   renderBookDetails() {
     return `
+    
       <div class="result-div card_size">
         <div class="book_count">
           <span class="specialCount">${this.bookCount}</span>       
@@ -269,7 +270,7 @@ export default class LibraryActions {
               %
             </div>
           </form>
-          <br><br>
+          <br>
           <div class="details_bttn_box"> 
             <!-- Trigger/Open The Modal -->       
             <button type="button" class="details_bttn" >Details</button>  
