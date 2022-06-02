@@ -35,7 +35,6 @@
   }
 
   .menu {
-    margin-top: 0;
     border: none;
     font-family: var(--font-body);
     font-size: 1.6rem;
@@ -149,7 +148,7 @@
     padding-left: 200px;
   }
   .banner2 img{
-    padding: 1rem 8rem;
+    padding: 1rem 10rem;
     align-items: center;
     max-width:60rem;
    }
