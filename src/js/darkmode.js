@@ -74,6 +74,7 @@ export default class DarkMode {
     document.documentElement.style.setProperty("--text-color", "white");
     document.documentElement.style.setProperty("--light-background", "#dadfe1");
     document.documentElement.style.setProperty("--dark-grey", "#fefefe");
+    document.documentElement.style.setProperty("--counter-color", "white");
   }
 
   lightMode() {
@@ -87,5 +88,6 @@ export default class DarkMode {
     document.documentElement.style.setProperty("--text-color", "black");
     document.documentElement.style.setProperty("--light-background", "#fefefe");
     document.documentElement.style.setProperty("--dark-grey", "#000000");
+    document.documentElement.style.setProperty("--counter-color", "#fcd000");
   }
 }

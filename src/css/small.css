@@ -24,6 +24,7 @@
   --text-color: black;
   --light-background: #fefefe;
   --dark-grey: #000000;
+  --counter-color: #fcd000;
 
   /* colors-hyperlinks */
   --link-main: rgb(0, 162, 255);
@@ -668,6 +669,7 @@ button.btnI {
 .searchResults h2 {
   padding: 30px 30px 0 30px;
   font-size: 1.4rem;
+  color: var(--text-color);
 }
 
 #search_rotator {
@@ -775,7 +777,7 @@ button.back_to_top {
 .specialCount {
   display: block;
   margin: 0.5rem 0 0.75rem 0.5rem;
-  color: #fcd000;
+  color: var(--yellow-color);
   font-size: 1.5rem;
   font-weight: bold;
   --size: 32px;
