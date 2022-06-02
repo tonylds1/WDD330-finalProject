@@ -6,7 +6,7 @@ import {
   removeAllInserts,
   insertTitle,
   insertBookCount,
-  isNullOrUndefined,
+  // isNullOrUndefined,
   runModal,
   getStars,
 } from "./utils.js";
@@ -344,7 +344,7 @@ export default class LibraryActions {
     //add an event listener for "clicking" the button for each book
     progressBars.forEach((node) => {
       const bookId = node.getAttribute("data-id");
-      node.value = this.readingProgress.get(bookId) ?? 0;
+      node.value = this.readingProgress.get(bookId) || 0;
       node.nextElementSibling.innerHTML = node.value;
 
       node.addEventListener("change", async () => {
@@ -355,7 +355,7 @@ export default class LibraryActions {
 
   addBttnFunctionality() {
     //get a list of all the button nodes for the "reading shelf"
-    let addToReadingBtn = document.querySelectorAll(".addToReading");
+    document.querySelectorAll(".addToReading");
     const shelfs = [
       { class: ".addToReading", name: "reading-shelf" },
       { class: ".addToRead", name: "read-shelf" },

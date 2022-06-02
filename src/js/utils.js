@@ -152,8 +152,8 @@ export const selectElement = (selector) => {
 };
 
 export function isNullOrUndefined(variable) {
-    return variable == null || variable == undefined;
-};
+  return variable == null || variable == undefined;
+}
 
 export function runModal(callBack1, callBack2, searchResult = false) {
   //create variable for the div holding the modal HTML content
@@ -193,8 +193,8 @@ export function runModal(callBack1, callBack2, searchResult = false) {
             //from the card that had the modal detail button clicked
             let bookIdElementContainer =
               clickedBtn.previousElementSibling.lastElementChild
-              .previousElementSibling.previousElementSibling
-              .firstElementChild;
+                .previousElementSibling.previousElementSibling
+                .firstElementChild;
             // console.log(bookIdElementContainer);
             let bookId = bookIdElementContainer.getAttribute("data-id");
             // console.log(bookId);

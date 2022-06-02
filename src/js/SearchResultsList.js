@@ -244,8 +244,8 @@ function bookListButtons(id) {
 async function getSpecificBookInfo(bookId) {
   // let bookIds = document.querySelectorAll(".addToReading");
   // bookIds.forEach((id) => {
-    // let detailBookId = id.getAttribute("data-id");
-    // console.log(detailBookId);
+  // let detailBookId = id.getAttribute("data-id");
+  // console.log(detailBookId);
   // });
   let book = await connection.findBookById(bookId, false);
   // console.log(bookId);
