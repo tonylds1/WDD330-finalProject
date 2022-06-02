@@ -214,7 +214,7 @@ input[type="search"]:focus {
   max-width: 100px;
 }
 
-/* NAVBAR MENU */
+/* NAVBAR  */
 
 /* CSS hamburger */
 /* Hamburger */
@@ -278,7 +278,7 @@ input[type="checkbox"] {
 /* end css hamburger */
 
 .menu {
-  margin-top: 1em;
+  margin-top: 3.5em;
   display: flex;
   gap: 1em;
   font-size: 18px;
