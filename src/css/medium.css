@@ -1,3 +1,4 @@
+/* styling for 641px to 880px */
 
 @media only screen and (min-width: 641px){
   .navbar h1 {
@@ -32,9 +33,9 @@
   }
 
   .banner2 img{
-    padding: 1rem 1rem 10rem 10rem;
+    padding: 1rem 4.5rem 1rem 4.5rem;
     align-items: center;
-    max-width: fit-content(20em);
+    max-width: 40rem;
    }
 
 }
