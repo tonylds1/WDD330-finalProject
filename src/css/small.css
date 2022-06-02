@@ -108,7 +108,7 @@ body {
   margin-bottom: 0.2rem;
 }
 .navbar ul {
-  font-family: var(--font-body);
+  font-family: var(--font-family);
 }
 /********************* START OF STYLING FOR THE SEARCH OPTIONS SELECTOR ********************/
 label {
@@ -116,6 +116,7 @@ label {
   padding: 0 1em;
   text-align: center;
   min-width: 51px;
+  color:var(--light-grey);
 }
 
 div.searchScopeContainer {
@@ -190,7 +191,7 @@ input[type='radio']:checked:after {
 }
 
 .bannerS h2 {
-  font-family: var(--font-body);
+  font-family: var(--font-he);
 }
 
 input[type="search"] {
@@ -366,7 +367,7 @@ footer a:active {
 
 .footerMenu {
   border: none;
-  font-family: var(--font-body);
+  font-family: var(--font-a);
   font-size: 1.6rem;
   text-align: center;
   align-items: center;
@@ -1003,6 +1004,7 @@ button.book_delete {
   /* color: var(--white); */
   /* border: 3px outset var(--white); */
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .addToShelfButtons button.book_delete:hover {
