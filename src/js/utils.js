@@ -136,7 +136,7 @@ export function insertBookCount(bookCount) {
   //add class to style the count
   count.className = "count_message";
   //add count display mesage
-  count.innerHTML = `You have &nbsp;- <span class="count">${bookCount}</span> -&nbsp; total books on this shelf.`;
+  count.innerHTML = `This shelf has &nbsp;*&nbsp; <span class="count">${bookCount}</span> &nbsp;*&nbsp; books presently.`;
   console.log(count.innerHTML);
   // add the count under the shelf title
   const main = document.querySelector("main");

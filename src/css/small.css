@@ -1114,12 +1114,16 @@ p.count_message {
   text-align: center;
   margin-bottom: 2rem;
   margin-top: -2rem;
-  max-width: 425px;
+  max-width: 475px;
 }
 
 span.count {
   font-size: 2rem;
   font-weight: 900;
+}
+
+p.empty_shelf_text {
+  text-align: center;
 }
 
 /**************************** END OF ALERT STYLING ********************************************/
