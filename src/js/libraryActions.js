@@ -219,7 +219,7 @@ export default class LibraryActions {
   renderBanner() {
     return `
     <div class="banner2">
-      <p>
+      <p class="empty_shelf_text">
         Search for books and create your personal library of books you desire
         to read, books you are reading and completed.
       </p>

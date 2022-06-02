@@ -80,11 +80,6 @@
     margin-left: 1rem;
   }
 
-  p.count_message {
-    display: flex;
-    justify-content: space-around;
-  }
-
   #search_rotator {
     display: flex;
     justify-content: flex-end;
