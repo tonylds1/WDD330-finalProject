@@ -147,4 +147,9 @@
     font-size: 35px;
     padding-left: 200px;
   }
+  .banner2 img{
+    padding: 1rem 1rem 2rem 2rem;
+    align-items: center;
+    max-width:60rem;
+   }
 }

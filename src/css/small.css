@@ -563,9 +563,10 @@ footer a:active {
   padding: 1rem 1.25rem 2rem 2rem; 
   font-family: var(--font-headline);
 }
-banner2 img{
-  padding: 1rem 1rem 5rem 5rem;
+.banner2 img{
+  padding: 1rem 1rem 2rem 2rem;
   align-items: center;
+  max-width:26rem;
  }
  
 /* library toogle wrapper... extra code, needs to be cleaned up */
