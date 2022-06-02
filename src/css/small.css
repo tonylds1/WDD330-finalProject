@@ -777,7 +777,7 @@ button.back_to_top {
 .specialCount {
   display: block;
   margin: 0.5rem 0 0.75rem 0.5rem;
-  color: var(--yellow-color);
+  color: var(--counter-color);
   font-size: 1.5rem;
   font-weight: bold;
   --size: 32px;
