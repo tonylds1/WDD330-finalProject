@@ -23,8 +23,7 @@ export function renderListWithTemplate(
   template,
   parentElement,
   list,
-  callback,
-  count
+  callback
 ) {
   // clone it once for each product in our list
   list.forEach((item) => {
@@ -137,10 +136,10 @@ export function insertBookCount(bookCount) {
   count.className = "count_message";
   //add count display mesage
   count.innerHTML = `This shelf has &nbsp;*&nbsp; <span class="count">${bookCount}</span> &nbsp;*&nbsp; books presently.`;
-  console.log(count.innerHTML);
+  // console.log(count.innerHTML);
   // add the count under the shelf title
   const main = document.querySelector("main");
-  console.log(main.firstChild.nextSibling);
+  // console.log(main.firstChild.nextSibling);
   main.insertBefore(count, main.firstChild.nextSibling);
 }
 
@@ -152,9 +151,9 @@ export const selectElement = (selector) => {
   );
 };
 
-export const isNullOrUndefined = (variable) => {
+export function isNullOrUndefined(variable) {
   return variable == null || variable == undefined;
-};
+}
 
 export function runModal(callBack1, callBack2, searchResult = false) {
   //create variable for the div holding the modal HTML content
@@ -196,12 +195,12 @@ export function runModal(callBack1, callBack2, searchResult = false) {
               clickedBtn.previousElementSibling.lastElementChild
                 .previousElementSibling.previousElementSibling
                 .firstElementChild;
-            console.log(bookIdElementContainer);
+            // console.log(bookIdElementContainer);
             let bookId = bookIdElementContainer.getAttribute("data-id");
-            console.log(bookId);
+            // console.log(bookId);
             //get the element of the modal div where the modal deatail button was clicked
             let bookCard = clickedBtn.nextElementSibling;
-            console.log(bookCard);
+            // console.log(bookCard);
             //set a variable equal to the return value from the 1st call back function
             //this function fetches the book details from the api for that specific book
             let book = callBack1(bookId);

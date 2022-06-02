@@ -56,7 +56,7 @@ async function convertToJson(res) {
   if (res.ok) {
     return jsonResponse;
   } else {
-    console.log("There is an error!");
+    // console.log("There is an error!");
     throw { name: "servicesError", message: jsonResponse };
   }
 }

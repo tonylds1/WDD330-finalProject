@@ -1,6 +1,5 @@
 /************************** START OF VARIABLES USED IN CSS ********************************************/
 :root {
-
   --font-body: "Source Sans Pro", sans-serif;
   --font-headline: "Montserrat", sans-serif;
   --font-family: "Quicksand", sans-serif;
@@ -116,7 +115,7 @@ label {
   padding: 0 1em;
   text-align: center;
   min-width: 51px;
-  color:var(--light-grey);
+  color: var(--light-grey);
 }
 
 div.searchScopeContainer {
@@ -552,30 +551,30 @@ footer a:active {
 } */
 .banner2 p {
   font-size: 1.24rem;
-   padding: 1rem 1rem 1rem 1rem; 
+  padding: 1rem 1rem 1rem 1rem;
   color: var(--dark-grey);
   text-align: left;
   font-family: var(--font-family);
 }
 
-.banner2 h3{
+.banner2 h3 {
   font-size: 2rem;
-  color:var(--primary-color);
-  padding: 1rem 1rem 2rem 2rem; 
+  color: var(--primary-color);
+  padding: 1rem 1rem 2rem 2rem;
   font-family: var(--font-headline);
 }
-.banner2 h2{
+.banner2 h2 {
   font-size: 2rem;
-  color:var(--quaternary-color);
-  padding: 1rem 1.25rem 2rem 1rem; 
+  color: var(--quaternary-color);
+  padding: 1rem 1.25rem 2rem 1rem;
   font-family: var(--font-headline);
 }
-.banner2 img{
+.banner2 img {
   padding: 1rem 1rem 1rem 1rem;
   align-items: center;
-  max-width:25rem;
- }
- 
+  max-width: 25rem;
+}
+
 /* library toogle wrapper... extra code, needs to be cleaned up */
 
 .wrapper {
@@ -832,11 +831,11 @@ button.back_to_top {
 }
 
 button.search_details_bttn {
-  margin: 0 3.5rem .5rem auto;
+  margin: 0 3.5rem 0.5rem auto;
 }
 
 /************ START OF Responsive both image and details on each phone and tablet ************/
-@media only screen and (max-width: 32em) {  
+@media only screen and (max-width: 32em) {
   div.addToShelfButtons button {
     font-size: 14px;
   }
@@ -860,24 +859,24 @@ button.search_details_bttn {
   }
 
   .result-div {
-    margin: .1em .1em;
+    margin: 0.1em 0.1em;
     display: grid;
     grid-template-columns: 35% 75%;
-  } 
-
-  .progressInput, .progress {
-    width: 50%;
-    white-space: nowrap; 
   }
- 
-    
+
+  .progressInput,
+  .progress {
+    width: 50%;
+    white-space: nowrap;
+  }
+
   .book-details {
     font-size: 14px;
     width: 85%;
   }
 
   .search_details_bttn {
-    margin: 0 2.5rem .5rem auto;
+    margin: 0 2.5rem 0.5rem auto;
   }
 }
 /*************** END OF Responsive both image and details on each phone and tablet ************/
@@ -1038,7 +1037,6 @@ button.book_add {
 /*************************** END OF CSS FOR BUTTONS ON BOOK CARDS *****************************/
 
 /**************************** START OF SHELF CARD SIZE & Title STYLING ************************/
-
 
 #my_book_lists {
   /* max-width: 700px; */
