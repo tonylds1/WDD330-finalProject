@@ -47,6 +47,7 @@
 }
 body {
   font-family: var(--font-family);
+  color: var(--text-color);
 }
 
 html,
@@ -764,6 +765,7 @@ button.back_to_top {
   border-radius: 5px;
   /* background-color: rgba(0, 0, 0, 0.08); */
   background-color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .book-details {
@@ -962,6 +964,7 @@ button.details_bttn:active {
   font-size: 12px;
   border-radius: 7px;
   padding: 0.4em;
+  color: black;
 }
 
 .addToShelfButtons button {
