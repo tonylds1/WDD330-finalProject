@@ -544,11 +544,11 @@ footer a:active {
   padding: 0.2rem 1rem 2rem 2rem;
 } */
 .banner2 p {
-  font-size: 1.45rem;
-   padding: 1rem 1rem 2rem 2rem; 
+  font-size: 1.24rem;
+   padding: 1rem 1rem 1rem 1rem; 
   color: var(--dark-grey);
   text-align: left;
-  font-family: var(--font-body);
+  font-family: var(--font-family);
 }
 
 .banner2 h3{
@@ -560,13 +560,13 @@ footer a:active {
 .banner2 h2{
   font-size: 2rem;
   color:var(--quaternary-color);
-  padding: 1rem 1.25rem 2rem 2rem; 
+  padding: 1rem 1.25rem 2rem 1rem; 
   font-family: var(--font-headline);
 }
 .banner2 img{
-  padding: 1rem 1rem 2rem 2rem;
+  padding: 1rem 1rem 2rem rem;
   align-items: center;
-  max-width:26rem;
+  max-width:25rem;
  }
  
 /* library toogle wrapper... extra code, needs to be cleaned up */
