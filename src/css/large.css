@@ -108,6 +108,26 @@
     width: 100%;
   }
 
+  /**** The Details Button for the Modal to Open ****/
+  .details_bttn_box {
+    display: flex;
+  }
+
+  button.search_details_bttn {
+    margin-bottom: 1rem;
+  }
+
+  .details_bttn {
+    grid-column: 2;
+    width: fit-content;
+    height: 30px;
+    margin: 0 1rem 0 auto;
+    background-color: var(--quaternary-color);
+    padding: 0 0.5rem;
+    border: 3px outset var(--base-color);
+    cursor: pointer;
+  }
+
   /* Hero Text Banner */
 
   .textHero {
