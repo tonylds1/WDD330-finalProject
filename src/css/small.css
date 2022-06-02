@@ -1,12 +1,10 @@
 /************************** START OF VARIABLES USED IN CSS ********************************************/
 :root {
-  --font-body: "Source Sans Pro", sans-serif;
-  --font-headline: "Montserrat", sans-serif;
-  --font-family: "Architects Daughter", cursive;
 
   --font-body: "Source Sans Pro", sans-serif;
   --font-headline: "Montserrat", sans-serif;
-  --font-family: "Architects Daughter", cursive;
+  --font-family: "Quicksand", sans-serif;
+  --font-a: "Architects Daughter", cursive;
 
   /* colors- Dark Mode NOT IN USE CURRENTLY*/
   /* --primary-color: #1ad4ba;
@@ -67,14 +65,14 @@ main {
   background-color: var(--base-color);
 }
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
 p,
 span {
   color: var(--text-color);
-}
+} */
 
 body {
   background-color: var(--base-color);
@@ -114,16 +112,16 @@ body {
 label {
   float: left;
   padding: 0 1em;
-  text-align: center; 
+  text-align: center;
   min-width: 51px;
 }
 
-div.searchScopeContainer { 
+div.searchScopeContainer {
   /* background-color: #edf1f1;   */
   display: flex;
   justify-content: space-evenly;
   width: 300px;
-  margin: 0 auto -12px auto; 
+  margin: 0 auto -12px auto;
   grid-column: 1/4;
   padding: 0 5px;
 }
@@ -133,7 +131,7 @@ div.searchScopeContainer input {
 }
 
 input[name="searchScope"] {
-	accent-color: #615555;
+  accent-color: #615555;
 }
 
 /* input[type='radio']:after {
@@ -163,6 +161,7 @@ input[type='radio']:checked:after {
     visibility: visible;
     border: 2px solid white;
 } */
+
 /********************* END OF STYLING FOR THE SEARCH OPTIONS SELECTOR ********************/
 .search-container {
   grid-column: 1/4;
@@ -204,6 +203,7 @@ input[type="search"]:focus {
 .nav-links a {
   /* color:var(--dark-grey); */
   color: #000;
+  font-family: var(--font-a);
 }
 
 /* LOGO */
@@ -431,6 +431,10 @@ footer a:active {
   background-color: #303030;
 }
 
+.dmModePointer {
+  cursor: pointer;
+}
+
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 880px) {
   .menu {
@@ -497,21 +501,30 @@ footer a:active {
   background-size: cover; /* Resize the background image to cover the entire container */
 }
 
-.bannerS h2 {
-  font-size: 2rem;
-  padding: 3.5rem 2rem 1rem 10rem;
+/* Hero Banner H2 and p */
+
+.textHero {
+  text-align: center;
+  padding-top: 90px;
+  position: relative;
+  background: rgba(73, 73, 73, 0.1);
+  backdrop-filter: blur(3px);
+  width: 100%;
+  height: 100%;
 }
 
-.bannerS p {
-  font-size: 2rem;
-  padding: 3.5rem 2rem 1rem 10rem;
+.h2Hero {
+  font-size: 40px;
+  color: white;
+  text-shadow: 2px 2px black;
 }
 
-.bannerS p {
-  /* color: var(--base-color); */
-  color: var(--white);
-  font-size: 2rem;
-  padding: 1rem 2rem 0.2rem 3rem;
+.pHero {
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 25px;
+  text-shadow: 2px 2px black;
 }
 
 .bookshelf {
@@ -528,13 +541,27 @@ footer a:active {
 
 /* .banner form {
   font-size: 3rem;
-  padding: 0.2rem 1rem 2rem 3rem;
+  padding: 0.2rem 1rem 2rem 2rem;
 } */
 .banner2 p {
-  font-size: 1.75rem;
-  padding: 3.5rem 3.5rem 3.5rem 3.5rem;
+  font-size: 1.45rem;
+   padding: 1rem 1rem 2rem 2rem; 
   color: var(--dark-grey);
-  text-align: center;
+  text-align: left;
+  font-family: var(--font-body);
+}
+
+.banner2 h3{
+  font-size: 2rem;
+  color:var(--primary-color);
+  padding: 1rem 1rem 2rem 2rem; 
+  font-family: var(--font-headline);
+}
+.banner2 h2{
+  font-size: 2rem;
+  color:var(--quaternary-color);
+  padding: 1rem 1.25rem 2rem 2rem; 
+  font-family: var(--font-headline);
 }
 
 /* library toogle wrapper... extra code, needs to be cleaned up */
@@ -640,6 +667,7 @@ button.btnI {
 
 .searchResults h2 {
   padding: 30px 30px 0 30px;
+  font-size: 1.4rem;
 }
 
 #search_rotator {
@@ -1081,4 +1109,3 @@ span.count {
 }
 
 /**************************** END OF ALERT STYLING ********************************************/
-

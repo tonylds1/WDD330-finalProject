@@ -357,12 +357,12 @@ export default class LibraryActions {
     //get a list of all the button nodes for the "reading shelf"
     let addToReadingBtn = document.querySelectorAll(".addToReading");
     const shelfs = [
-      {'class':'.addToReading', 'name':'reading-shelf'},
-      {'class':'.addToRead', 'name':'read-shelf'},
-      {'class':'.addToWantToRead', 'name':'want-read-shelf'}
+      { class: ".addToReading", name: "reading-shelf" },
+      { class: ".addToRead", name: "read-shelf" },
+      { class: ".addToWantToRead", name: "want-read-shelf" },
     ];
 
-    shelfs.forEach(shelf => {
+    shelfs.forEach((shelf) => {
       let btn = document.querySelectorAll(shelf.class);
       btn.forEach((node) => {
         //change class name if it is the delete button
@@ -372,15 +372,15 @@ export default class LibraryActions {
         } else {
           node.className += " book_add";
         }
-  
+
         node.addEventListener("click", async () => {
           //set the id variable to the book.id stored in data-id
           let id = node.getAttribute("data-id");
           //subtract the book with this id if the button is in "reading-shelf"
           //or add the book to the appropriate list if it is not already in that list
-          
+
           this.alterShelf(id, shelf.name);
-          if ('read-shelf' != this.storageKey) {
+          if ("read-shelf" != this.storageKey) {
             this.alterShelf(id, this.storageKey);
           }
         });
