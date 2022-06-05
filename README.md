@@ -1,6 +1,6 @@
 # Cloud Shelf
 ## WDD330-groupProject 
-#### Website Link: https://wmsmckay.github.io/WDD330-groupProject/build/
+#### Website Link: http://pages.mckaywilliams.com/WDD330-groupProject/build/index.html
 
 This project is a final project for WDD 330. It was build as a collaboration between all of the contributors in the repo. Their personal Github accounts will be linked below.
 
