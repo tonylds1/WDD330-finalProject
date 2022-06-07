@@ -1,0 +1,129 @@
+<div class="">
+  <nav class="navbar">
+    <!-- LOGO -->
+    <div class="logo">
+      <a href="./index.html">
+        <img
+          src="./images/bookLogo.png"
+          rel="images"
+          max
+          width="70px"
+          alt="book"
+        />
+      </a>
+    </div>
+    <h1>Cloud<span style="color: #545454">Shelf</span></h1>
+    <!-- NAVIGATION MENU -->
+    <ul class="nav-links">
+      <!-- USING CHECKBOX HACK -->
+      <input type="checkbox" id="checkbox_toggle" />
+      <!-- <label for="checkbox_toggle" class="hamburger">&#9776;</label> -->
+      <nav id="navbar" class="navigation hamburger" role="navigation">
+        <input id="toggle1" type="checkbox" />
+        <label class="hamburger1" for="toggle1">
+          <div class="top"></div>
+          <div class="meat"></div>
+          <div class="bottom"></div>
+        </label>
+        <!-- NAVIGATION MENUS -->
+        <div class="menu">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./library.html">My Library</a></li>
+          <!-- <li><button class="darkModeToggle"></button></li> -->
+          <li>
+            <input
+              width="50px"
+              type="image"
+              class="darkModeToggle"
+              src=""
+              alt="dark mode toggle"
+            />
+          </li>
+        </div>
+      </nav>
+      <!-- Duplicate to work around hamburger menu constraints -->
+      <div class="menu">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="library.html">My Library</a></li>
+        <!-- <li><button class="darkModeToggle"></button></li> -->
+        <input
+          width="50px"
+          type="image"
+          class="darkModeToggle"
+          src=""
+          alt="dark mode toggle"
+        />
+
+        <!-- <input width="50px" type="image" class="darkModeToggle" src="../images/bookCoverPlaceholder.gif" /> -->
+        <!-- <li><button class="darkModeToggle">Toggle Dark Mode</button></li> -->
+        <!-- <section id="darkModeToggle"></section> -->
+      </div>
+    </ul>
+    <!-- <p>&#9699; &#129095; &#9660; 🔻 &#128317; ▼ &#9698;</p>
+    <svg width="16" height="10">
+      <polygon points="0,0 16,0 8,10"/>
+    </svg> -->
+    <div class="searchScopeContainer">
+      <label for="myChoice1"
+        >All<br />
+        <input
+          type="radio"
+          id="searchScope1"
+          name="searchScope"
+          value="search "
+          checked
+        />
+      </label>
+
+      <label for="myChoice2"
+        >Title<br />
+        <input
+          type="radio"
+          id="searchScope2"
+          name="searchScope"
+          value="intitle:"
+        />
+      </label>
+
+      <label for="myChoice3"
+        >Author<br />
+        <input
+          type="radio"
+          id="searchScope3"
+          name="searchScope"
+          value="inauthor:"
+        />
+      </label>
+
+      <label for="myChoice4"
+        >Subject<br />
+        <input
+          type="radio"
+          id="searchScope4"
+          name="searchScope"
+          value="subject:"
+        />
+      </label>
+    </div>
+    <div class="search-container">
+      <form action="./results.html">
+        <input
+          class="header-search-bar"
+          type="search"
+          placeholder="Find a book..."
+          name="searchInput"
+        />
+      </form>
+      <!-- <div id="select">
+        <p>All</p>
+        <p>&#128317;</p>       
+        <ul>
+          <li class="options">All</li>
+          <li class="options">Title</li>
+          <li class="options">Author</li>
+          <li class="options">Subject</li>         
+        </ul>       
+      </div> -->
+    </div>
+  </nav>
+</div>
